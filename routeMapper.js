@@ -1,4 +1,5 @@
 const templateManager = require("./templateManager.jsx");
+const fs = require("fs");
 
 
 //BEWARE!! if using subpaths (ex: /home/mainpage)
@@ -83,7 +84,7 @@ const routingMap = {
                 blocks: [
                     {
                         type: "header",
-                        text: "Pathfinder Character Manager",
+                        text: "C3D's Pathfinder Tool",
                     },
                     {
                         type: "title",
@@ -114,8 +115,42 @@ const routingMap = {
             head: templateManager.defaultHeadTemplate,
             body: templateManager.loginTemplate
         }
+    },
+    '/personaggi': {
+        data: {
+            head: {
+                title: "Form",
+                styles:
+                    [
+                        "bootstrap.min.css",
+                        "https://fonts.googleapis.com/css?family=Lobster&display=swap"
+                    ],
+                scripts: []
+            },
+            body: {
+                blocks: [
+                    {
+                        type: "header",
+                        text: "C3D's Pathfinder Tool",
+                    },
+                    {
+                        type: "title",
+                        text: "I Tuoi Personaggi",
+                    },
+                    {
+                        type: "cardBlock",
+                        cards:function name(params) {
+                            //TODO
+                        }
+                    }
+                ]
+            }
+        },
+        template: {
+            head: templateManager.defaultHeadTemplate,
+            body: "TODO Template "  //TODO
+        }
     }
 }
-
 
 exports.routingMap = routingMap;
