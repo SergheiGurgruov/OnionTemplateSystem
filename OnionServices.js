@@ -6,21 +6,21 @@ const routeMap = {
     /**
      * 
      * @param {Object} data
-     * @param {string} data.email
+     * @param {string} data.username
      * @param {string} data.password
      * @param {http.ServerResponse} res 
      */
     "/login.onioncall": function (data, res) {
-        dbClient.query("users", { email: data.email, password: data.password }, function (items) {
+        dbClient.query("users", { username: data.username, password: data.password }, function (items) {
             if (items.length > 0) {
-                let cookieString = `user=${data.email},${data.password}`
+                let cookieString = `user=${data.username},${data.password}`
                 res.writeHead(302, {
                     'Set-Cookie': cookieString,
                     Location: '/'
                 });
                 res.end();
             } else {
-                util.log("Login", "Login has failed, incorrect username or password", util.colors.FgRed);
+                util.log("Login", `Login has failed, incorrect username or password  OnionServices.js:${__line}`, util.colors.FgRed);
                 res.writeHead(302,{
                     Location:"/login"
                 });
@@ -61,19 +61,20 @@ exports.OSInterface = {
      */
     checkLogin: function (cookies, callback) {
 
-        let email = cookies.user.split(',')[0];
+        let username = cookies.user.split(',')[0];
         let password = cookies.user.split(',')[1];
 
-        dbClient.query("users", { email: email, password: password }, function (items) {
+        dbClient.query("users", { username: username, password: password }, function (items) {
             if (items.length > 0) {
                 callback(true);
             } else {
-                callback(false);
                 util.log(
                     "Warning",
-                    `Wrong User data in Cookies: user:${cookies.user}`,
+                    `Wrong User data in Cookies: user:${cookies.user} OnionServices.js:${__line}`,
                     util.colors.FgRed
                 );
+                callback(false);
+                
             }
         });
     }

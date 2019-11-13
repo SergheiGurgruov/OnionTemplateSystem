@@ -67,12 +67,12 @@ module.exports = {
 
                     if (input.type == "submit") {
                         result += `<button type="submit" class="btn btn-info">Submit</button>`;
-                    } else if (input.type == "email") {
+                    } else if (input.type == "username") {
                         result += `
                         <div class="form-group">
-                            <label for="${input.name}">Email address</label>
-                            <input type="email" class="form-control" id=${input.name} aria-describedby="emailHelp" name=${input.name} placeholder="Enter email">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            <label for="${input.name}">Username</label>
+                            <input type="text" class="form-control" id=${input.name} aria-describedby="emailHelp" name=${input.name} placeholder="Enter email">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your data with anyone else.</small>
                         </div>`;
                     } else if (input.type == "password") {
                         result += `

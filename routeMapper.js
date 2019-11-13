@@ -83,7 +83,7 @@ const routingMap = {
                 blocks: [
                     {
                         type: "header",
-                        text: "Onion Issue Tracker",
+                        text: "Pathfinder Character Manager",
                     },
                     {
                         type: "title",
@@ -95,8 +95,8 @@ const routingMap = {
                         method: "post",
                         inputs: [
                             {
-                                type: "email",
-                                name: "email"
+                                type: "username",
+                                name: "username"
                             },
                             {
                                 type: "password",
