@@ -1,0 +1,23 @@
+{
+    "nome":"orco",
+    "taglia":"media",
+    "velocità":"normale",
+    "stat_bonus":{
+        "for":4,
+        "int":-2,
+        "sag":-2,
+        "car":-2
+    },
+    "ability_bonus":{
+
+    },
+    "linguaggi":[
+        "comune",
+        "orchesco"
+    ],
+    "talenti":[
+        "Scurovisione: Buio 18m",
+        "Ferocia: sotto 0pf restano coscienti ma barcollanti",
+        "Sensibilità alla luce: Restano abbagliati in aree di luce solare intensa"
+    ]
+}

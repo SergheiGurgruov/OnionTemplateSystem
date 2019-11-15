@@ -1,0 +1,22 @@
+{
+    "nome":"elfo",
+    "taglia":"media",
+    "velocità":"normale",
+    "stat_bonus":{
+        "des":2,
+        "int":2,
+        "cos":-2
+    },
+    "ability_bonus":{
+        "percezione":2,
+        "sapienza_magica":2
+    },
+    "linguaggi":[
+        "comune",
+        "elfico"
+    ],
+    "talenti":[
+        "Visione crepuscolare",
+        "Immunità degli elfi: immuni a Sonno Magico, +2 TS Ammaliamento"
+    ]
+}

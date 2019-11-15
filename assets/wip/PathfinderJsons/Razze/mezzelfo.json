@@ -1,0 +1,20 @@
+{
+    "nome":"mezzelfo",
+    "taglia":"media",
+    "velocità":"normale",
+    "stat_bonus":{
+        "choose":2
+    },
+    "ability_bonus":{
+        "percezione":2
+    },
+    "linguaggi":[
+        "comune",
+        "elfico"
+    ],
+    "talenti":[
+        "abilità focalizzata",
+        "TS +2 Ammaliamento",
+        "visione crepuscolare"
+    ]
+}

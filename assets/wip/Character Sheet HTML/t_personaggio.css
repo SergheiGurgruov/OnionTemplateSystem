@@ -1,0 +1,89 @@
+#char_sheet{
+    margin:20px;
+    margin-top: 40;
+    padding: 40px;
+    border: 1px solid rgb(170, 170, 170);
+    border-radius: 20px;
+}
+
+th{
+    font-family: Yu Gothic;
+    font-size: 20px;
+    padding: 4px 7px;
+    /* max-width: 110px; */
+    /* text-align: center; */
+    min-width: 15px;
+}
+th input{
+    max-width: 110px;
+}
+th b{
+    text-align: center !important;
+    font-size: 23px;
+    font-weight: 400;
+}
+input{
+    border-radius: 7px;
+    border: solid rgb(185, 185, 185) 1px;
+    width: 100%;
+    text-align: center;
+}
+input:focus{
+    outline: none;
+    box-shadow: 0 0 0 1px rgb(128, 128, 128);
+
+}
+select{
+    border-radius: 5px;
+    border: solid rgb(185, 185, 185) 1px;
+    width: 100%;
+    text-align: center;
+}
+
+.block{
+    margin-bottom: 30px;
+    padding: 5px 20px;
+    border-radius: 7px;
+    border: solid rgb(199, 199, 199) 1px;
+    width: 100%;
+}
+.block-controller{
+    cursor: pointer;
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Generic Version */
+}
+
+.border h4{
+    padding: 10px;
+}
+
+.ab_table th{
+    font-size: 18px;
+    font-weight: 500;
+    border-bottom: solid rgb(209, 209, 209) 1px;
+}
+.ab_table th b{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.border-right{
+    border-right: solid rgb(146, 146, 146) 1px !important; 
+}
+h6{
+    padding: 20px;
+    text-align: right;
+    font-size: 20px;
+}
+
+.table-list th{
+    border: 1px solid rgb(207, 207, 207);
+    font-weight: 500;
+}
+
+.char_info{
+    margin-left: 50px;
+}

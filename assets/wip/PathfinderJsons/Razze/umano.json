@@ -1,0 +1,18 @@
+{
+    "nome":"umano",
+    "taglia":"media",
+    "velocità":"normale",
+    "stat_bonus":{
+        "choose":2
+    },
+    "ability_bonus":{
+        
+    },
+    "linguaggi":[
+        "comune"
+    ],
+    "talenti":[
+        "Talento Bonus al Primo Livello",
+        "Esperto: +1 grado abilità ogni livello"
+    ]
+}

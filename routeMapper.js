@@ -1,5 +1,7 @@
 const templateManager = require("./templateManager.jsx");
 const fs = require("fs");
+const dbClient = require("./dbManager").dbClient;
+const OSInterface = require("./OnionServices").OSInterface;
 
 
 //BEWARE!! if using subpaths (ex: /home/mainpage)
@@ -7,58 +9,63 @@ const fs = require("fs");
 //(ex: ./assets/css/home/style.css)
 //(ex: ./assets/images/home/myImage.png)
 
+
+
 const routingMap = {
     '/': {
         data: {
-            head: {
-                title: "Home",
-                styles: ["bootstrap.min.css"],
-                scripts: []
+            head: function () {
+                return {
+                    title: "Personaggi",
+                    styles:
+                        [
+                            "bootstrap.min.css",
+                            "https://fonts.googleapis.com/css?family=Lobster&display=swap",
+                            "global.css",
+                            "characters.css"
+                        ],
+                    scripts: []
+                }
             },
-            body: {
-                blocks: [
-                    {
-                        type: "title",
-                        text: "Benvenuto alla HomePage"
-                    }
-                ]
+            body: async function () {
+                
+                //console.log(_cards);
+                return {
+                    blocks: [
+                        {
+                            type: "header",
+                            text: "C3D's Pathfinder Tool",
+                        },
+                        {
+                            type: "title",
+                            text: "I Tuoi Personaggi",
+                        },
+                        {
+                            type: "card_block",
+                            cards:[] //does query inside template
+                        }
+                    ]
+                }
             }
         },
         template: {
             head: templateManager.defaultHeadTemplate,
-            body: templateManager.homeBodyTemplate
-        }
-    },
-    '/contact': {
-        data: {
-            head: {
-                title: "Home",
-                styles: ["bootstrap.min.css"],
-                scripts: []
-            },
-            body: {
-                blocks: [
-                    {
-                        type: "title",
-                        text: "Benvenuto alla Pagina Contatti"
-                    }
-                ]
-            }
-        },
-        template: {
-            head: templateManager.defaultHeadTemplate,
-            body: templateManager.homeBodyTemplate
+            body: templateManager.t_characters
         }
     },
     '/handlebarsProject': {
         data: {
-            head: {
-                title: "Handlebars-proj",
-                styles: ["bootstrap.min.css", "handlebars-style.css"],
-                scripts: []
+            head: function () {
+                return {
+                    title: "Handlebars-proj",
+                    styles: ["bootstrap.min.css", "handlebars-style.css"],
+                    scripts: []
+                }
             },
-            body: {
-                blocks: []
+            body: function () {
+                return {
+                    blocks: []
+                }
             }
         },
         template: {
@@ -70,45 +77,50 @@ const routingMap = {
     },
     '/login': {
         data: {
-            head: {
-                title: "Form",
-                styles:
-                    [
-                        "bootstrap.min.css",
-                        "form.css",
-                        "https://fonts.googleapis.com/css?family=Lobster&display=swap"
-                    ],
-                scripts: []
+            head: function () {
+                return {
+                    title: "Login",
+                    styles:
+                        [
+                            "bootstrap.min.css",
+                            "https://fonts.googleapis.com/css?family=Lobster&display=swap",
+                            "global.css",
+                            "form.css",
+                        ],
+                    scripts: []
+                }
             },
-            body: {
-                blocks: [
-                    {
-                        type: "header",
-                        text: "C3D's Pathfinder Tool",
-                    },
-                    {
-                        type: "title",
-                        text: "Login",
-                    },
-                    {
-                        type: "form",
-                        action: "login.onioncall",
-                        method: "post",
-                        inputs: [
-                            {
-                                type: "username",
-                                name: "username"
-                            },
-                            {
-                                type: "password",
-                                name: "password"
-                            },
-                            {
-                                type: "submit",
-                            }
-                        ]
-                    }
-                ]
+            body: function () {
+                return {
+                    blocks: [
+                        {
+                            type: "header",
+                            text: "C3D's Pathfinder Tool",
+                        },
+                        {
+                            type: "title",
+                            text: "Login",
+                        },
+                        {
+                            type: "form",
+                            action: "login.onioncall",
+                            method: "post",
+                            inputs: [
+                                {
+                                    type: "username",
+                                    name: "username"
+                                },
+                                {
+                                    type: "password",
+                                    name: "password"
+                                },
+                                {
+                                    type: "submit",
+                                }
+                            ]
+                        }
+                    ]
+                }
             }
         },
         template: {
@@ -116,41 +128,42 @@ const routingMap = {
             body: templateManager.loginTemplate
         }
     },
-    '/personaggi': {
+    '/personaggio':{
         data: {
-            head: {
-                title: "Form",
-                styles:
-                    [
-                        "bootstrap.min.css",
-                        "https://fonts.googleapis.com/css?family=Lobster&display=swap"
-                    ],
-                scripts: []
+            head: function () {
+                return {
+                    title: "Personaggio",
+                    styles:
+                        [
+                            "bootstrap.min.css",
+                            "https://fonts.googleapis.com/css?family=Lobster&display=swap",
+                            "global.css",
+                        ],
+                    scripts: []
+                }
             },
-            body: {
-                blocks: [
-                    {
-                        type: "header",
-                        text: "C3D's Pathfinder Tool",
-                    },
-                    {
-                        type: "title",
-                        text: "I Tuoi Personaggi",
-                    },
-                    {
-                        type: "cardBlock",
-                        cards:function name(params) {
-                            //TODO
+            body: async function () {
+                //console.log(_cards);
+                return {
+                    blocks: [
+                        {
+                            type: "header",
+                            text: "C3D's Pathfinder Tool",
+                        },
+                        {
+                            type: "character_page",
+                            data:{} //to fill in template
                         }
-                    }
-                ]
+                    ]
+                }
             }
         },
         template: {
             head: templateManager.defaultHeadTemplate,
-            body: "TODO Template "  //TODO
+            body: templateManager.t_personaggio,
         }
     }
 }
+
 
 exports.routingMap = routingMap;
