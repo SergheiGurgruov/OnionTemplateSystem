@@ -1,0 +1,24 @@
+Notazione:
+    s_ : speaker [ parametro che altera il valore dei listener corrispondenti ] (ID)
+    l_ : listener [ parametro che si altera in base allo speaker corrispondente ] (CLASS)
+
+Specifici:
+    #stat_choose_msg : messaggio di scelta di roll stat aggiuntive (in caso di umano / mezz'elfo)
+
+    #s_for_roll : il roll del parametro forza
+    .l_for_roll : tot del parametro forza
+
+    #s_des_roll : il roll del parametro destrezza
+    .l_des_roll : tot del parametro destrezza
+
+    #s_cos_roll : il roll del parametro costituzione
+    .l_cos_roll : tot del parametro costituzione
+
+    #s_int_roll : il roll del parametro intelligenza
+    .l_int_roll : tot del parametro intelligenza
+
+    #s_sag_roll : il roll del parametro saggezza
+    .l_sag_roll : tot del parametro saggezza
+    
+    #s_car_roll : il roll del parametro carisma
+    .l_car_roll : tot del parametro carisma
