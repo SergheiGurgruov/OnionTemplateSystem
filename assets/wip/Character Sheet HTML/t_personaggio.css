@@ -1,3 +1,4 @@
+
 #char_sheet{
     margin:20px;
     margin-top: 40;
@@ -11,16 +12,17 @@ th{
     font-size: 20px;
     padding: 4px 7px;
     /* max-width: 110px; */
-    /* text-align: center; */
+    text-align: left;
     min-width: 15px;
 }
 th input{
     max-width: 110px;
 }
-th b{
-    text-align: center !important;
-    font-size: 23px;
-    font-weight: 400;
+th.desc{
+    text-align: center;
+    font-size: 14px;
+    font-weight: 300;
+    transform: translateY(7px);
 }
 input{
     border-radius: 7px;
@@ -41,13 +43,20 @@ select{
 }
 
 .block{
-    margin-bottom: 30px;
-    padding: 5px 20px;
-    border-radius: 7px;
+    visibility: inherit;
+    height: inherit;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 0px 15px;
+    border-radius: 10px;
     border: solid rgb(199, 199, 199) 1px;
     width: 100%;
 }
 .block-controller{
+    /* border-top-left-radius: 7px;
+    border-top-right-radius: 7px; */
+    background-color: rgb(53, 53, 53);
+    color: white;
     cursor: pointer;
     -webkit-user-select: none; /* Safari */
      -khtml-user-select: none; /* Konqueror HTML */
@@ -86,4 +95,9 @@ h6{
 
 .char_info{
     margin-left: 50px;
+}
+
+h3{
+    padding: 20px 7px;
+    padding-bottom: 0px;
 }
