@@ -1,1 +1,1 @@
-"c:\Program Files\MongoDB\Server\4.2\bin\mongod.exe" --dbpath "D:\DesktopStuff\OnionTemplateSystem\_mongo\db"
+"c:\Program Files\MongoDB\Server\4.2\bin\mongod.exe" --dbpath "E:\data\db"
