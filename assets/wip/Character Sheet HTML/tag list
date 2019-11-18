@@ -10,19 +10,10 @@ Specifici:
     .ability_rank : classe generica degli ability_rank necessaria all' aggiornamento del totale
 
     #s_for_roll : il roll del parametro forza
-    .l_for_roll : tot del parametro forza
+    .l_for_roll : tot del parametro forza (somma mod razziali)
 
-    #s_des_roll : il roll del parametro destrezza
-    .l_des_roll : tot del parametro destrezza
+    #s_des_mod : il valore del modificatore destrezza
+    .l_des_mod : listener (copia il valore)
 
-    #s_cos_roll : il roll del parametro costituzione
-    .l_cos_roll : tot del parametro costituzione
-
-    #s_int_roll : il roll del parametro intelligenza
-    .l_int_roll : tot del parametro intelligenza
-
-    #s_sag_roll : il roll del parametro saggezza
-    .l_sag_roll : tot del parametro saggezza
-    
-    #s_car_roll : il roll del parametro carisma
-    .l_car_roll : tot del parametro carisma
+    #s_des_tot : il roll + mod razza del modificatore destrezza
+    .l_des_tot : listener (trasforma in modificatore)
