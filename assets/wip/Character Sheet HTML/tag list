@@ -5,6 +5,10 @@ Notazione:
 Specifici:
     #stat_choose_msg : messaggio di scelta di roll stat aggiuntive (in caso di umano / mezz'elfo)
 
+    #ranks_tot : totale rank (secondo la classe scelta)
+    #s_acrobazia_rank : rank assegnati a specifica abilita
+    .ability_rank : classe generica degli ability_rank necessaria all' aggiornamento del totale
+
     #s_for_roll : il roll del parametro forza
     .l_for_roll : tot del parametro forza
 

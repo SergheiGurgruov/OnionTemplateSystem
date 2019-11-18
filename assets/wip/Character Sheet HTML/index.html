@@ -14,6 +14,7 @@
 </head>
 
 <body onload="init()">
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12" id="header">
@@ -89,63 +90,63 @@
                                         </tr>
                                         <tr>
                                             <th>FOR</th>
-                                            <th><input id="s_for_roll" type="text"></th>
+                                            <th><input id="s_for_roll" type="number"></th>
                                             <th>></th>
-                                            <th><input id="s_for_tot" class="l_for_roll" type="text" disabled></th>
-                                            <th><input class="l_for_tot" id="s_for_mod" type="text" disabled></th>
+                                            <th><input id="s_for_tot" class="l_for_roll" type="number" disabled></th>
+                                            <th><input class="l_for_tot" id="s_for_mod" type="number" disabled></th>
                                             <th></th>
                                             <th>INT</th>
-                                            <th><input id="s_int_roll" type="text"></th>
+                                            <th><input id="s_int_roll" type="number"></th>
                                             <th>></th>
-                                            <th><input id="s_int_tot" class="l_int_roll" type="text" disabled></th>
-                                            <th><input class="l_int_tot" id="s_int_mod" type="text" disabled></th>
+                                            <th><input id="s_int_tot" class="l_int_roll" type="number" disabled></th>
+                                            <th><input class="l_int_tot" id="s_int_mod" type="number" disabled></th>
                                             <th></th>
                                             <th>TEMPRA</th>
-                                            <th><input id="s_tempra_base" type="text" disabled></th>
+                                            <th><input id="s_tempra_base" type="number" disabled></th>
                                             <th>+</th>
-                                            <th><input id="s_tempra_mod" class="l_cos_mod" type="text" disabled></th>
+                                            <th><input id="s_tempra_mod" class="l_cos_mod" type="number" disabled></th>
                                             <th>=</th>
-                                            <th><input class="l_tempra" type="text" disabled></th>
+                                            <th><input class="l_tempra" type="number" disabled></th>
                                         </tr>
                                         <tr>
                                             <th>DES</th>
                                             <th><input id="s_des_roll" type="number"></th>
                                             <th>></th>
-                                            <th><input id="s_des_tot" class="l_des_roll" type="text" disabled></th>
-                                            <th><input class="l_des_tot" id="s_des_mod" type="text" disabled></th>
+                                            <th><input id="s_des_tot" class="l_des_roll" type="number" disabled></th>
+                                            <th><input class="l_des_tot" id="s_des_mod" type="number" disabled></th>
                                             <th></th>
                                             <th>SAG</th>
-                                            <th><input id="s_sag_roll" type="text"></th>
+                                            <th><input id="s_sag_roll" type="number"></th>
                                             <th>></th>
-                                            <th><input id="s_sag_tot" class="l_sag_roll" type="text" disabled></th>
-                                            <th><input class="l_sag_tot" id="s_sag_mod" type="text" disabled></th>
+                                            <th><input id="s_sag_tot" class="l_sag_roll" type="number" disabled></th>
+                                            <th><input class="l_sag_tot" id="s_sag_mod" type="number" disabled></th>
                                             <th></th>
                                             <th>RIFLESSI</th>
-                                            <th><input id="s_riflessi_base" type="text" disabled></th>
+                                            <th><input id="s_riflessi_base" type="number" disabled></th>
                                             <th>+</th>
-                                            <th><input id="s_riflessi_mod" class="l_des_mod" type="text" disabled></th>
+                                            <th><input id="s_riflessi_mod" class="l_des_mod" type="number" disabled></th>
                                             <th>=</th>
-                                            <th><input class="l_riflessi" type="text" disabled></th>
+                                            <th><input class="l_riflessi" type="number" disabled></th>
                                         </tr>
                                         <tr>
                                             <th>COS</th>
-                                            <th><input id="s_cos_roll" type="text"></th>
+                                            <th><input id="s_cos_roll" type="number"></th>
                                             <th>></th>
-                                            <th><input id="s_cos_tot" class="l_cos_roll" type="text" disabled></th>
-                                            <th><input class="l_cos_tot" id="s_cos_mod" type="text" disabled></th>
+                                            <th><input id="s_cos_tot" class="l_cos_roll" type="number" disabled></th>
+                                            <th><input class="l_cos_tot" id="s_cos_mod" type="number" disabled></th>
                                             <th></th>
                                             <th>CAR</th>
-                                            <th><input id="s_car_roll" type="text"></th>
+                                            <th><input id="s_car_roll" type="number"></th>
                                             <th>></th>
-                                            <th><input id="s_car_tot" class="l_car_roll" type="text" disabled></th>
-                                            <th><input class="l_car_tot" id="s_car_mod" type="text" disabled></th>
+                                            <th><input id="s_car_tot" class="l_car_roll" type="number" disabled></th>
+                                            <th><input class="l_car_tot" id="s_car_mod" type="number" disabled></th>
                                             <th></th>
                                             <th>VOLONTA</th>
-                                            <th><input id="s_volonta_base" type="text" disabled></th>
+                                            <th><input id="s_volonta_base" type="number" disabled></th>
                                             <th>+</th>
-                                            <th><input id="s_volonta_mod" class="l_sag_mod" type="text" disabled></th>
+                                            <th><input id="s_volonta_mod" class="l_sag_mod" type="number" disabled></th>
                                             <th>=</th>
-                                            <th><input class="l_volonta" type="text" disabled></th>
+                                            <th><input class="l_volonta" type="number" disabled></th>
                                         </tr>
                                     </table>
                                 </div>
@@ -166,7 +167,7 @@
                                             <h2>Lista Abilità</h2>
                                             <hr>
                                             <table>
-                                                <tr><th>Rank Disponibili</th><th><input type="text" disabled></th></tr>
+                                                <tr><th>Rank Disponibili</th><th><input id="ranks_tot" type="number" disabled></th></tr>
                                             </table>
                                             <table class="ab_table">
                                                 <tr>
@@ -181,343 +182,333 @@
                                                 </tr>
                                                 <tr>
                                                     <th><b>Acrobazia</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_acrobazia_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Addestrare Animali*</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_addestrare_animali_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Artista della Fuga</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_artista_della_fuga_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Camuffare</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_camuffare_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Cavalcare</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_cavalcare_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Conoscenze(Arcane)*</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_conoscenze_arcane_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Conoscenze(Dungeon)*</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_conoscenze_dungeon_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Conoscenze(Geografia)*</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_conoscenze_geografia_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Conoscenze(Ingegneria)*</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_conoscenze_ingegneria_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Conoscenze(Locali)*</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_conoscenze_locali_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Conoscenze(Natura)*</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_conoscenze_natura_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Conoscenze(Nobiltà)*</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_conoscenze_nobilta_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Conoscenze(Piani)*</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_conoscenze_piani_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Conoscenze(Religioni)*</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_conoscenze_religioni_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Conoscenze(Storia)*</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_conoscenze_storia_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Diplomazia</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_diplomazia_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Disattivare Congegni</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_disattivare_congegni_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Furtività</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_furtivita_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Guarire</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_guarire_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Intimidire</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_intimidire_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Intuizione</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_intuizione_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Intrattenere</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_intrattenere_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Linguistica</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_linguistica_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Nuotare</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_nuotare_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Percezione</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_percezione_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Raggirare</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_raggirare_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Rapidità di Mano*</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_rapidita_di_mano_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Sapienza Magica*</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_sapienza_magica_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Scalare</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_scalare_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
-                                                </tr>
-                                                <tr>
-                                                    <th><b>Scalare</b></th>
-                                                    <th><input type="text" disabled></th>
-                                                    <th>=</th>
-                                                    <th><input type="text" disabled></th>
-                                                    <th>+</th>
-                                                    <th><input type="text"></th>
-                                                    <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Sopravvivenza</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_sopravvivenza_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Utilizzare Congegni Magici*</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_utilizzare_congegni_magici_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Valutare</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_valutare_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                                 <tr>
                                                     <th><b>Volare</b></th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>=</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                     <th>+</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input id="s_volare_rank" class="ability_rank"  type="number"></th>
                                                     <th>+</th>
-                                                    <th><input type="text" disabled></th>
+                                                    <th><input type="number" disabled></th>
                                                 </tr>
                                             </table>
                                             <h6>* = Richiede addestramento</h6>
@@ -587,16 +578,16 @@
                                         </tr>
                                         <tr>
                                             <th>Bonus Attacco Base</th>
-                                            <th><input type="text"  disabled></th>
+                                            <th><input type="number"  disabled></th>
                                             <th style="width: 100px;text-align: center;">|</th>
                                             <th>CA</th>
-                                            <th><input type="text"  disabled></th>
+                                            <th><input type="number"  disabled></th>
                                             <th>=</th>
                                             <th>10</th>
                                             <th>+</th>
-                                            <th><input type="text"  disabled></th>
+                                            <th><input type="number"  disabled></th>
                                             <th>+</th>
-                                            <th><input type="text"  disabled></th>
+                                            <th><input type="number"  disabled></th>
                                         </tr>
                                     </table>
                                     <br>
@@ -625,9 +616,9 @@
                                                                     <th>Tiro:</th>
                                                                     <th>1d20</th>
                                                                     <th>+</th>
-                                                                    <th><input type="text" disabled></th>
+                                                                    <th><input type="number" disabled></th>
                                                                     <th>+</th>
-                                                                    <th><input type="text" disabled></th>
+                                                                    <th><input type="number" disabled></th>
                                                                     <th style="width: 50px;"></th>
                                                                     <th>Critico:</th>
                                                                     <th>20 x3</th>
@@ -642,7 +633,7 @@
                                                                     <th>Danno:</th>
                                                                     <th>1d8</th>
                                                                     <th>+</th>
-                                                                    <th><input type="text" disabled></th>
+                                                                    <th><input type="number" disabled></th>
                                                                 </tr>
                                                             </table>
                                                         </div>
@@ -664,9 +655,9 @@
                                                                     <th>Tiro:</th>
                                                                     <th>1d20</th>
                                                                     <th>+</th>
-                                                                    <th><input type="text" disabled></th>
+                                                                    <th><input type="number" disabled></th>
                                                                     <th>+</th>
-                                                                    <th><input type="text" disabled></th>
+                                                                    <th><input type="number" disabled></th>
                                                                     <th style="width: 50px;"></th>
                                                                     <th>Critico:</th>
                                                                     <th>19/20 x2</th>
@@ -681,7 +672,7 @@
                                                                     <th>Danno:</th>
                                                                     <th>1d4</th>
                                                                     <th>+</th>
-                                                                    <th><input type="text" disabled></th>
+                                                                    <th><input type="number" disabled></th>
                                                                 </tr>
                                                             </table>
                                                         </div>
@@ -801,15 +792,15 @@
                                             <table style=" margin-top: 40px;">
                                                 <tr>
                                                     <th>Oro:</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input type="number"></th>
                                                 </tr>
                                                 <tr>
                                                     <th>Argento:</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input type="number"></th>
                                                 </tr>
                                                 <tr>
                                                     <th>Rame:</th>
-                                                    <th><input type="text"></th>
+                                                    <th><input type="number"></th>
                                                 </tr>
                                             </table>
                                         </div>
