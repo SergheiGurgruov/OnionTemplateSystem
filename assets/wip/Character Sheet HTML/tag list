@@ -17,3 +17,6 @@ Specifici:
 
     #s_des_tot : il roll + mod razza del modificatore destrezza
     .l_des_tot : listener (trasforma in modificatore)
+
+    #talenti_razza :
+    #talenti_bonus :
