@@ -37,7 +37,7 @@ module.exports = {
     * @param {JSON} head 
     */
     defaultHeadTemplate: function (head) {
-        let html = ``;
+        let html = `<meta http-equiv="content-type" content="text/html; charset=utf-8" />`;
         html += (head.title ? `<title>${head.title}</title>` : ``);
         head.scripts.forEach(element => {
             html += `<script src="${element}"></script>`;
@@ -58,7 +58,7 @@ module.exports = {
         let class_data = (await dbClient.query_promise("classi",{nome:character_data.classe}))[0];
         let race_data = (await dbClient.query_promise("razze",{nome:character_data.razza}))[0];
         
-        let html = ``;
+        let html = `<meta http-equiv="content-type" content="text/html; charset=utf-8" />`;
         html += (head.title ? `<title>${head.title}</title>` : ``);
         html += `
         <script type="text/javascript">
