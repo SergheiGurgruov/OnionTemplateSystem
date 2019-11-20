@@ -12,7 +12,7 @@ function assemble(head, body) {
     <head>
     ${head}
     </head>
-    <body>
+    <body onload="init()">
     ${body}
     </body>
     </html>
@@ -37,6 +37,7 @@ async function makePage(pathName, req, callback) {
     let template_body = routingMap[pathName].template.body;
 
     data_body.request_data = _data;
+    data_head.request_data = _data;
 
     let head_html = await template_head(data_head);
     let body_html = await template_body(data_body);

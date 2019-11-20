@@ -1,10 +1,11 @@
-var character_data = { "_id": "5dcbcde8e9e72277f9131a1a", "giocatore": "Dares", "nome": "Areside", "razza": "umano", "classe": "iracondo di stirpe", "livello": 3, "stats": { "for": 10, "des": 12, "cos": 8, "int": 18, "sag": 14, "car": 12 }, "ability_ranks": { "acrobazia": 2, "addestrare_animali": 3, "artista_della_fuga": 0, "camuffare": 1, "cavalcare": 2, "conoscenze_arcane": 0, "conoscenze_dungeon": 0, "conoscenze_geografia": 0, "conoscenze_ingegneria": 0, "conoscenze_locali": 0, "conoscenze_natura": 0, "conoscenze_nobilta": 0, "conoscenze_piani": 0, "conoscenze_religioni": 0, "conoscenze_storia": 0, "diplomazia": 0, "disattivare_congegni": 0, "furtivita": 0, "guarire": 0, "intimidire": 0, "intuizione": 0, "intrattenere": 0, "linguistica": 0, "nuotare": 0, "percezione": 0, "raggirare": 0, "rapidita_di_mano": 0, "sapienza_magica": 0, "scalare": 0, "sopravvivenza": 0, "utilizzare_congegni_magici": 0, "valutare": 0, "volare": 0 }, "armi": [{ "nome": "Pugnale", "tiro": { "dado": "1d20", "stat": "for" }, "danno": { "dado": "1d4", "stat": "for" }, "critico": "19/20 x2" }, { "nome": "Balestra", "tiro": { "dado": "1d20", "stat": "des" }, "danno": { "dado": "1d8", "stat": "" }, "critico": "20 x3" }], "armature": [{ "nome": "Armatura di Pelle", "classe_armatura": 4 }, { "nome": "Scudo piccolo", "classe_armatura": 1 }], "talenti": ["Talento di Prova 1", "Talento di prova 2"], "magie": [{ "nome": "mani brucianti", "componenti": "verbale,somatica", "raggio": "4,5m", "area": "a forma di cono", "durata": "istantaneo", "danno": "1d4 * Livello (max 5d4)", "tiro": "TS Riflessi Dimezza: CD 10 + 1(lv Incantesimo) + Caratteristica Rilevante", "dettagli": "I materiali infiammabili prendono fuoco" }], "inventario": ["50 frecce", "spada corta"], "monete": { "oro": 50, "argento": 30, "rame": 25 } }
-var class_data = { "_id": "5dcac6ba28b27b7240351a34", "nome": "iracondo di stirpe", "dato_vita": "d10", "ricchezza": "3d6 x 10 mo (media 105)", "ranks_livello": 4, "class_abilities": ["acrobazia", "addestrare_animali", "artigianato", "cavalcare", "conoscenze_arcane", "intimidire", "nuotare", "percezione", "sapienza_magica", "scalare", "sopravvivenza"], "stat_table": [{ "bab": 1, "tempra": 2, "riflessi": 0, "volonta": 0 }, { "bab": 2, "tempra": 3, "riflessi": 0, "volonta": 0 }, { "bab": 3, "tempra": 3, "riflessi": 1, "volonta": 1 }, { "bab": 4, "tempra": 4, "riflessi": 1, "volonta": 1 }, { "bab": 5, "tempra": 4, "riflessi": 1, "volonta": 1 }, { "bab": 6, "tempra": 5, "riflessi": 2, "volonta": 2 }, { "bab": 7, "tempra": 5, "riflessi": 2, "volonta": 2 }, { "bab": 8, "tempra": 6, "riflessi": 2, "volonta": 2 }, { "bab": 9, "tempra": 6, "riflessi": 3, "volonta": 3 }, { "bab": 10, "tempra": 7, "riflessi": 3, "volonta": 3 }, { "bab": 11, "tempra": 7, "riflessi": 3, "volonta": 3 }, { "bab": 12, "tempra": 8, "riflessi": 4, "volonta": 4 }, { "bab": 13, "tempra": 8, "riflessi": 4, "volonta": 4 }, { "bab": 14, "tempra": 9, "riflessi": 4, "volonta": 4 }, { "bab": 5, "tempra": 9, "riflessi": 5, "volonta": 5 }, { "bab": 16, "tempra": 10, "riflessi": 5, "volonta": 5 }, { "bab": 17, "tempra": 10, "riflessi": 5, "volonta": 5 }, { "bab": 18, "tempra": 11, "riflessi": 6, "volonta": 6 }, { "bab": 19, "tempra": 11, "riflessi": 6, "volonta": 6 }, { "bab": 20, "tempra": 12, "riflessi": 6, "volonta": 6 }], "more_info": ["https://golarion.altervista.org/wiki/Iracondo_di_Stirpe", "https://golarion.altervista.org/wiki/Iracondo_di_Stirpe/Stirpi"] }
-var race_data = { "_id": "5dcabeec28b27b7240351a2f", "nome": "umano", "taglia": "media", "velocità": "normale", "stat_bonus": { "choose": 2 }, "ability_bonus": {}, "linguaggi": ["comune"], "talenti": ["Talento Bonus al Primo Livello", "Esperto: +1 grado abilità ogni livello"] }
+//var character_data = { "_id": "5dcbcde8e9e72277f9131a1a", "giocatore": "Dares", "nome": "Areside", "razza": "umano", "classe": "iracondo di stirpe", "livello": 3, "stats": { "for": 10, "des": 12, "cos": 8, "int": 18, "sag": 14, "car": 12 }, "ability_ranks": { "acrobazia": 2, "addestrare_animali": 3, "artista_della_fuga": 0, "camuffare": 1, "cavalcare": 2, "conoscenze_arcane": 0, "conoscenze_dungeon": 0, "conoscenze_geografia": 0, "conoscenze_ingegneria": 0, "conoscenze_locali": 0, "conoscenze_natura": 0, "conoscenze_nobilta": 0, "conoscenze_piani": 0, "conoscenze_religioni": 0, "conoscenze_storia": 0, "diplomazia": 0, "disattivare_congegni": 0, "furtivita": 0, "guarire": 0, "intimidire": 0, "intuizione": 0, "intrattenere": 0, "linguistica": 0, "nuotare": 0, "percezione": 0, "raggirare": 0, "rapidita_di_mano": 0, "sapienza_magica": 0, "scalare": 0, "sopravvivenza": 0, "utilizzare_congegni_magici": 0, "valutare": 0, "volare": 0 }, "armi": [{ "nome": "Pugnale", "tiro": { "dado": "1d20", "stat": "for" }, "danno": { "dado": "1d4", "stat": "for" }, "critico": "19/20 x2" }, { "nome": "Balestra", "tiro": { "dado": "1d20", "stat": "des" }, "danno": { "dado": "1d8", "stat": "" }, "critico": "20 x3" }], "armature": [{ "nome": "Armatura di Pelle", "classe_armatura": 4 }, { "nome": "Scudo piccolo", "classe_armatura": 1 }], "talenti": ["Talento di Prova 1", "Talento di prova 2"], "magie": [{ "nome": "mani brucianti", "componenti": "verbale,somatica", "raggio": "4,5m", "area": "a forma di cono", "durata": "istantaneo", "danno": "1d4 * Livello (max 5d4)", "tiro": "TS Riflessi Dimezza: CD 10 + 1(lv Incantesimo) + Caratteristica Rilevante", "dettagli": "I materiali infiammabili prendono fuoco" }], "inventario": ["50 frecce", "spada corta"], "monete": { "oro": 50, "argento": 30, "rame": 25 } }
+//var class_data = { "_id": "5dcac6ba28b27b7240351a34", "nome": "iracondo di stirpe", "dato_vita": "d10", "ricchezza": "3d6 x 10 mo (media 105)", "ranks_livello": 4, "class_abilities": ["acrobazia", "addestrare_animali", "artigianato", "cavalcare", "conoscenze_arcane", "intimidire", "nuotare", "percezione", "sapienza_magica", "scalare", "sopravvivenza"], "stat_table": [{ "bab": 1, "tempra": 2, "riflessi": 0, "volonta": 0 }, { "bab": 2, "tempra": 3, "riflessi": 0, "volonta": 0 }, { "bab": 3, "tempra": 3, "riflessi": 1, "volonta": 1 }, { "bab": 4, "tempra": 4, "riflessi": 1, "volonta": 1 }, { "bab": 5, "tempra": 4, "riflessi": 1, "volonta": 1 }, { "bab": 6, "tempra": 5, "riflessi": 2, "volonta": 2 }, { "bab": 7, "tempra": 5, "riflessi": 2, "volonta": 2 }, { "bab": 8, "tempra": 6, "riflessi": 2, "volonta": 2 }, { "bab": 9, "tempra": 6, "riflessi": 3, "volonta": 3 }, { "bab": 10, "tempra": 7, "riflessi": 3, "volonta": 3 }, { "bab": 11, "tempra": 7, "riflessi": 3, "volonta": 3 }, { "bab": 12, "tempra": 8, "riflessi": 4, "volonta": 4 }, { "bab": 13, "tempra": 8, "riflessi": 4, "volonta": 4 }, { "bab": 14, "tempra": 9, "riflessi": 4, "volonta": 4 }, { "bab": 5, "tempra": 9, "riflessi": 5, "volonta": 5 }, { "bab": 16, "tempra": 10, "riflessi": 5, "volonta": 5 }, { "bab": 17, "tempra": 10, "riflessi": 5, "volonta": 5 }, { "bab": 18, "tempra": 11, "riflessi": 6, "volonta": 6 }, { "bab": 19, "tempra": 11, "riflessi": 6, "volonta": 6 }, { "bab": 20, "tempra": 12, "riflessi": 6, "volonta": 6 }], "more_info": ["https://golarion.altervista.org/wiki/Iracondo_di_Stirpe", "https://golarion.altervista.org/wiki/Iracondo_di_Stirpe/Stirpi"] }
+//var race_data = { "_id": "5dcabeec28b27b7240351a2f", "nome": "umano", "taglia": "media", "velocità": "normale", "stat_bonus": { "choose": 2 }, "ability_bonus": {}, "linguaggi": ["comune"], "talenti": ["Talento Bonus al Primo Livello", "Esperto: +1 grado abilità ogni livello"] }
 
 //TOREMOVE
 
 function init() {
+    
     //setup iniziale Condizionale
 
     if (race_data.stat_bonus.choose) {
@@ -104,7 +105,7 @@ function init() {
 
     //load delle armature
     function refreshClasseArmatura() {
-        $('#ca_tot').val(getModifier(character_data.stats.des) + parseInt($('#ca_armor_bonus').val()));
+        $('#ca_tot').val(10 + getModifier(character_data.stats.des) + parseInt($('#ca_armor_bonus').val()));
     }
 
     function loadArmor() {
@@ -128,7 +129,6 @@ function init() {
 
             $(`#armor_del_${i}`).click(function () {
                 let index = parseInt(this.id.substr(this.id.lastIndexOf('_') + 1));
-                //alert("lel"+index);
                 character_data.armature.splice(index, 1);
                 loadArmor();
             });
@@ -205,7 +205,7 @@ function init() {
                             </tr>
                             <tr>
                                 <th>Danno:</th>
-                                <th>1d8</th>
+                                <th>${element.danno.dado}</th>
                                 <th>+</th>
                                 <th><input class="l_${element.danno.stat == "" ? "" : element.danno.stat}_mod" type="number" disabled></th>
                             </tr>
@@ -276,6 +276,33 @@ function init() {
             "livello":livello
         })
 
+        character_data.oldname = character_data.nome;
+
+        character_data.nome = nome;
+        character_data.classe = classe;
+        character_data.razza = razza;
+        character_data.livello = livello;
+
+        
+        $.ajax({
+            url: 'updateCharacter.onioncall',
+            dataType: 'json',
+            type: 'post',
+            processData: false,
+            dataType : "json",
+            contentType: "application/json; charset=utf-8",
+            data : JSON.stringify(character_data),
+            success: function( data, textStatus, jQxhr ){
+                //alert(data);
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                //alert("Ops.. qualcosa e' andato storto");
+            }
+        });
+
+        //console.log(window.location.pathname);
+
+        window.location.href = window.location.pathname + `?charname=${nome}`;
 
     });
 
@@ -394,6 +421,10 @@ function init() {
         $(`#monete_${element}`).val(character_data.monete[element]).change(function () {
             character_data.monete[element] = parseInt(this.value);
         });
+    });
+
+    ["nome","razza","classe","livello"].forEach(element => {
+        $(`#char_${element}`).html(character_data[element]);
     });
 
     //-------

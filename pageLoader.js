@@ -174,6 +174,7 @@ function getContentType(url) {
         '.css': 'text/css',
         '.js': 'text/javascript',
         '.onioncall': 'request/onioncall',
+        '.map': 'text/css',
     }[extension];
     if (res == undefined) {
         util.log(`log`, `Unknown request type.. logging url: ${url}`, util.colors.FgYellow);

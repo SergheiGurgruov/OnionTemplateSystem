@@ -57,4 +57,7 @@ exports.dbClient = {
         let result = await DataBase.conn.collection(collection).find(query).toArray();
         return result;
     },
+    update_promise: async function(collection,query,data){
+        await DataBase.conn.collection(collection).update(query,data);
+    }
 }

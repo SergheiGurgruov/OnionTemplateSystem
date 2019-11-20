@@ -19,4 +19,17 @@ Specifici:
     .l_des_tot : listener (trasforma in modificatore)
 
     #talenti_razza :
-    #talenti_bonus :
+    #talenti_bonus : container talenti bonus
+
+
+    .armor : elemento armatura (tutto il div)
+    #c_armature : container html di tutte le armature
+    #c_armi : 
+
+    #weapon_0 : elemento arma (specifico rispetto all indice)
+    #weapon_del_0 : elemento on click che elimina la specifica arma
+
+    #add_armor : on click aggiunge un armor
+
+    #ca_tot :
+    #ca_armor_bonus :

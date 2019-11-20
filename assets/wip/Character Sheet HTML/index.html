@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./libs/global.css">
     <link rel="stylesheet" href="t_personaggio.css">
     <script src="./libs/jquery.js"></script>
+    <script src="./pathfinder_util.js"></script>
     <script src="./char_sheet.js"></script>
 </head>
 
@@ -34,7 +35,7 @@
                                             <h1>Areside</h1>
                                         </th>
                                         <th>
-                                            <img style="padding:2px; cursor:pointer;border:1px solid rgb(114, 114, 114);border-radius:20px;margin-left:-7px;margin-top:-25px;"
+                                            <img id="character_settings" style="padding:2px; cursor:pointer;border:1px solid rgb(114, 114, 114);border-radius:20px;margin-left:-7px;margin-top:-25px;"
                                                 src="https://img.icons8.com/small/32/000000/gear.png">
                                         </th>
                                     </tr>
@@ -556,16 +557,16 @@
                                         </tr>
                                         <tr>
                                             <th>Bonus Attacco Base</th>
-                                            <th><input type="number"  disabled></th>
+                                            <th><input id="s_bab" type="number"  disabled></th>
                                             <th style="width: 100px;text-align: center;">|</th>
                                             <th>CA</th>
-                                            <th><input type="number"  disabled></th>
+                                            <th><input id="ca_tot" type="number"  disabled></th>
                                             <th>=</th>
                                             <th>10</th>
                                             <th>+</th>
-                                            <th><input type="number"  disabled></th>
+                                            <th><input id="ca_armor_bonus" type="number"  disabled></th>
                                             <th>+</th>
-                                            <th><input type="number"  disabled></th>
+                                            <th><input class="l_des_mod" type="number"  disabled></th>
                                         </tr>
                                     </table>
                                     <br>
@@ -577,7 +578,7 @@
                                         </div>
                                         <div class="row start_hidden" id="armi">
                                             <div class="col-md-12">
-                                                <div class="row">
+                                                <div id="c_armi" class="row">
                                                     <div class="col-md-6">
                                                         <div class="block">
                                                             <h3>Balestra</h3>
@@ -596,8 +597,8 @@
                                                                     <th>+</th>
                                                                     <th><input type="number" disabled></th>
                                                                     <th>+</th>
-                                                                    <th><input type="number" disabled></th>
-                                                                    <th style="width: 50px;"></th>
+                                                                    <th><input class="l_des_mod" type="number" disabled></th>
+                                                                    <th style="width: 0px;"></th>
                                                                     <th>Critico:</th>
                                                                     <th>20 x3</th>
                                                                 </tr>
@@ -667,27 +668,10 @@
                                         </div>
                                         <div class="row start_hidden" id="armature">
                                             <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="block">
-                                                            <h3>Armatura di Pelle</h3>
-                                                            <table style="margin-bottom: 20px;">
-                                                                <tr>
-                                                                    <th>Bonus Classe Armatura:</th>
-                                                                    <th>4</th>
-                                                                </tr>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="block">
-                                                            <h3>Scudo Piccolo</h3>
-                                                            <table style="margin-bottom: 20px;">
-                                                                <tr>
-                                                                    <th>Bonus Classe Armatura:</th>
-                                                                    <th>1</th>
-                                                                </tr>
-                                                            </table>
+                                                <div id="c_armature" class="row">
+                                                    <div id="armor_0" class="col-md-6 armor">
+                                                        <div class="block" style="height: 127px;cursor: pointer;">
+                                                            <div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);"><h1 style="color: rgb(180, 180, 180);">+ Add weapon</h1></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -756,12 +740,12 @@
                         </div>
                     </div>
                     <div class="block">
-                        <div class="row block-controller" onclick="toggleBlock('#inventario')">
+                        <div class="row block-controller" onclick="toggleBlock('#inventario_block')">
                             <div class="col-md-12">
                                 <h1>Inventario</h1>
                             </div>
                         </div>
-                        <div class="row start_hidden" id="inventario">
+                        <div class="row start_hidden" id="inventario_block">
                             <div class="col-md-12">
                                 <div style="padding: 20px 0px;">
                                     <div class="row">
@@ -770,26 +754,23 @@
                                             <table style=" margin-top: 40px;">
                                                 <tr>
                                                     <th>Oro:</th>
-                                                    <th><input type="number"></th>
+                                                    <th><input id="monete_oro" type="number"></th>
                                                 </tr>
                                                 <tr>
                                                     <th>Argento:</th>
-                                                    <th><input type="number"></th>
+                                                    <th><input id="monete_argento" type="number"></th>
                                                 </tr>
                                                 <tr>
                                                     <th>Rame:</th>
-                                                    <th><input type="number"></th>
+                                                    <th><input id="monete_rame" type="number"></th>
                                                 </tr>
                                             </table>
                                         </div>
                                         <div class="col-md-10">
                                             <h2>Oggetti</h2>
-                                            <table class="table-list" style=" width:100%; margin-top: 40px;">
+                                            <table id="inventario" class="table-list" style=" width:100%; margin-top: 40px;">
                                                 <tr>
-                                                    <th><input style=" text-align: left;" value="Razioni Giornaliere: 40" type="text"></th>
-                                                </tr>
-                                                <tr>
-                                                    <th><input style=" text-align: left;" value="Frecce di legno: 25"type="text"></th>
+                                                    <th><input style=" text-align: left;" value="Placeholder Inventario" type="text"></th>
                                                 </tr>
                                             </table>
                                         </div>

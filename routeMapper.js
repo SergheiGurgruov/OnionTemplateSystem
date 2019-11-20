@@ -138,28 +138,24 @@ const routingMap = {
                             "bootstrap.min.css",
                             "https://fonts.googleapis.com/css?family=Lobster&display=swap",
                             "global.css",
+                            "t_personaggio.css",
                         ],
-                    scripts: []
+                    scripts: [
+                        "jquery.js",
+                        "pathfinder_util.js",
+                        "char_sheet.js",
+                    ]
                 }
             },
             body: async function () {
                 //console.log(_cards);
                 return {
-                    blocks: [
-                        {
-                            type: "header",
-                            text: "C3D's Pathfinder Tool",
-                        },
-                        {
-                            type: "character_page",
-                            data:{} //to fill in template
-                        }
-                    ]
+                    blocks: []
                 }
             }
         },
         template: {
-            head: templateManager.defaultHeadTemplate,
+            head: templateManager.t_personaggio_head,
             body: templateManager.t_personaggio,
         }
     }

@@ -1,5 +1,6 @@
 const OSInterface = require('./OnionServices').OSInterface;
 const dbClient = require("./dbManager").dbClient;
+const fs = require("fs");
 
 /**
  * Form input confing
@@ -38,6 +39,33 @@ module.exports = {
     defaultHeadTemplate: function (head) {
         let html = ``;
         html += (head.title ? `<title>${head.title}</title>` : ``);
+        head.scripts.forEach(element => {
+            html += `<script src="${element}"></script>`;
+        });
+        head.styles.forEach(element => {
+            html += `<link rel="stylesheet" href="${element}">`;
+        });
+        return html;
+    },
+
+    t_personaggio_head: async function (head) {
+        let req_data = {
+            user: head.request_data.user.username,
+            charname: head.request_data.charname
+        }
+
+        let character_data = (await dbClient.query_promise("personaggi",{nome:req_data.charname,giocatore:req_data.user}))[0];
+        let class_data = (await dbClient.query_promise("classi",{nome:character_data.classe}))[0];
+        let race_data = (await dbClient.query_promise("razze",{nome:character_data.razza}))[0];
+        
+        let html = ``;
+        html += (head.title ? `<title>${head.title}</title>` : ``);
+        html += `
+        <script type="text/javascript">
+            var character_data = ${JSON.stringify(character_data)};
+            var class_data = ${JSON.stringify(class_data)};
+            var race_data = ${JSON.stringify(race_data)};
+        </script>`;
         head.scripts.forEach(element => {
             html += `<script src="${element}"></script>`;
         });
@@ -115,24 +143,7 @@ module.exports = {
      * @param {BodyData} body 
      */
     t_personaggio:async function(body){
-        let _temp = await dbClient.query_promise("personaggi",{giocatore:body.request_data.user.username,nome:body.request_data.charname});
-        let _char = _temp[0];
-
-        let html =`<div  class="container-fluid">`;
-        for(var i=0;i<body.blocks.length;i++){
-            let element = body.blocks[i];
-
-            html += `<div class="row">`;
-
-            if (element.type == "header") {
-                html +=  h_header(element);
-            } else if (element.type == "character_page") {
-                html += `${JSON.stringify(_char)}`;
-            }
-
-            html += "</div>";
-        }
-        return html+"</div>";
+        return fs.readFileSync('./assets/pages/character_sheet_body.html',"utf8");
     }
 }
 
