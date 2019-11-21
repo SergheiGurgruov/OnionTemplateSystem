@@ -34,7 +34,6 @@ const routeMap = {
         });
     },
     /**
-     * 
      * @param {Object} data
      * @param {http.ServerResponse} res 
      */
@@ -55,7 +54,7 @@ const routeMap = {
         delete data._id;
         delete data.oldname;
         o_id = new mongodb.ObjectID(data._id);
-        await dbClient.update_promise("personaggi", { giocatore: data.giocatore, nome: oldname }, data);
+        await dbClient.updateOne("personaggi", { giocatore: data.giocatore, nome: oldname }, data);
 
     }
 }
