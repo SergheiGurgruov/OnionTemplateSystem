@@ -415,6 +415,18 @@ function init() {
         `);
     });
 
+    class_data.talenti.forEach(element => {
+        if(element.livello <= character_data.livello){
+            element.elementi.forEach(talento => {
+                $('#talenti_classe').append(`
+                    <tr>
+                        <th>${talento}</th>
+                    </tr>
+                `);
+            });
+        }
+    });
+
     $('#s_bab').val(getBAB(character_data.livello));
     
     ["oro", "argento", "rame"].forEach(element => {
