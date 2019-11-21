@@ -1,0 +1,237 @@
+{
+    "_id": "5dd6983579da4e1dd8054ebd",
+    "nome": "spiritista",
+    "dato_vita": "d8",
+    "ricchezza": "2d6 x 10 mo (media 70)",
+    "ranks_livello": 4,
+    "class_abilities": [
+        "artigianato",
+        "conoscenze_arcane",
+        "conoscenze_dungeon",
+        "conoscenze_geografia",
+        "conoscenze_ingegneria",
+        "conoscenze_locali",
+        "conoscenze_natura",
+        "conoscenze_nobilta",
+        "conoscenze_piani",
+        "conoscenze_religioni",
+        "conoscenze_storia",
+        "guarire",
+        "intimidire",
+        "intuizione",
+        "linguistica",
+        "raggirare",
+        "sapienza_magica",
+        "utilizzare_congegni_magici",
+        "volare"
+    ],
+    "stat_table": [
+        {
+            "bab": 0,
+            "tempra": 2,
+            "riflessi": 0,
+            "volonta": 2
+        },
+        {
+            "bab": 1,
+            "tempra": 3,
+            "riflessi": 0,
+            "volonta": 3
+        },
+        {
+            "bab": 2,
+            "tempra": 3,
+            "riflessi": 1,
+            "volonta": 3
+        },
+        {
+            "bab": 3,
+            "tempra": 4,
+            "riflessi": 1,
+            "volonta": 4
+        },
+        {
+            "bab": 3,
+            "tempra": 4,
+            "riflessi": 1,
+            "volonta": 4
+        },
+        {
+            "bab": 4,
+            "tempra": 5,
+            "riflessi": 2,
+            "volonta": 5
+        },
+        {
+            "bab": 5,
+            "tempra": 5,
+            "riflessi": 2,
+            "volonta": 5
+        },
+        {
+            "bab": 6,
+            "tempra": 6,
+            "riflessi": 2,
+            "volonta": 6
+        },
+        {
+            "bab": 6,
+            "tempra": 6,
+            "riflessi": 3,
+            "volonta": 6
+        },
+        {
+            "bab": 7,
+            "tempra": 7,
+            "riflessi": 3,
+            "volonta": 7
+        },
+        {
+            "bab": 8,
+            "tempra": 7,
+            "riflessi": 3,
+            "volonta": 7
+        },
+        {
+            "bab": 9,
+            "tempra": 8,
+            "riflessi": 4,
+            "volonta": 8
+        },
+        {
+            "bab": 9,
+            "tempra": 8,
+            "riflessi": 4,
+            "volonta": 8
+        },
+        {
+            "bab": 10,
+            "tempra": 9,
+            "riflessi": 4,
+            "volonta": 9
+        },
+        {
+            "bab": 11,
+            "tempra": 9,
+            "riflessi": 5,
+            "volonta": 9
+        },
+        {
+            "bab": 12,
+            "tempra": 10,
+            "riflessi": 5,
+            "volonta": 10
+        },
+        {
+            "bab": 12,
+            "tempra": 10,
+            "riflessi": 5,
+            "volonta": 10
+        },
+        {
+            "bab": 13,
+            "tempra": 11,
+            "riflessi": 6,
+            "volonta": 11
+        },
+        {
+            "bab": 14,
+            "tempra": 11,
+            "riflessi": 6,
+            "volonta": 11
+        },
+        {
+            "bab": 15,
+            "tempra": 12,
+            "riflessi": 6,
+            "volonta": 12
+        }
+    ],
+    "more_info": [
+        "https://golarion.altervista.org/wiki/Spiritista",
+        "https://golarion.altervista.org/wiki/Lista_da_Spiritista"
+    ],
+    "ability_bonus": {},
+    "talenti": [
+        {
+            "livello": 1,
+            "elementi": [
+                "Apparizione",
+                "Coscienza Condivisa",
+                "Pastoia Eterica"
+            ]
+        },
+        {
+            "livello": 2,
+            "elementi": [
+                "Sensi Legati"
+            ]
+        },
+        {
+            "livello": 3,
+            "elementi": [
+                "Manifestazione Legata"
+            ]
+        },
+        {
+            "livello": 4,
+            "elementi": [
+                "Interferenza Spirituale"
+            ]
+        },
+        {
+            "livello": 5,
+            "elementi": [
+                "Individuazione dei Non Morti: a volontà"
+            ]
+        },
+        {
+            "livello": 7,
+            "elementi": [
+                "Calmare Spirito: Volte Al giorno: 1 + [(Liv. - 7)/4]"
+            ]
+        },
+        {
+            "livello": 9,
+            "elementi": [
+                "Vedere Invisibilità"
+            ]
+        },
+        {
+            "livello": 10,
+            "elementi": [
+                "Coscienza Fusa"
+            ]
+        },
+        {
+            "livello": 12,
+            "elementi": [
+                "Interferenza Spirituale Superiore"
+            ]
+        },
+        {
+            "livello": 14,
+            "elementi": [
+                "Legame Spirituale"
+            ]
+        },
+        {
+            "livello": 16,
+            "elementi": [
+                "Richiamare Spirito: 1/gg."
+            ]
+        },
+        {
+            "livello": 17,
+            "elementi": [
+                "Doppio Legame"
+            ]
+        },
+        {
+            "livello": 20,
+            "elementi": [
+                "Coscienza Potenziata"
+            ]
+        }
+    ]
+}
