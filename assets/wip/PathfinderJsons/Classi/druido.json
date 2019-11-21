@@ -1,28 +1,21 @@
 {
-    "_id": "5dd6983579da4e1dd8054ebd",
-    "nome": "spiritista",
+    "_id": "5dd566701230f307207aa93b",
+    "nome": "druido",
     "dato_vita": "d8",
     "ricchezza": "2d6 x 10 mo (media 70)",
     "ranks_livello": 4,
     "class_abilities": [
+        "addestrare_animali",
         "artigianato",
-        "conoscenze_arcane",
-        "conoscenze_dungeon",
+        "cavalcare",
         "conoscenze_geografia",
-        "conoscenze_ingegneria",
-        "conoscenze_locali",
         "conoscenze_natura",
-        "conoscenze_nobilta",
-        "conoscenze_piani",
-        "conoscenze_religioni",
-        "conoscenze_storia",
         "guarire",
-        "intimidire",
-        "intuizione",
-        "linguistica",
-        "raggirare",
+        "nuotare",
+        "percezione",
         "sapienza_magica",
-        "utilizzare_congegni_magici",
+        "scalare",
+        "sopravvivenza",
         "volare"
     ],
     "stat_table": [
@@ -148,88 +141,57 @@
         }
     ],
     "more_info": [
-        "https://golarion.altervista.org/wiki/Spiritista",
-        "https://golarion.altervista.org/wiki/Lista_da_Spiritista"
+        "https://golarion.altervista.org/wiki/Druido",
+        "https://golarion.altervista.org/wiki/Lista_da_Druido"
     ],
+    "ability_bonus": {
+        "conoscenze_natura": 2,
+        "sopravvivenza": 2
+    },
     "talenti": [
         {
             "livello": 1,
             "elementi": [
-                "Apparizione",
-                "Coscienza Condivisa",
-                "Pastoia Eterica"
+                "Empatia Selvatica: 1d20 + liv + car",
+                "Legame con la natura: (Dominio o Famiglio)",
+                "Lancio Spontaneo: (Evoca alleato Naturale)"
             ]
         },
         {
             "livello": 2,
             "elementi": [
-                "Sensi Legati"
+                "Andatura nel bosco"
             ]
         },
         {
             "livello": 3,
             "elementi": [
-                "Manifestazione Legata"
+                "Passo senza Tracce"
             ]
         },
         {
             "livello": 4,
             "elementi": [
-                "Interferenza Spirituale"
-            ]
-        },
-        {
-            "livello": 5,
-            "elementi": [
-                "Individuazione dei Non Morti: a volontà"
-            ]
-        },
-        {
-            "livello": 7,
-            "elementi": [
-                "Calmare Spirito: Volte Al giorno: 1 + [(Liv. - 7)/4]"
+                "Forma Selvatica",
+                "Resistenza al Richiamo della Natura"
             ]
         },
         {
             "livello": 9,
             "elementi": [
-                "Vedere Invisibilità"
+                "Immunità ai veleni"
             ]
         },
         {
-            "livello": 10,
+            "livello": 13,
             "elementi": [
-                "Coscienza Fusa"
+                "Mille volti"
             ]
         },
         {
-            "livello": 12,
+            "livello": 15,
             "elementi": [
-                "Interferenza Spirituale Superiore"
-            ]
-        },
-        {
-            "livello": 14,
-            "elementi": [
-                "Legame Spirituale"
-            ]
-        },
-        {
-            "livello": 16,
-            "elementi": [
-                "Richiamare Spirito: 1/gg."
-            ]
-        },
-        {
-            "livello": 17,
-            "elementi": [
-                "Doppio Legame"
-            ]
-        },
-        {
-            "livello": 20,
-            "elementi": [
-                "Coscienza Potenziata"
+                "Corpo Senza Tempo"
             ]
         }
     ]
