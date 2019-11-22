@@ -105,7 +105,7 @@ function init() {
 
     //load delle armature
     function refreshClasseArmatura() {
-        $('#ca_tot').val(10 + getModifier(character_data.stats.des) + parseInt($('#ca_armor_bonus').val()));
+        $('#ca_tot').val(10 + parseInt($('#s_des_mod').val()) + parseInt($('#ca_armor_bonus').val()));
     }
 
     function loadArmor() {
