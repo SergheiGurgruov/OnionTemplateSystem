@@ -1,7 +1,7 @@
 const http = require('http');
 const pageLoader = require("./pageLoader");
 const util = require("./util");
-const dbClient = require("./dbManager_json").dbClient;
+const dbClient = require("./dbManager").dbClient;
 
 const port = process.env.PORT || 80;
 

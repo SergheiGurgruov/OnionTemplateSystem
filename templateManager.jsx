@@ -1,5 +1,5 @@
 const OSInterface = require('./OnionServices').OSInterface;
-const dbClient = require("./dbManager_json").dbClient;
+const dbClient = require("./dbManager").dbClient;
 const fs = require("fs");
 
 /**

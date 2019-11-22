@@ -1,4 +1,4 @@
-const dbClient = require("./dbManager_json").dbClient;
+const dbClient = require("./dbManager").dbClient;
 const http = require("http");
 const util = require("./util");
 const querystring = require('querystring');
