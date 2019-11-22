@@ -17,10 +17,12 @@ function showPage(res, req) {
     let pathName = url.parse(req.url).pathname;
     let contentType = getContentType(pathName);
 
+    //util.log("Url LOG",pathName,util.colors.FgYellow);
+
     /* if(contentType != 'text/html')
         pathName = getPureFileDir(pathName); */
 
-    util.log(`log`, `request type is ${contentType}  pageLoader.js:${__line}`, util.colors.FgCyan);
+    //util.log(`log`, `request type is ${contentType}  pageLoader.js:${__line}`, util.colors.FgCyan);
 
     switch (contentType) {
         case 'text/css': {
@@ -110,9 +112,9 @@ function showPage(res, req) {
             /**
              * @type {object}
              */
-            let cookies = parseCookies(req);
-            util.log("Cookie Log:", `Following the Client's Cookies pageLoader.js:${__line}`, util.colors.FgYellow);
-            console.log(cookies);
+            let cookies = util.parseCookies(req);
+            /* util.log("Cookie Log:", `Following the Client's Cookies pageLoader.js:${__line}`, util.colors.FgYellow);
+            console.log(cookies); */
 
             if (pathName != "/login") {
 
@@ -120,8 +122,10 @@ function showPage(res, req) {
                     OSInterface.checkLogin(cookies, function (outcome) {
                         if (outcome) {
                             res.writeHead(200, { 'Content-Type': contentType });
-                            res.write(pageMaker.makePage(routingMap[pathName].data, routingMap[pathName].template));
-                            res.end();
+                            pageMaker.makePage(pathName,req, function (respone) {
+                                res.write(respone);
+                                res.end();
+                            })
                         }
                         else {
                             res.writeHead(302, { Location: "/login" });
@@ -135,8 +139,10 @@ function showPage(res, req) {
 
             } else {
                 res.writeHead(200, { 'Content-Type': contentType });
-                res.write(pageMaker.makePage(routingMap[pathName].data, routingMap[pathName].template));
-                res.end();
+                pageMaker.makePage(pathName,req, function (respone) {
+                    res.write(respone);
+                    res.end();
+                })
             }
 
             break;
@@ -168,30 +174,16 @@ function getContentType(url) {
         '.css': 'text/css',
         '.js': 'text/javascript',
         '.onioncall': 'request/onioncall',
+        '.map': 'text/css',
     }[extension];
     if (res == undefined) {
         util.log(`log`, `Unknown request type.. logging url: ${url}`, util.colors.FgYellow);
     }
     return res;
 }
-function getPureFileDir(url) {
-    return url.substr(url.lastIndexOf('/'));
-}
 
 function getExtension(url) {
     if (url.lastIndexOf('.') == -1)
         return '.html';
     return url.substr(url.lastIndexOf('.'));
-}
-
-function parseCookies(request) {
-    var list = {},
-        rc = request.headers.cookie;
-
-    rc && rc.split(';').forEach(function (cookie) {
-        var parts = cookie.split('=');
-        list[parts.shift().trim()] = decodeURI(parts.join('='));
-    });
-
-    return list;
 }

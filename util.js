@@ -1,3 +1,5 @@
+const http = require("http");
+
 Object.defineProperty(global, '__stack', {
     get: function () {
         var orig = Error.prepareStackTrace;
@@ -58,7 +60,7 @@ var colors = {
  * @param {string} text 
  * @param {string} color
  */
-function log (message, text, color = "\x1b[0m") {
+function log(message, text, color = "\x1b[0m") {
 
     if (arguments.length == 1)
         console.log(`log: ${message}`);
@@ -69,5 +71,22 @@ function log (message, text, color = "\x1b[0m") {
 
 }
 
+/**
+ * 
+ * @param {http.IncomingMessage} request 
+ */
+function parseCookies(request) {
+    var list = {},
+        rc = request.headers.cookie;
+
+    rc && rc.split(';').forEach(function (cookie) {
+        var parts = cookie.split('=');
+        list[parts.shift().trim()] = decodeURI(parts.join('='));
+    });
+
+    return list;
+}
+
+exports.parseCookies = parseCookies;
 exports.log = log;
 exports.colors = colors;

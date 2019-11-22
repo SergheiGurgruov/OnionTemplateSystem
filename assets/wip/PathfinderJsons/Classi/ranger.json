@@ -1,0 +1,278 @@
+{
+    "nome": "ranger",
+    "dato_vita": "d10",
+    "ricchezza": "5d6 x 10 mo (media 175)",
+    "ranks_livello": 6,
+    "class_abilities": [
+        "addestrare_animali",
+        "artigianato",
+        "cavalcare",
+        "conoscenze_dungeon",
+        "conoscenze_geografia",
+        "conoscenze_natura",
+        "furtivita",
+        "guarire",
+        "intimidire",
+        "nuotare",
+        "percezione",
+        "sapienza_magica",
+        "scalare",
+        "sopravvivenza"
+    ],
+    "stat_table": [
+        {
+            "bab": 1,
+            "tempra": 2,
+            "riflessi": 2,
+            "volonta": 0
+        },
+        {
+            "bab": 2,
+            "tempra": 3,
+            "riflessi": 3,
+            "volonta": 0
+        },
+        {
+            "bab": 3,
+            "tempra": 3,
+            "riflessi": 3,
+            "volonta": 1
+        },
+        {
+            "bab": 4,
+            "tempra": 4,
+            "riflessi": 4,
+            "volonta": 1
+        },
+        {
+            "bab": 5,
+            "tempra": 4,
+            "riflessi": 4,
+            "volonta": 1
+        },
+        {
+            "bab": 6,
+            "tempra": 5,
+            "riflessi": 5,
+            "volonta": 2
+        },
+        {
+            "bab": 7,
+            "tempra": 5,
+            "riflessi": 5,
+            "volonta": 2
+        },
+        {
+            "bab": 8,
+            "tempra": 6,
+            "riflessi": 6,
+            "volonta": 2
+        },
+        {
+            "bab": 9,
+            "tempra": 6,
+            "riflessi": 6,
+            "volonta": 3
+        },
+        {
+            "bab": 10,
+            "tempra": 7,
+            "riflessi": 7,
+            "volonta": 3
+        },
+        {
+            "bab": 11,
+            "tempra": 7,
+            "riflessi": 7,
+            "volonta": 3
+        },
+        {
+            "bab": 12,
+            "tempra": 8,
+            "riflessi": 8,
+            "volonta": 4
+        },
+        {
+            "bab": 13,
+            "tempra": 8,
+            "riflessi": 8,
+            "volonta": 4
+        },
+        {
+            "bab": 14,
+            "tempra": 9,
+            "riflessi": 9,
+            "volonta": 4
+        },
+        {
+            "bab": 5,
+            "tempra": 9,
+            "riflessi": 9,
+            "volonta": 5
+        },
+        {
+            "bab": 16,
+            "tempra": 10,
+            "riflessi": 10,
+            "volonta": 5
+        },
+        {
+            "bab": 17,
+            "tempra": 10,
+            "riflessi": 10,
+            "volonta": 5
+        },
+        {
+            "bab": 18,
+            "tempra": 11,
+            "riflessi": 11,
+            "volonta": 6
+        },
+        {
+            "bab": 19,
+            "tempra": 11,
+            "riflessi": 11,
+            "volonta": 6
+        },
+        {
+            "bab": 20,
+            "tempra": 12,
+            "riflessi": 12,
+            "volonta": 6
+        }
+    ],
+    "more_info": [
+        "https://golarion.altervista.org/wiki/Ranger",
+        "https://golarion.altervista.org/wiki/Talenti_di_Stile"
+    ],
+    "talenti": [
+        {
+            "livello": 1,
+            "elementi": [
+                "Nemico Prescelto (Primo)",
+                "Seguire Tracce",
+                "Empatia Selvatica: 1d20 + Liv + car"
+            ]
+        },
+        {
+            "livello": 2,
+            "elementi": [
+                "Scelta Stile di Combattimento",
+                "Talento di Stile: (Primo)"
+            ]
+        },
+        {
+            "livello": 3,
+            "elementi": [
+                "Resistenza Fisica",
+                "Ambiente Prescelto: (Primo)"
+            ]
+        },
+        {
+            "livello": 4,
+            "elementi": [
+                "Legame del Cacciatore: (Compagno Animale / Condivisione di Nemico Prescelto)"
+            ]
+        },
+        {
+            "livello": 5,
+            "elementi": [
+                "Nemico Prescelto (Secondo)"
+            ]
+        },
+        {
+            "livello": 6,
+            "elementi": [
+                "Talento di Stile: (Secondo)"
+            ]
+        },
+        {
+            "livello": 7,
+            "elementi": [
+                "Andatura Nel Bosco"
+            ]
+        },
+        {
+            "livello": 8,
+            "elementi": [
+                "Ambiente Prescelto: (Secondo)",
+                "Rapido Segugio"
+            ]
+        },
+        {
+            "livello": 9,
+            "elementi": [
+                "Eludere"
+            ]
+        },
+        {
+            "livello": 10,
+            "elementi": [
+                "Nemico Prescelto (Terzo)",
+                "Talento di Stile: (Terzo)"
+            ]
+        },
+        {
+            "livello": 11,
+            "elementi": [
+                "Preda: (Prescelta) +2 Colpire, Crit. Confermati ... More"
+            ]
+        },
+        {
+            "livello": 12,
+            "elementi": [
+                "Mimetismo: furtivo in ambiente prescelto"
+            ]
+        },
+        {
+            "livello": 13,
+            "elementi": [
+                "Ambiente Prescelto: (Terzo)"
+            ]
+        },
+        {
+            "livello": 14,
+            "elementi": [
+                "Talento di Stile: (Quarto)"
+            ]
+        },
+        {
+            "livello": 15,
+            "elementi": [
+                "Nemico Prescelto (Quarto)"
+            ]
+        },
+        {
+            "livello": 16,
+            "elementi": [
+                "Eludere Migliorato"
+            ]
+        },
+        {
+            "livello": 17,
+            "elementi": [
+                "Nascondersi In Piena Vista: (Ambiente Prescelto)"
+            ]
+        },
+        {
+            "livello": 18,
+            "elementi": [
+                "Ambiente Prescelto: (Quarto)",
+                "Talento di Stile: (Quinto)"
+            ]
+        },
+        {
+            "livello": 19,
+            "elementi": [
+                "Preda Migliorata: TC +4 ... More"
+            ]
+        },
+        {
+            "livello": 20,
+            "elementi": [
+                "Nemico Prescelto (Quinto)",
+                "Maestro Cacciatore: OP ... More"
+            ]
+        }
+    ]
+}

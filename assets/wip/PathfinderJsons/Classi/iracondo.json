@@ -1,0 +1,269 @@
+{
+    "nome": "iracondo di stirpe",
+    "dato_vita": "d10",
+    "ricchezza": "3d6 x 10 mo (media 105)",
+    "ranks_livello": 4,
+    "class_abilities": [
+        "acrobazia",
+        "addestrare_animali",
+        "artigianato",
+        "cavalcare",
+        "conoscenze_arcane",
+        "intimidire",
+        "nuotare",
+        "percezione",
+        "sapienza_magica",
+        "scalare",
+        "sopravvivenza"
+    ],
+    "stat_table": [
+        {
+            "bab": 1,
+            "tempra": 2,
+            "riflessi": 0,
+            "volonta": 0
+        },
+        {
+            "bab": 2,
+            "tempra": 3,
+            "riflessi": 0,
+            "volonta": 0
+        },
+        {
+            "bab": 3,
+            "tempra": 3,
+            "riflessi": 1,
+            "volonta": 1
+        },
+        {
+            "bab": 4,
+            "tempra": 4,
+            "riflessi": 1,
+            "volonta": 1
+        },
+        {
+            "bab": 5,
+            "tempra": 4,
+            "riflessi": 1,
+            "volonta": 1
+        },
+        {
+            "bab": 6,
+            "tempra": 5,
+            "riflessi": 2,
+            "volonta": 2
+        },
+        {
+            "bab": 7,
+            "tempra": 5,
+            "riflessi": 2,
+            "volonta": 2
+        },
+        {
+            "bab": 8,
+            "tempra": 6,
+            "riflessi": 2,
+            "volonta": 2
+        },
+        {
+            "bab": 9,
+            "tempra": 6,
+            "riflessi": 3,
+            "volonta": 3
+        },
+        {
+            "bab": 10,
+            "tempra": 7,
+            "riflessi": 3,
+            "volonta": 3
+        },
+        {
+            "bab": 11,
+            "tempra": 7,
+            "riflessi": 3,
+            "volonta": 3
+        },
+        {
+            "bab": 12,
+            "tempra": 8,
+            "riflessi": 4,
+            "volonta": 4
+        },
+        {
+            "bab": 13,
+            "tempra": 8,
+            "riflessi": 4,
+            "volonta": 4
+        },
+        {
+            "bab": 14,
+            "tempra": 9,
+            "riflessi": 4,
+            "volonta": 4
+        },
+        {
+            "bab": 5,
+            "tempra": 9,
+            "riflessi": 5,
+            "volonta": 5
+        },
+        {
+            "bab": 16,
+            "tempra": 10,
+            "riflessi": 5,
+            "volonta": 5
+        },
+        {
+            "bab": 17,
+            "tempra": 10,
+            "riflessi": 5,
+            "volonta": 5
+        },
+        {
+            "bab": 18,
+            "tempra": 11,
+            "riflessi": 6,
+            "volonta": 6
+        },
+        {
+            "bab": 19,
+            "tempra": 11,
+            "riflessi": 6,
+            "volonta": 6
+        },
+        {
+            "bab": 20,
+            "tempra": 12,
+            "riflessi": 6,
+            "volonta": 6
+        }
+    ],
+    "more_info": [
+        "https://golarion.altervista.org/wiki/Iracondo_di_Stirpe",
+        "https://golarion.altervista.org/wiki/Iracondo_di_Stirpe/Stirpi"
+    ],
+    "talenti": [
+        {
+            "livello": 1,
+            "elementi": [
+                "Ira di Stirpe",
+                "Movimento Veloce",
+                "Potere della Stirpe (Primo)"
+            ]
+        },
+        {
+            "livello": 2,
+            "elementi": [
+                "Schivare Prodigioso"
+            ]
+        },
+        {
+            "livello": 3,
+            "elementi": [
+                "Santuario di stirpe"
+            ]
+        },
+        {
+            "livello": 4,
+            "elementi": [
+                "Escludere Materiali",
+                "Lancio di Stirpe",
+                "Potere della Stirpe (Secondo)"
+            ]
+        },
+        {
+            "livello": 5,
+            "elementi": [
+                "Schivare Prodigioso Migliorato"
+            ]
+        },
+        {
+            "livello": 6,
+            "elementi": [
+                "Talento Della Stirpe: (Primo)"
+            ]
+        },
+        {
+            "livello": 7,
+            "elementi": [
+                "Incantesimo Della Stirpe: (Primo)",
+                "Riduzione Del Danno: 1 + [(Liv. - 7)/3]"
+            ]
+        },
+        {
+            "livello": 8,
+            "elementi": [
+                "Potere della Stirpe (Terzo)"
+            ]
+        },
+        {
+            "livello": 9,
+            "elementi": [
+                "Talento Della Stirpe: (Secondo)"
+            ]
+        },
+        {
+            "livello": 10,
+            "elementi": [
+                "Incantesimo Della Stirpe: (Secondo)"
+            ]
+        },
+        {
+            "livello": 11,
+            "elementi": [
+                "Ira di Stirpe Superiore"
+            ]
+        },
+        {
+            "livello": 12,
+            "elementi": [
+                "Potere della Stirpe (Quarto)",
+                "Talento Della Stirpe: (Terzo)"
+            ]
+        },
+        {
+            "livello": 13,
+            "elementi": [
+                "Incantesimo Della Stirpe: (Terzo)"
+            ]
+        },
+        {
+            "livello": 14,
+            "elementi": [
+                "Volontà indomita"
+            ]
+        },
+        {
+            "livello": 15,
+            "elementi": [
+                "Talento Della Stirpe: (Quarto)"
+            ]
+        },
+        {
+            "livello": 16,
+            "elementi": [
+                "Incantesimo Della Stirpe: (Quarto)",
+                "Potere della Stirpe (Quinto)"
+            ]
+        },
+        {
+            "livello": 17,
+            "elementi": [
+                "Ira di Stirpe Infaticabile"
+            ]
+        },
+        {
+            "livello": 18,
+            "elementi": [
+                "Talento Della Stirpe: (Quinto)"
+            ]
+        },
+        {
+            "livello": 20,
+            "elementi": [
+                "Potere della Stirpe (Sesto)",
+                "Ira di Stirpe Possente"
+            ]
+        }
+    ]
+}

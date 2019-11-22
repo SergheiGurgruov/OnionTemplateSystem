@@ -1,0 +1,198 @@
+{
+    "_id": "5dd566701230f307207aa93b",
+    "nome": "druido",
+    "dato_vita": "d8",
+    "ricchezza": "2d6 x 10 mo (media 70)",
+    "ranks_livello": 4,
+    "class_abilities": [
+        "addestrare_animali",
+        "artigianato",
+        "cavalcare",
+        "conoscenze_geografia",
+        "conoscenze_natura",
+        "guarire",
+        "nuotare",
+        "percezione",
+        "sapienza_magica",
+        "scalare",
+        "sopravvivenza",
+        "volare"
+    ],
+    "stat_table": [
+        {
+            "bab": 0,
+            "tempra": 2,
+            "riflessi": 0,
+            "volonta": 2
+        },
+        {
+            "bab": 1,
+            "tempra": 3,
+            "riflessi": 0,
+            "volonta": 3
+        },
+        {
+            "bab": 2,
+            "tempra": 3,
+            "riflessi": 1,
+            "volonta": 3
+        },
+        {
+            "bab": 3,
+            "tempra": 4,
+            "riflessi": 1,
+            "volonta": 4
+        },
+        {
+            "bab": 3,
+            "tempra": 4,
+            "riflessi": 1,
+            "volonta": 4
+        },
+        {
+            "bab": 4,
+            "tempra": 5,
+            "riflessi": 2,
+            "volonta": 5
+        },
+        {
+            "bab": 5,
+            "tempra": 5,
+            "riflessi": 2,
+            "volonta": 5
+        },
+        {
+            "bab": 6,
+            "tempra": 6,
+            "riflessi": 2,
+            "volonta": 6
+        },
+        {
+            "bab": 6,
+            "tempra": 6,
+            "riflessi": 3,
+            "volonta": 6
+        },
+        {
+            "bab": 7,
+            "tempra": 7,
+            "riflessi": 3,
+            "volonta": 7
+        },
+        {
+            "bab": 8,
+            "tempra": 7,
+            "riflessi": 3,
+            "volonta": 7
+        },
+        {
+            "bab": 9,
+            "tempra": 8,
+            "riflessi": 4,
+            "volonta": 8
+        },
+        {
+            "bab": 9,
+            "tempra": 8,
+            "riflessi": 4,
+            "volonta": 8
+        },
+        {
+            "bab": 10,
+            "tempra": 9,
+            "riflessi": 4,
+            "volonta": 9
+        },
+        {
+            "bab": 11,
+            "tempra": 9,
+            "riflessi": 5,
+            "volonta": 9
+        },
+        {
+            "bab": 12,
+            "tempra": 10,
+            "riflessi": 5,
+            "volonta": 10
+        },
+        {
+            "bab": 12,
+            "tempra": 10,
+            "riflessi": 5,
+            "volonta": 10
+        },
+        {
+            "bab": 13,
+            "tempra": 11,
+            "riflessi": 6,
+            "volonta": 11
+        },
+        {
+            "bab": 14,
+            "tempra": 11,
+            "riflessi": 6,
+            "volonta": 11
+        },
+        {
+            "bab": 15,
+            "tempra": 12,
+            "riflessi": 6,
+            "volonta": 12
+        }
+    ],
+    "more_info": [
+        "https://golarion.altervista.org/wiki/Druido",
+        "https://golarion.altervista.org/wiki/Lista_da_Druido"
+    ],
+    "ability_bonus": {
+        "conoscenze_natura": 2,
+        "sopravvivenza": 2
+    },
+    "talenti": [
+        {
+            "livello": 1,
+            "elementi": [
+                "Empatia Selvatica: 1d20 + liv + car",
+                "Legame con la natura: (Dominio o Famiglio)",
+                "Lancio Spontaneo: (Evoca alleato Naturale)"
+            ]
+        },
+        {
+            "livello": 2,
+            "elementi": [
+                "Andatura nel bosco"
+            ]
+        },
+        {
+            "livello": 3,
+            "elementi": [
+                "Passo senza Tracce"
+            ]
+        },
+        {
+            "livello": 4,
+            "elementi": [
+                "Forma Selvatica",
+                "Resistenza al Richiamo della Natura"
+            ]
+        },
+        {
+            "livello": 9,
+            "elementi": [
+                "Immunità ai veleni"
+            ]
+        },
+        {
+            "livello": 13,
+            "elementi": [
+                "Mille volti"
+            ]
+        },
+        {
+            "livello": 15,
+            "elementi": [
+                "Corpo Senza Tempo"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,35 @@
+Notazione:
+    s_ : speaker [ parametro che altera il valore dei listener corrispondenti ] (ID)
+    l_ : listener [ parametro che si altera in base allo speaker corrispondente ] (CLASS)
+
+Specifici:
+    #stat_choose_msg : messaggio di scelta di roll stat aggiuntive (in caso di umano / mezz'elfo)
+
+    #ranks_tot : totale rank (secondo la classe scelta)
+    #s_acrobazia_rank : rank assegnati a specifica abilita
+    .ability_rank : classe generica degli ability_rank necessaria all' aggiornamento del totale
+
+    #s_for_roll : il roll del parametro forza
+    .l_for_roll : tot del parametro forza (somma mod razziali)
+
+    #s_des_mod : il valore del modificatore destrezza
+    .l_des_mod : listener (copia il valore)
+
+    #s_des_tot : il roll + mod razza del modificatore destrezza
+    .l_des_tot : listener (trasforma in modificatore)
+
+    #talenti_razza :
+    #talenti_bonus : container talenti bonus
+
+
+    .armor : elemento armatura (tutto il div)
+    #c_armature : container html di tutte le armature
+    #c_armi : 
+
+    #weapon_0 : elemento arma (specifico rispetto all indice)
+    #weapon_del_0 : elemento on click che elimina la specifica arma
+
+    #add_armor : on click aggiunge un armor
+
+    #ca_tot :
+    #ca_armor_bonus :
