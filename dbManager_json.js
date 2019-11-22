@@ -32,16 +32,20 @@ exports.dbClient = {
             db.push(JSON.parse(fs.readFileSync(DataBase.db_path + element)));
         });
 
-        console.log(db);
+        console.log(util.roughSizeOfObject(db));
 
         DataBase.conn = db;
         DataBase.started = true;
         callback();
     },
-    save: function () {
+    saveAll: function () {
         DataBase.conn.forEach(collection => {
             fs.writeFileSync(DataBase.db_path + collection.collection_name + ".json", JSON.stringify(collection), "utf8");
         });
+    },
+    saveCollection: function (collection_index) {
+        let col = DataBase.conn[collection_index];
+        fs.writeFileSync(DataBase.db_path + col.collection_name + ".json", JSON.stringify(col), "utf8");
     },
     /**
      * 
@@ -105,13 +109,14 @@ exports.dbClient = {
         return items;
     },
     updateOne: async function (collection, query, data) {
+        let col_index = 0;
         DataBase.conn.forEach(_collection => {
             if (_collection.collection_name == collection) {
 
                 if (query == {}) {
                     return false;
                 }
-
+                let doc_index = 0
                 _collection.collection_data.forEach(document => {
                     let errors = 0;
                     Object.keys(query).forEach(query_key => {
@@ -120,11 +125,14 @@ exports.dbClient = {
                         }
                     });
                     if (errors == 0) {
-                        document = data;
+                        DataBase.conn[col_index].collection_data[doc_index] = data;
+                        this.saveCollection(col_index);
                         return true;
                     }
+                    doc_index++;
                 });
             }
+            col_index++;
         });
     }
 }
