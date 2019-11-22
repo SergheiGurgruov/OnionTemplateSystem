@@ -1,6 +1,6 @@
 const templateManager = require("./templateManager.jsx");
 const fs = require("fs");
-const dbClient = require("./dbManager").dbClient;
+const dbClient = require("./dbManager_json").dbClient;
 const OSInterface = require("./OnionServices").OSInterface;
 
 
