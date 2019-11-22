@@ -7,7 +7,7 @@ dbClient.init(function () {
     http.createServer(async function (req, res) {
         //util.log(`ServerRequest`, `${req.url}  index.js:${__line}`, util.colors.FgGreen);
         pageLoader.showPage(res, req);
-    }).listen(80);
+    }).listen(8080);
 });
 
 util.log('Server Log', `server started  index.js:${__line} `, util.colors.FgCyan);
