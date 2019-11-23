@@ -66,26 +66,6 @@ function init() {
 
     //Insert Elementi Html
 
-    $(".input_charForm").toArray().forEach(element => {
-        switch (element.name) {
-            case "nome":
-                element.value = character_data.nome;
-                break;
-            case "razza":
-                element.value = character_data.razza;
-                break;
-            case "classe":
-                element.value = character_data.classe;
-                break;
-            case "livello":
-                element.value = character_data.livello;
-                break;
-        
-            default:
-                break;
-        }
-    });
-
     //load dei talenti bonus
     function loadTalentiBonus() {
         let i = 0;
@@ -484,12 +464,6 @@ function init() {
     });
 
     ["nome", "razza", "classe", "livello"].forEach(element => {
-
-        if(["razza","classe"].includes(element)){
-            $(`#char_${element}`).html(character_data[element].capitalize());
-            return;
-        }
-
         $(`#char_${element}`).html(character_data[element]);
     });
 
