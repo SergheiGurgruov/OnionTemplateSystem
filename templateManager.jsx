@@ -18,17 +18,17 @@ const fs = require("fs");
  * @property {UserData} user
  */
 
- /**
-  * @typedef {Object} PageBlock
-  * @property {string} PageBlock.type
-  */
+/**
+ * @typedef {Object} PageBlock
+ * @property {string} PageBlock.type
+ */
 
- /**
-  * Body Data type config
-  * @typedef {Object} BodyData
-  * @property {RequestData} request_data
-  * @property {Array<PageBlock>} blocks
-  */
+/**
+ * Body Data type config
+ * @typedef {Object} BodyData
+ * @property {RequestData} request_data
+ * @property {Array<PageBlock>} blocks
+ */
 
 
 module.exports = {
@@ -54,10 +54,10 @@ module.exports = {
             charname: head.request_data.charname
         }
 
-        let character_data = (await dbClient.query_promise("personaggi",{nome:req_data.charname,giocatore:req_data.user}))[0];
-        let class_data = (await dbClient.query_promise("classi",{nome:character_data.classe}))[0];
-        let race_data = (await dbClient.query_promise("razze",{nome:character_data.razza}))[0];
-        
+        let character_data = (await dbClient.query_promise("personaggi", { nome: req_data.charname, giocatore: req_data.user }))[0];
+        let class_data = (await dbClient.query_promise("classi", { nome: character_data.classe }))[0];
+        let race_data = (await dbClient.query_promise("razze", { nome: character_data.razza }))[0];
+
         let html = `<meta http-equiv="content-type" content="text/html; charset=utf-8" />`;
         html += (head.title ? `<title>${head.title}</title>` : ``);
         html += `
@@ -112,23 +112,23 @@ module.exports = {
      * 
      * @param {BodyData} body 
      */
-    t_characters: async function (body) {   
+    t_characters: async function (body) {
 
         let html = `<div  class="container-fluid">`;
-        for(var i=0;i<body.blocks.length;i++){
+        for (var i = 0; i < body.blocks.length; i++) {
             let element = body.blocks[i];
 
             html += `<div class="row">`;
             if (element.type == "header") {
-                html +=  h_header(element);
+                html += h_header(element);
             } else if (element.type == "title") {
                 html += `
                 <div class="col-md-11 offset-md-1 title">
                     ${element.text}
                 </div>`
-            } else if(element.type == "card_block"){
-                let _cards = await dbClient.query_promise("personaggi", { giocatore: body.request_data.user.username});
-                    element.cards = _cards;
+            } else if (element.type == "card_block") {
+                let _cards = await dbClient.query_promise("personaggi", { giocatore: body.request_data.user.username });
+                element.cards = _cards;
                 html += h_cardBlock(element);
             }
 
@@ -142,8 +142,8 @@ module.exports = {
      * 
      * @param {BodyData} body 
      */
-    t_personaggio:async function(body){
-        return fs.readFileSync('./assets/pages/character_sheet_body.html',"utf8");
+    t_personaggio: async function (body) {
+        return fs.readFileSync('./assets/pages/character_sheet_body.html', "utf8");
     }
 }
 
@@ -165,12 +165,12 @@ module.exports = {
  * @param {CharacteCardBlock} card_block
  */
 
-function h_cardBlock(card_block){
+function h_cardBlock(card_block) {
     let result = `<div class="col-md-10 offset-md-1 card_block"><div class="row">`;
-    if(card_block.cards.length <= 0)
+    if (card_block.cards.length <= 0)
         return result + "<p>Nessun Personaggio Presente sull'account</p></div></div>"
     card_block.cards.forEach(element => {
-        result+=`
+        result += `
             <div class="col-md-4">
                 <a href="/personaggio?charname=${element.nome}"><div class = card>
                     <h3>${element.nome}</h3>

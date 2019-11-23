@@ -1,9 +1,13 @@
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
+const fs = require("fs");
 const util = require("./util");
+
+const dbCredentials = JSON.parse(fs.readFileSync("./assets/db_credentials.json","utf8"));
+
 const DataBase = {
 
-    url: "mongodb://localhost:27017/",
+    url: dbCredentials.url,
     dbName: "OnionTemplateSystem",
     /**
      * @type {MongoClient}
@@ -21,6 +25,10 @@ exports.dbClient = {
         return DataBase.url;
     },
     init: function (callback) {
+
+        console.log(DataBase);
+        
+
         if (DataBase.started) {
             callback();
             return;
@@ -30,6 +38,10 @@ exports.dbClient = {
             useNewUrlParser: true,
             useUnifiedTopology: true
         }, function (err, db) {
+
+            //console.log(db);
+            
+
             if (err) throw err;
             DataBase.MongoClient = db;
             DataBase.conn = db.db(DataBase.dbName);

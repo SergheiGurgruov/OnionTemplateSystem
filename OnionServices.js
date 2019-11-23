@@ -17,6 +17,7 @@ const routeMap = {
         util.log("Login", "User Is Attempting Login (Following data)", util.colors.FgYellow);
         console.log(data);
         dbClient.query("users", { username: data.username, password: data.password }, function (items) {
+            
             if (items.length > 0) {
                 let cookieString = `user=${data.username},${data.password}`
                 res.writeHead(302, {

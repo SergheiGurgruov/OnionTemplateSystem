@@ -1,0 +1,3 @@
+{"collection_name":"magie","collection_data":
+[{"nome":"mani brucianti","componenti":"verbale, somatica","raggio":"4,5m","area":"conica","durata":"istantaneo","danno":"1d4 * Livello (max 5d4)","tiro":"TS Riflessi Dimezza: CD 10 + 1 (lv.inc.) + Stat rilevante","dettagli":"I materiali infiammabili prendono fuoco","classi":{"druido":1,"arcanista":1,"fattucchiere":1,"iracondo di stirpe":1,"mago":1,"magus":1,"sciamano":1,"stregone":1}}]
+}
