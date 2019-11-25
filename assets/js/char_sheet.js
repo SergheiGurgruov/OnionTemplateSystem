@@ -96,6 +96,8 @@ function onWeaponForm() {
 
         $("#weaponModal").css("display", "none");
 
+        SaveChanges("noalert");
+
     }
 }
 

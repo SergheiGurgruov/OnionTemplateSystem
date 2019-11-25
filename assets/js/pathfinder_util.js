@@ -87,7 +87,7 @@ function getModifier(number) {
     return mod_table[number - 1];
 }
 
-function SaveChanges() {
+function SaveChanges(args) {
 
     character_data.oldname = character_data.nome;
 
@@ -105,6 +105,8 @@ function SaveChanges() {
 
         }
     });
-
-    alert("Salvato");
+    if(arguments.length == 0)
+    {
+        alert("Salvato");
+    }
 }
