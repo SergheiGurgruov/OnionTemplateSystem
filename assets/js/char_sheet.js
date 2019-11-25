@@ -102,7 +102,7 @@ function onWeaponForm() {
 }
 
 function onArmorForm() {
-    let formdata = $(".input_weaponForm").toArray();
+    let formdata = $(".input_armorForm").toArray();
     let emptyFields = 0;
     [formdata[0]].forEach(element => {
         if (element.value == "") {
