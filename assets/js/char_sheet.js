@@ -101,6 +101,34 @@ function onWeaponForm() {
     }
 }
 
+function onArmorForm() {
+    let formdata = $(".input_weaponForm").toArray();
+    let emptyFields = 0;
+    [formdata[0], formdata[1], formdata[2]].forEach(element => {
+        if (element.value == "") {
+            emptyFields++;
+        }
+    });
+
+    if (emptyFields == 0) { 
+        let nome = formdata[0];
+        let ca = formdata[1];
+        character_data.armature.push({
+            "nome": nome,
+            "classe_armatura": parseInt(ca)
+        });
+
+        formdata[0].value = "";
+        formdata[1].value = 0;
+
+        $("#armorModal").css("display", "none");
+
+        loadArmor();
+
+        SaveChanges("noalert");
+    }
+}
+
 function loadTalentiBonus() {
     let i = 0;
     character_data.talenti.forEach(element => {
@@ -226,13 +254,16 @@ function loadArmor() {
     `)
 
     $('#add_armor').click(function () {
-        let nome = prompt("Nome Armatura");
+
+        $("#armorModal").css("display", "block");
+
+        /* let nome = prompt("Nome Armatura");
         let ca = prompt("CA Bonus");
         character_data.armature.push({
             "nome": nome,
             "classe_armatura": parseInt(ca)
         });
-        loadArmor();
+        loadArmor(); */
     });
 
     let ca_armor_bonus = 0;

@@ -55,8 +55,6 @@
             </th>
         </tr>
     </table>
-
-    <!-- Modale di Setting Personaggio -->
     <!-- Modale di Aggiunta Arma -->
     <table>
         <tr>
@@ -69,8 +67,8 @@
                             <div class="form" style="padding: 15px;" id="weaponForm">
                                 <!-- Nome -->
                                 <label for="">Nome</label>
-                                <input style="max-width: 100%;" type="text" placeholder="ex: Arco Lungo" class="form-control input_weaponForm"
-                                    name="nome"><br>
+                                <input style="max-width: 100%;" type="text" placeholder="ex: Arco Lungo"
+                                    class="form-control input_weaponForm" name="nome"><br>
                                 <!--  -->
                                 <div class="row">
                                     <!-- Danno -->
@@ -83,7 +81,8 @@
                                     <div class="col-md-6">
                                         <label for="">Critico</label>
                                         <input name="critico" style="max-width: 100%;"
-                                            class="form-control input_weaponForm" placeholder="ex: 19/20 x2" type="text">
+                                            class="form-control input_weaponForm" placeholder="ex: 19/20 x2"
+                                            type="text">
                                     </div>
                                 </div>
                                 <!-- Bonus Tiro -->
@@ -110,8 +109,38 @@
             </th>
         </tr>
     </table>
+    <!-- Modale di Aggiunta Armor -->
+    <table>
+        <tr>
+            <th>
+                <div id="armorModal" class="modal">
 
-    <!-- Modale di Setting Personaggio -->
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div id="close_armorModal" class="modal-close">X</div>
+                            <div class="form" style="padding: 15px;" id="armorForm">
+                                <!-- Nome -->
+                                <label for="">Nome</label>
+                                <input style="max-width: 100%;" type="text" placeholder="ex: Armatura di Cuoio"
+                                    class="form-control input_armorForm" name="nome"><br>
+                                <!-- CA -->
+                                <div class="col-md-6">
+                                    <label for="">Classe Armatura</label>
+                                    <input name="ca" style="max-width: 100%;" value="0" class="form-control input_armorForm"
+                                        placeholder="ex: 1d8" type="number">
+                                </div>
+
+                                <br>
+                                <button onclick="onArmorForm()" class="form-control btn-info">Aggiungi
+                                    Armatura</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </th>
+        </tr>
+    </table>
 
 
     <div class="row">
