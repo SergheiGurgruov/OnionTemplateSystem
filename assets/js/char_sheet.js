@@ -94,6 +94,8 @@ function onWeaponForm() {
         loadWeapons();
         statListenerSetup();
 
+        $("#weaponModal").css("display", "none");
+
     }
 }
 
