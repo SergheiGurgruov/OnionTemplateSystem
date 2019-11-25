@@ -389,6 +389,10 @@ function init() {
 
     //Insert Elementi Html
 
+    class_data.class_abilities.forEach(element => {
+        $(`#checkbox_${element}`).prop("checked",true);
+    });
+
     $(".input_charForm").toArray().forEach(element => {
         switch (element.name) {
             case "nome":
