@@ -99,6 +99,253 @@ function onWeaponForm() {
     }
 }
 
+function loadTalentiBonus() {
+    let i = 0;
+    character_data.talenti.forEach(element => {
+        $('#talenti_bonus').append(`
+                <tr>
+                    <th><input class="talento_bonus" id="talento_bonus_${i}" value="${element}" type="text"></th>
+                </tr>
+        `);
+        i++;
+    });
+
+    $('#talenti_bonus').append(`
+            <tr>
+                <th><input class="talento_bonus" id="talento_bonus_${i}" placeholder="Inserire qui talenti aggiuntivi ..." type="text"></th>
+            </tr>
+    `);
+
+    $('.talento_bonus').change(function () {
+        let index = parseInt(this.id.substr(this.id.lastIndexOf('_') + 1));
+        if (index >= character_data.talenti.length) {
+            if (this.value != "") {
+                character_data.talenti.push(this.value);
+                $('#talenti_bonus').append(`
+                        <tr>
+                            <th><input class="talento_bonus" id="talento_bonus_${index + 1}" placeholder="Inserire qui talenti aggiuntivi ..." type="text"></th>
+                        </tr>
+                `);
+                $(`#talento_bonus_${index + 1}`).change($._data($('.talento_bonus')[0]).events["change"][0].handler);
+            }
+        } else {
+            if (this.value != "") {
+                character_data.talenti[index] = this.value;
+            } else {
+                character_data.talenti.splice(index, 1);
+                $('#talenti_bonus').html(`<tr>
+                        <th style="border: none;"><h4>Bonus</h4></th>
+                    </tr>
+                `);
+                loadTalentiBonus();
+            }
+        }
+    });
+}
+
+function loadInventario() {
+    let i = 0;
+    $('#inventario').html("");
+    character_data.inventario.forEach(element => {
+        $('#inventario').append(`
+                <tr>
+                    <th><input class="inventario_item" id="inventario_item_${i}" value="${element}" type="text"></th>
+                </tr>
+        `);
+        i++;
+    });
+
+    $('#inventario').append(`
+            <tr>
+                <th><input class="inventario_item" id="inventario_item_${i}" placeholder="Inserire qui Oggetti aggiuntivi ..." type="text"></th>
+            </tr>
+    `);
+
+    $('.inventario_item').change(function () {
+        let index = parseInt(this.id.substr(this.id.lastIndexOf('_') + 1));
+        if (index >= character_data.inventario.length) {
+            if (this.value != "") {
+                character_data.inventario.push(this.value);
+                $('#inventario').append(`
+                        <tr>
+                            <th><input class="inventario_item" id="inventario_item_${index + 1}" placeholder="Inserire qui Oggetti aggiuntivi ..." type="text"></th>
+                        </tr>
+                `);
+                $(`#inventario_item_${index + 1}`).change($._data($('.inventario_item')[0]).events["change"][0].handler);
+            }
+        } else {
+            if (this.value != "") {
+                character_data.inventario[index] = this.value;
+            } else {
+                character_data.inventario.splice(index, 1);
+                loadInventario();
+            }
+        }
+    });
+}
+
+function refreshClasseArmatura() {
+    $('#ca_tot').val(10 + parseInt($('#s_des_mod').val()) + parseInt($('#ca_armor_bonus').val()));
+}
+
+function loadArmor() {
+    let i = 0;
+    $('#c_armature').html("");
+    character_data.armature.forEach(element => {
+        $('#c_armature').append(
+            `<div id="armor_${i}" class="col-md-6 armor">
+                    <div class="block">
+                        <div style="position: absolute;right: 30px;top: 30px; cursor: pointer;"><img id="armor_del_${i}" src="https://img.icons8.com/material-outlined/24/000000/delete-forever.png"></div>
+                        <h3>${element.nome}</h3>
+                        <table style="margin-bottom: 20px;">
+                            <tr>
+                                <th>Bonus Classe Armatura:</th>
+                                <th><input class="armor_value" value="${element.classe_armatura}" type="number" disabled></th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+        `);
+
+        $(`#armor_del_${i}`).click(function () {
+            let index = parseInt(this.id.substr(this.id.lastIndexOf('_') + 1));
+            character_data.armature.splice(index, 1);
+            loadArmor();
+        });
+        i++;
+    });
+
+    $('#c_armature').append(`
+            <div id="add_armor" class="col-md-6">
+                <div class="block" style="height: 127px;cursor:pointer;">
+                    <div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);"><h1 style="color: rgb(180, 180, 180);">+ Add Armor</h1></div>
+                </div>
+            </div>
+    `)
+
+    $('#add_armor').click(function () {
+        let nome = prompt("Nome Armatura");
+        let ca = prompt("CA Bonus");
+        character_data.armature.push({
+            "nome": nome,
+            "classe_armatura": parseInt(ca)
+        });
+        loadArmor();
+    });
+
+    let ca_armor_bonus = 0;
+
+    character_data.armature.forEach(element => {
+        ca_armor_bonus += element.classe_armatura;
+    });
+
+    $('#ca_armor_bonus').val(ca_armor_bonus);
+
+    refreshClasseArmatura();
+
+}
+
+function loadWeapons() {
+    $('#c_armi').html("");
+    let i = 0;
+    character_data.armi.forEach(element => {
+        $('#c_armi').append(`
+            <div id="weapon_${i}"class="col-md-6">
+                <div class="block">
+                    <div style="position: absolute;right: 30px;top: 30px; cursor: pointer;"><img id="weapon_del_${i}" src="https://img.icons8.com/material-outlined/24/000000/delete-forever.png"></div>
+                    <h3>${element.nome}</h3>
+                    <table style="margin-bottom: 20px;">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th class="desc"><b>B.A.B.</b></th>
+                            <th></th>
+                            <th class="desc"><b>${element.tiro.stat.toUpperCase()}</b></th>
+                        </tr>
+                        <tr>
+                            <th>Tiro:</th>
+                            <th>1d20</th>
+                            <th>+</th>
+                            <th><input value="${getBAB(character_data.livello)}" type="number" disabled></th>
+                            <th>+</th>
+                            <th><input class="l_${element.tiro.stat}_mod" type="number" disabled></th>
+                            <th style="width: 0px;"></th>
+                            <th>Critico:</th>
+                            <th>${element.critico}</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th class="desc"><b>${element.danno.stat == "" ? "//" : element.danno.stat.toUpperCase()}</b></th>
+                        </tr>
+                        <tr>
+                            <th>Danno:</th>
+                            <th>${element.danno.dado}</th>
+                            <th>+</th>
+                            <th><input class="l_${element.danno.stat == "" ? "" : element.danno.stat}_mod" type="number" disabled></th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        `)
+
+        $(`#weapon_del_${i}`).click(function () {
+            let index = parseInt(this.id.substr(this.id.lastIndexOf('_') + 1));
+            character_data.armi.splice(index, 1);
+            loadWeapons();
+            statListenerSetup();
+        });
+
+        i++;
+    });
+
+    $('#c_armi').append(`
+        <div id="add_weapon" class="col-md-6">
+            <div class="block" style="height: 127px;cursor:pointer;">
+                <div style="position: absolute;top: 80px;left: 50%;transform: translate(-50%, -50%);"><h1 style="color: rgb(180, 180, 180);">+ Add Weapon</h1></div>
+            </div>
+        </div>
+    `)
+
+    //Aggiunta Armi
+
+    $('#add_weapon').click(function () {
+        $("#weaponModal").css("display", "block");
+    });
+
+
+}
+
+function statListenerSetup() {
+    stat_list.forEach(element => {
+
+        $(`#s_${element}_roll`).change(function () {
+            $(`.l_${element}_roll`).val(parseInt(this.value) + (race_data.stat_bonus[element] || 0)).trigger("change");
+
+            character_data.stats[element] = parseInt(this.value);
+
+            if (element == "int") {
+                $('#ranks_tot').val(getAvailableRanks());
+            }
+        });
+
+        $(`#s_${element}_tot`).change(function () {
+            $(`.l_${element}_tot`).val(getModifier(parseInt(this.value))).trigger("change");
+        });
+
+        $(`#s_${element}_mod`).change(function () {
+            refreshClasseArmatura();
+            $(`.l_${element}_mod`).val(parseInt(this.value)).trigger("change");
+        });
+
+        $(`#s_${element}_roll`).val(character_data.stats[element]).trigger("change");
+
+    });
+}
+
+
 function init() {
 
     //setup iniziale Condizionale
@@ -130,231 +377,17 @@ function init() {
     });
 
     //load dei talenti bonus
-    function loadTalentiBonus() {
-        let i = 0;
-        character_data.talenti.forEach(element => {
-            $('#talenti_bonus').append(`
-                    <tr>
-                        <th><input class="talento_bonus" id="talento_bonus_${i}" value="${element}" type="text"></th>
-                    </tr>
-            `);
-            i++;
-        });
 
-        $('#talenti_bonus').append(`
-                <tr>
-                    <th><input class="talento_bonus" id="talento_bonus_${i}" placeholder="Inserire qui talenti aggiuntivi ..." type="text"></th>
-                </tr>
-        `);
-
-        $('.talento_bonus').change(function () {
-            let index = parseInt(this.id.substr(this.id.lastIndexOf('_') + 1));
-            if (index >= character_data.talenti.length) {
-                if (this.value != "") {
-                    character_data.talenti.push(this.value);
-                    $('#talenti_bonus').append(`
-                            <tr>
-                                <th><input class="talento_bonus" id="talento_bonus_${index + 1}" placeholder="Inserire qui talenti aggiuntivi ..." type="text"></th>
-                            </tr>
-                    `);
-                    $(`#talento_bonus_${index + 1}`).change($._data($('.talento_bonus')[0]).events["change"][0].handler);
-                }
-            } else {
-                if (this.value != "") {
-                    character_data.talenti[index] = this.value;
-                } else {
-                    character_data.talenti.splice(index, 1);
-                    $('#talenti_bonus').html(`<tr>
-                            <th style="border: none;"><h4>Bonus</h4></th>
-                        </tr>
-                    `);
-                    loadTalentiBonus();
-                }
-            }
-        });
-    }
 
     loadTalentiBonus();
-    function loadInventario() {
-        let i = 0;
-        $('#inventario').html("");
-        character_data.inventario.forEach(element => {
-            $('#inventario').append(`
-                    <tr>
-                        <th><input class="inventario_item" id="inventario_item_${i}" value="${element}" type="text"></th>
-                    </tr>
-            `);
-            i++;
-        });
 
-        $('#inventario').append(`
-                <tr>
-                    <th><input class="inventario_item" id="inventario_item_${i}" placeholder="Inserire qui Oggetti aggiuntivi ..." type="text"></th>
-                </tr>
-        `);
-
-        $('.inventario_item').change(function () {
-            let index = parseInt(this.id.substr(this.id.lastIndexOf('_') + 1));
-            if (index >= character_data.inventario.length) {
-                if (this.value != "") {
-                    character_data.inventario.push(this.value);
-                    $('#inventario').append(`
-                            <tr>
-                                <th><input class="inventario_item" id="inventario_item_${index + 1}" placeholder="Inserire qui Oggetti aggiuntivi ..." type="text"></th>
-                            </tr>
-                    `);
-                    $(`#inventario_item_${index + 1}`).change($._data($('.inventario_item')[0]).events["change"][0].handler);
-                }
-            } else {
-                if (this.value != "") {
-                    character_data.inventario[index] = this.value;
-                } else {
-                    character_data.inventario.splice(index, 1);
-                    loadInventario();
-                }
-            }
-        });
-    }
 
     loadInventario();
 
     //load delle armature
-    function refreshClasseArmatura() {
-        $('#ca_tot').val(10 + parseInt($('#s_des_mod').val()) + parseInt($('#ca_armor_bonus').val()));
-    }
-
-    function loadArmor() {
-        let i = 0;
-        $('#c_armature').html("");
-        character_data.armature.forEach(element => {
-            $('#c_armature').append(
-                `<div id="armor_${i}" class="col-md-6 armor">
-                        <div class="block">
-                            <div style="position: absolute;right: 30px;top: 30px; cursor: pointer;"><img id="armor_del_${i}" src="https://img.icons8.com/material-outlined/24/000000/delete-forever.png"></div>
-                            <h3>${element.nome}</h3>
-                            <table style="margin-bottom: 20px;">
-                                <tr>
-                                    <th>Bonus Classe Armatura:</th>
-                                    <th><input class="armor_value" value="${element.classe_armatura}" type="number" disabled></th>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-            `);
-
-            $(`#armor_del_${i}`).click(function () {
-                let index = parseInt(this.id.substr(this.id.lastIndexOf('_') + 1));
-                character_data.armature.splice(index, 1);
-                loadArmor();
-            });
-            i++;
-        });
-
-        $('#c_armature').append(`
-                <div id="add_armor" class="col-md-6">
-                    <div class="block" style="height: 127px;cursor:pointer;">
-                        <div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);"><h1 style="color: rgb(180, 180, 180);">+ Add Armor</h1></div>
-                    </div>
-                </div>
-        `)
-
-        $('#add_armor').click(function () {
-            let nome = prompt("Nome Armatura");
-            let ca = prompt("CA Bonus");
-            character_data.armature.push({
-                "nome": nome,
-                "classe_armatura": parseInt(ca)
-            });
-            loadArmor();
-        });
-
-        let ca_armor_bonus = 0;
-
-        character_data.armature.forEach(element => {
-            ca_armor_bonus += element.classe_armatura;
-        });
-
-        $('#ca_armor_bonus').val(ca_armor_bonus);
-
-        refreshClasseArmatura();
-
-    }
 
     loadArmor();
     //load delle armi
-
-    function loadWeapons() {
-        $('#c_armi').html("");
-        let i = 0;
-        character_data.armi.forEach(element => {
-            $('#c_armi').append(`
-                <div id="weapon_${i}"class="col-md-6">
-                    <div class="block">
-                        <div style="position: absolute;right: 30px;top: 30px; cursor: pointer;"><img id="weapon_del_${i}" src="https://img.icons8.com/material-outlined/24/000000/delete-forever.png"></div>
-                        <h3>${element.nome}</h3>
-                        <table style="margin-bottom: 20px;">
-                            <tr>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th class="desc"><b>B.A.B.</b></th>
-                                <th></th>
-                                <th class="desc"><b>${element.tiro.stat.toUpperCase()}</b></th>
-                            </tr>
-                            <tr>
-                                <th>Tiro:</th>
-                                <th>1d20</th>
-                                <th>+</th>
-                                <th><input value="${getBAB(character_data.livello)}" type="number" disabled></th>
-                                <th>+</th>
-                                <th><input class="l_${element.tiro.stat}_mod" type="number" disabled></th>
-                                <th style="width: 0px;"></th>
-                                <th>Critico:</th>
-                                <th>${element.critico}</th>
-                            </tr>
-                            <tr>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th class="desc"><b>${element.danno.stat == "" ? "//" : element.danno.stat.toUpperCase()}</b></th>
-                            </tr>
-                            <tr>
-                                <th>Danno:</th>
-                                <th>${element.danno.dado}</th>
-                                <th>+</th>
-                                <th><input class="l_${element.danno.stat == "" ? "" : element.danno.stat}_mod" type="number" disabled></th>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            `)
-
-            $(`#weapon_del_${i}`).click(function () {
-                let index = parseInt(this.id.substr(this.id.lastIndexOf('_') + 1));
-                character_data.armi.splice(index, 1);
-                loadWeapons();
-                statListenerSetup();
-            });
-
-            i++;
-        });
-
-        $('#c_armi').append(`
-            <div id="add_weapon" class="col-md-6">
-                <div class="block" style="height: 127px;cursor:pointer;">
-                    <div style="position: absolute;top: 80px;left: 50%;transform: translate(-50%, -50%);"><h1 style="color: rgb(180, 180, 180);">+ Add Weapon</h1></div>
-                </div>
-            </div>
-        `)
-
-        //Aggiunta Armi
-
-        $('#add_weapon').click(function () {
-            $("#weaponModal").css("display", "block");
-        });
-
-
-    }
 
     loadWeapons();
     //------
@@ -386,7 +419,7 @@ function init() {
     });
     ["charModal", "armorModal", "weaponModal"].forEach(element => {
         $(`#close_${element}`).click(function () {
-            $("#charModal").css("display", "none");
+            $(`#${element}`).css("display", "none");
         });
     });
 
@@ -404,33 +437,7 @@ function init() {
         }
     });
 
-    function statListenerSetup() {
-        stat_list.forEach(element => {
-
-            $(`#s_${element}_roll`).change(function () {
-                $(`.l_${element}_roll`).val(parseInt(this.value) + (race_data.stat_bonus[element] || 0)).trigger("change");
-
-                character_data.stats[element] = parseInt(this.value);
-
-                if (element == "int") {
-                    $('#ranks_tot').val(getAvailableRanks());
-                }
-            });
-
-            $(`#s_${element}_tot`).change(function () {
-                $(`.l_${element}_tot`).val(getModifier(parseInt(this.value))).trigger("change");
-            });
-
-            $(`#s_${element}_mod`).change(function () {
-                refreshClasseArmatura();
-                $(`.l_${element}_mod`).val(parseInt(this.value)).trigger("change");
-            });
-
-            $(`#s_${element}_roll`).val(character_data.stats[element]).trigger("change");
-
-        });
-    }
-
+    //Rifà il setup dei listener
     statListenerSetup();
 
     tiri_salvezza_list.forEach(element => {
