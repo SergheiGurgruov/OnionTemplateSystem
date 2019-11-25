@@ -111,8 +111,8 @@ function onArmorForm() {
     });
 
     if (emptyFields == 0) { 
-        let nome = formdata[0];
-        let ca = formdata[1];
+        let nome = formdata[0].value;
+        let ca = formdata[1].value;
         character_data.armature.push({
             "nome": nome,
             "classe_armatura": parseInt(ca)
