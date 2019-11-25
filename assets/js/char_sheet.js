@@ -5,7 +5,7 @@
 //TOREMOVE
 
 function onCharForm() {
-    
+
     let formdata = $(".input_charForm").toArray();
     let emptyFields = 0;
     formdata.forEach(element => {
@@ -55,6 +55,47 @@ function onCharForm() {
         window.location.href = window.location.pathname + `?charname=${nome}`;
     }
 }
+function onWeaponForm() {
+
+    let formdata = $(".input_weaponForm").toArray();
+    let emptyFields = 0;
+    [formdata[0], formdata[1], formdata[2]].forEach(element => {
+        if (element.value == "") {
+            emptyFields++;
+        }
+    });
+
+    if (emptyFields == 0) {
+        let nome = formdata[0].value;
+        let danno = formdata[1].value;
+        let critico = formdata[2].value;
+        let tiro_stat = formdata[3].value;
+        let danno_stat = formdata[4].value;
+
+        character_data.armi.push({
+            "nome": nome,
+            "critico": critico,
+            "tiro": {
+                "dado": "1d20",
+                "stat": (tiro_stat == "dex" ? "des" : (stat_list.includes(tiro_stat) ? tiro_stat : ""))
+            },
+            "danno": {
+                "dado": danno,
+                "stat": (danno_stat == "dex" ? "des" : (stat_list.includes(danno_stat) ? danno_stat : ""))
+            }
+        });
+
+        formdata[0].value = "";
+        formdata[1].value = 0;
+        formdata[2].value = "";
+        formdata[3].value = "for";
+        formdata[4].value = "";
+
+        loadWeapons();
+        statListenerSetup();
+
+    }
+}
 
 function init() {
 
@@ -80,7 +121,7 @@ function init() {
             case "livello":
                 element.value = character_data.livello;
                 break;
-        
+
             default:
                 break;
         }
@@ -304,8 +345,19 @@ function init() {
             </div>
         `)
 
+        //Aggiunta Armi
+
         $('#add_weapon').click(function () {
-            let nome = prompt("Nome Arma", "ex: Arco lungo");
+            $("#weaponModal").css("display", "block");
+        });
+
+
+    }
+
+    loadWeapons();
+    //------
+
+    /* let nome = prompt("Nome Arma", "ex: Arco lungo");
             let danno = prompt("Danno", "ex: 1d8");
             let critico = prompt("Critico", "ex: 19/20 x2");
             let tiro_stat = prompt("Stat per colpire: 'des' per armi a distanza , 'for' per armi melee ", "ex: des");
@@ -323,15 +375,7 @@ function init() {
                 }
             });
             loadWeapons();
-            statListenerSetup();
-        });
-
-
-    }
-
-    loadWeapons();
-    //------
-
+            statListenerSetup(); */
 
     //configurazione Listener
 
@@ -350,6 +394,10 @@ function init() {
         if (parseInt(event.which) == 13) {
             if (this.classList.contains("input_charForm")) {
                 onCharForm();
+            } else if (this.classList.contains("input_weaponForm")) {
+                onWeaponForm();
+            } else if (this.classList.contains("input_armorForm")) {
+                onArmorForm();
             }
         }
     });
@@ -485,7 +533,7 @@ function init() {
 
     ["nome", "razza", "classe", "livello"].forEach(element => {
 
-        if(["razza","classe"].includes(element)){
+        if (["razza", "classe"].includes(element)) {
             $(`#char_${element}`).html(character_data[element].capitalize());
             return;
         }
