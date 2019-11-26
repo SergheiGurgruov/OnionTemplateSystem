@@ -2,8 +2,10 @@ const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
 const fs = require("fs");
 const util = require("./util");
+const db_json = require("./dbManager_json").dbClient;
 
 const dbCredentials = JSON.parse(fs.readFileSync("./assets/db_credentials.json","utf8"));
+
 
 const DataBase = {
 
@@ -20,7 +22,7 @@ const DataBase = {
     started: false
 };
 
-exports.dbClient = {
+const db_Client = {
     getUrl: function () {
         return DataBase.url;
     },
@@ -71,5 +73,20 @@ exports.dbClient = {
     },
     updateOne: async function(collection,query,data){
         await DataBase.conn.collection(collection).update(query,data);
+    }
+}
+
+exports.dbClient = function(client_type){
+    switch (client_type) {
+        case "mongo":
+            return db_Client;
+            break;
+
+        case "json":
+            return db_json;
+            break;
+    
+        default:
+            break;
     }
 }

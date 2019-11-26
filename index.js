@@ -1,7 +1,9 @@
+global.db_type = "json"
+
 const http = require('http');
 const pageLoader = require("./pageLoader");
 const util = require("./util");
-const dbClient = require("./dbManager").dbClient;
+const dbClient = require("./dbManager").dbClient(global.db_type);
 
 const port = process.env.PORT || 80;
 

@@ -1,4 +1,4 @@
-const dbClient = require("./dbManager").dbClient;
+const dbClient = require("./dbManager").dbClient(global.db_type);
 const http = require("http");
 const util = require("./util");
 const querystring = require('querystring');
