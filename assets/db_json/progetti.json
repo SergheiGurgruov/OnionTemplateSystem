@@ -1,0 +1,11 @@
+{
+    "collection_name": "progetti",
+    "collection_data": [
+        {
+            "nome":"OnionIssueTracker"
+        },
+        {
+            "nome":"PathfinderTool"
+        }
+    ]
+}

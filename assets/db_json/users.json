@@ -1,0 +1,22 @@
+{
+    "collection_name": "users",
+    "collection_data": [
+        {
+            "username": "Cipo",
+            "email": "serghei.gurgurov@gmail.com",
+            "password": "cipo",
+            "progetti": [
+                "OnionIssueTracker",
+                "PathfinderTool"
+            ]
+        },
+        {
+            "username": "Onion",
+            "email": "serghei.gurgurov@gmail.com",
+            "password": "onion",
+            "progetti": [
+                "OnionIssueTracker"
+            ]
+        }
+    ]
+}

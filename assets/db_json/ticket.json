@@ -1,0 +1,31 @@
+{
+    "collection_name": "ticket",
+    "collection_data": [
+        {
+            "issue_id": 0,
+            "progetto": "OnionTemplateSystem",
+            "utente": "Cipo",
+            "timestamp": "26/11/2019 11:10",
+            "priority": "40 - Trivial",
+            "status": "open",
+            "oggetto": "Issue di test",
+            "descrizione": "Questa è una issue di prova, non preoccuparti\nBuon Lavoro!",
+            "tags": [
+                "test"
+            ]
+        },
+        {
+            "issue_id": 1,
+            "progetto": "OnionTemplateSystem",
+            "utente": "Cipo",
+            "timestamp": "26/11/2019 11:10",
+            "priority": "40 - Trivial",
+            "status": "open",
+            "oggetto": "Issue di test 2",
+            "descrizione": "Anche questa è una issue di prova",
+            "tags": [
+                "test"
+            ]
+        }
+    ]
+}
