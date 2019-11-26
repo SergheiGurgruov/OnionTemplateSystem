@@ -220,7 +220,7 @@ function h_complexHeader_actions(element_data){
             $('#${element_data.id}').change(function(){`
                 element_data.onChange.forEach(element => {
                     if(element.type == "redirect"){
-                        html+=`window.location.replace("${element.path}?${Object.keys(element.data)[0]}="+ ${element.data[Object.keys(element.data)[0]]})`;
+                        html+=`window.location.href = "${element.path}?${Object.keys(element.data)[0]}="+ ${element.data[Object.keys(element.data)[0]]}`;
                     }
                 });
             html+=`});
@@ -231,7 +231,7 @@ function h_complexHeader_actions(element_data){
             $('#${element_data.id}').click(function(){`
                 element_data.onClick.forEach(element => {
                     if(element.type == "redirect"){
-                        html+=`window.location.replace("${element.path}?${Object.keys(element.data)[0]}="+ "${element.data[Object.keys(element.data)[0]]}")`;
+                        html+=`window.location.href = "${element.path}?${Object.keys(element.data)[0]}="+ "${element.data[Object.keys(element.data)[0]]}"`;
                     }
                 });
             html+=`});
@@ -242,7 +242,7 @@ function h_complexHeader_actions(element_data){
             $('#${element_data.id}').change(function(){`
                 element_data.onEnter.forEach(element => {
                     if(element.type == "redirect"){
-                        html+=`window.location.replace("${element.path}?${Object.keys(element.data)[0]}="+ "${element.data[Object.keys(element.data)[0]]}&query="+this.value)`;
+                        html+=`window.location.href = "${element.path}?${Object.keys(element.data)[0]}="+ "${element.data[Object.keys(element.data)[0]]}&query="+this.value`;
                     }
                 });
             html+=`});
