@@ -1,11 +1,50 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster&display=swap">
+    <script src="../js/jquery.js"></script>
+    <script>
+        function init() {
+
+        }
+    </script>
 </head>
-<body>
-    
+
+<body onload="init()">
+    <div class="container-fluid">
+        <div style="border-bottom: 1px solid rgb(175, 175, 175);height: fit-content;height: 3rem;" class="row">
+            <div class="col-md-12">
+                <div style="position: absolute;left: 0;vertical-align: middle;height: 3rem;width: max-content;">
+                    <div style="width: fit-content;padding-left: 40px;" class="row">
+                        <div style="font-size: 1.5rem;font-family: Lobster; padding:5px 15px;width: fit-content;">
+                            <h3>Onion Issue Tracker</h3>
+                        </div>
+                    </div>
+                </div>
+                <div style="position: absolute;right: 0;height: 3rem;width: max-content;">
+                    <div style="width: fit-content;padding-right: 40px;" class="row">
+                        <div style="font-size: 1.5rem; padding:5px 15px;width: fit-content;">
+                            <select class="form-control" name="" id="">
+                                <option value="OnionIssueTracker">OnionIssueTracker</option>
+                                <option value="PathfinderTool">PathfinderTool</option>
+                            </select>
+                        </div>
+                        <div style="font-size: 1.5rem; padding:5px 15px;width: fit-content;">
+                            <input class="form-control btn-primary" type="button" value="Open Issue">
+                        </div>
+                        <div style="font-size: 1.5rem; padding:5px 15px;width: fit-content;">
+                            <input type="text" class="form-control" placeholder="Search ..." name="" id="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>

@@ -23,24 +23,69 @@ const routingMap = {
                             "https://fonts.googleapis.com/css?family=Lobster&display=swap",
                             "global.css",
                         ],
-                    scripts: []
+                    scripts:
+                        [
+                            "jquery.js"
+                        ]
                 }
             },
-            body: async function () {
-                
+            body: async function (_data) {
+                let user_data = (await dbClient.query_promise("users", { "username": _data.user.username }))[0];
                 //console.log(_cards);
                 return {
                     blocks: [
                         {
                             type: "complex_header",
-                            data:[
+                            data: [
                                 {
-                                    type:"text",
-                                    text:"Dashboard"
+                                    type: "title",
+                                    text: "Onion Issue Tracker",
+                                    position: "left"
                                 },
                                 {
-                                    type:"menu_selector",
-                                    options:dbClient.query_promise("utenti",{username})
+                                    type: "selector",
+                                    options: user_data.progetti,
+                                    position: "right",
+                                    value: (_data.proj || user_data.progetti[0] || ""),
+                                    id: "selector_project",
+                                    onChange: [
+                                        {
+                                            type: "redirect",
+                                            path: "/",
+                                            data: {
+                                                "proj": "this.value"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    type: "button",
+                                    text: "Open Issue",
+                                    position: "right",
+                                    id: "button_openIssue",
+                                    onClick: [
+                                        {
+                                            type: "redirect",
+                                            path: "/OpenIssue",
+                                            data: {
+                                                "proj": (_data.proj || user_data.progetti[0])
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    type: "search_bar",
+                                    position: "right",
+                                    id: "search_bar",
+                                    onEnter: [
+                                        {
+                                            type: "redirect",
+                                            path: "/Search",
+                                            data: {
+                                                "proj": (_data.proj || user_data.progetti[0])
+                                            }
+                                        }
+                                    ]
                                 }
                             ]
                         }
@@ -50,7 +95,7 @@ const routingMap = {
         },
         template: {
             head: templateManager.defaultHeadTemplate,
-            body: templateManager.t_characters
+            body: templateManager.t_OIT_Dashboard
         }
     },
     '/login': {
