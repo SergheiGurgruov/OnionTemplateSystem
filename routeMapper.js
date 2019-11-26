@@ -16,13 +16,12 @@ const routingMap = {
         data: {
             head: function () {
                 return {
-                    title: "Personaggi",
+                    title: "Dashboard",
                     styles:
                         [
                             "bootstrap.min.css",
                             "https://fonts.googleapis.com/css?family=Lobster&display=swap",
                             "global.css",
-                            "characters.css"
                         ],
                     scripts: []
                 }
@@ -33,16 +32,17 @@ const routingMap = {
                 return {
                     blocks: [
                         {
-                            type: "header",
-                            text: "C3D's Pathfinder Tool",
-                        },
-                        {
-                            type: "title",
-                            text: "I Tuoi Personaggi",
-                        },
-                        {
-                            type: "card_block",
-                            cards:[] //does query inside template
+                            type: "complex_header",
+                            data:[
+                                {
+                                    type:"text",
+                                    text:"Dashboard"
+                                },
+                                {
+                                    type:"menu_selector",
+                                    options:dbClient.query_promise("utenti",{username})
+                                }
+                            ]
                         }
                     ]
                 }
@@ -104,37 +104,6 @@ const routingMap = {
         template: {
             head: templateManager.defaultHeadTemplate,
             body: templateManager.loginTemplate
-        }
-    },
-    '/personaggio':{
-        data: {
-            head: function () {
-                return {
-                    title: "Personaggio",
-                    styles:
-                        [
-                            "bootstrap.min.css",
-                            "https://fonts.googleapis.com/css?family=Lobster&display=swap",
-                            "global.css",
-                            "t_personaggio.css",
-                        ],
-                    scripts: [
-                        "jquery.js",
-                        "pathfinder_util.js",
-                        "char_sheet.js",
-                    ]
-                }
-            },
-            body: async function () {
-                //console.log(_cards);
-                return {
-                    blocks: []
-                }
-            }
-        },
-        template: {
-            head: templateManager.t_personaggio_head,
-            body: templateManager.t_personaggio,
         }
     }
 }
