@@ -212,7 +212,7 @@ module.exports = {
 function h_cardBlock(card_block) {
     let result = `<div class="col-md-10 offset-md-1 card_block"><div class="row">`;
     if (card_block.cards.length <= 0)
-        return result + "<p>Nessun Personaggio Presente sull'account</p></div></div>"
+        result += "<p>Nessun Personaggio Presente sull'account</p></div></div>"
     card_block.cards.forEach(element => {
         result += `
             <div class="col-md-4">
