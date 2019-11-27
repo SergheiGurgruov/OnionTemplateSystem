@@ -67,12 +67,39 @@ const db_Client = {
             callback(items);
         });
     },
+    /**
+     * 
+     * @param {string} collection collection name
+     * @param {JSON} query query filter
+     */
     query_promise: async function (collection, query) {
         let result = await DataBase.conn.collection(collection).find(query).toArray();
         return result;
     },
+    /**
+     * 
+     * @param {string} collection colleciton name
+     * @param {JSON} query query filter
+     * @param {Object} data data
+     */
     updateOne: async function(collection,query,data){
         await DataBase.conn.collection(collection).update(query,data);
+    },
+    /**
+     * 
+     * @param {stirng} collection collection name
+     * @param {Object} data data to insert
+     */
+    insertOne: async function(collection,data){
+        await DataBase.conn.collection(collection).insertOne(data);
+    },
+    /**
+     * 
+     * @param {string} collection colection name
+     * @param {Array<Object>} data data to insert
+     */
+    insertMany:async function(collection,data){
+        await DataBase.conn.collection(collection).insertMany(data);
     }
 }
 
