@@ -4,6 +4,7 @@ const util = require("./util");
 const querystring = require('querystring');
 const url = require("url");
 const mongodb = require("mongodb");
+const fs = require("fs");
 
 const routeMap = {
     /**
@@ -17,7 +18,7 @@ const routeMap = {
         util.log("Login", "User Is Attempting Login (Following data)", util.colors.FgYellow);
         console.log(data);
         dbClient.query("users", { username: data.username, password: data.password }, function (items) {
-            
+
             if (items.length > 0) {
                 let cookieString = `user=${data.username},${data.password}`
                 res.writeHead(302, {
@@ -57,6 +58,46 @@ const routeMap = {
         o_id = new mongodb.ObjectID(data._id);
         await dbClient.updateOne("personaggi", { giocatore: data.giocatore, nome: oldname }, data);
 
+    },
+    /**
+     * 
+     * @param {http.ServerResponse} res 
+     * @param {http.IncomingMessage} req 
+     */
+    "/createChar.onioncall": async function (data, res, req) {
+
+        if (data.nome == "" || data.razza == "" || data.classe == "" || data.livello == "") {
+            res.statusCode = 400;
+            res.end()
+        } else {
+            let user = exports.OSInterface.getUser(req);
+
+            let charTemplate = JSON.parse(fs.readFileSync("./assets/characterTemplate.json"));
+
+            let fillerdata = {
+                nome: data.nome,
+                classe: data.classe,
+                razza: data.razza,
+                livello: parseInt(data.livello),
+                giocatore: user.username
+            }
+
+            let newChar = { ...fillerdata, ...charTemplate };
+
+            //console.log(newChar);
+
+            await dbClient.insertOne("personaggi", newChar);
+
+            res.writeHead(302, {
+                Location: '/'
+            });
+            res.end();
+        }
+        //console.log(data);
+
+        //data = { "_id": "5dcbcde8e9e72277f9131a1a", "giocatore": "Dares", "nome": "Areside", "razza": "umano", "classe": "iracondo di stirpe", "livello": 3, "stats": { "for": 10, "des": 12, "cos": 8, "int": 18, "sag": 14, "car": 12 }, "ability_ranks": { "acrobazia": 2, "addestrare_animali": 3, "artista_della_fuga": 0, "camuffare": 1, "cavalcare": 2, "conoscenze_arcane": 0, "conoscenze_dungeon": 0, "conoscenze_geografia": 0, "conoscenze_ingegneria": 0, "conoscenze_locali": 0, "conoscenze_natura": 0, "conoscenze_nobilta": 0, "conoscenze_piani": 0, "conoscenze_religioni": 0, "conoscenze_storia": 0, "diplomazia": 0, "disattivare_congegni": 0, "furtivita": 0, "guarire": 0, "intimidire": 0, "intuizione": 0, "intrattenere": 0, "linguistica": 0, "nuotare": 0, "percezione": 0, "raggirare": 0, "rapidita_di_mano": 0, "sapienza_magica": 0, "scalare": 0, "sopravvivenza": 0, "utilizzare_congegni_magici": 0, "valutare": 0, "volare": 0 }, "armi": [{ "nome": "Pugnale", "tiro": { "dado": "1d20", "stat": "for" }, "danno": { "dado": "1d4", "stat": "for" }, "critico": "19/20 x2" }, { "nome": "Balestra", "tiro": { "dado": "1d20", "stat": "des" }, "danno": { "dado": "1d8", "stat": "" }, "critico": "20 x3" }], "armature": [{ "nome": "Armatura di Pelle", "classe_armatura": 4 }, { "nome": "Scudo piccolo", "classe_armatura": 1 }], "talenti": ["Talento di Prova 1", "Talento di prova 2"], "magie": [{ "nome": "mani brucianti", "componenti": "verbale,somatica", "raggio": "4,5m", "area": "a forma di cono", "durata": "istantaneo", "danno": "1d4 * Livello (max 5d4)", "tiro": "TS Riflessi Dimezza: CD 10 + 1(lv Incantesimo) + Caratteristica Rilevante", "dettagli": "I materiali infiammabili prendono fuoco" }], "inventario": ["50 frecce", "spada corta"], "monete": { "oro": 50, "argento": 30, "rame": 25 } } 
+        //await dbClient.updateOne("personaggi", { giocatore: data.giocatore, nome: oldname }, data);
+
     }
 }
 
@@ -68,6 +109,14 @@ exports.OSInterface = {
      * @param {string} pathName 
      */
     post: function (req, res, pathName) {
+
+        if (!routeMap[pathName]) {
+            util.log("Wrong Call!", `Service ${pathName} doe not exist`);
+            res.statusCode = 404;
+            res.end();
+            return;
+        }
+
         var dataString = '';
         req.on('data', function (data) {
             dataString += data;
@@ -77,7 +126,7 @@ exports.OSInterface = {
 
         req.on('end', function () {
             var data = querystring.parse(dataString);
-            routeMap[pathName](data, res);
+            routeMap[pathName](data, res, req);
         });
 
     },

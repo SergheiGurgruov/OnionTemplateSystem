@@ -77,6 +77,17 @@ module.exports = {
 
     loginTemplate: function (data) {
         let result = `
+        <style>
+            .body{
+                background: url("https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80");
+                background-size: 100vw auto;
+                opacity: 0.8;
+                height: 100vh;
+            }
+            .title{
+                color: white;
+            }
+        </style>
         <div  class="container-fluid body">`;
 
         data.blocks.forEach(element => {
@@ -96,6 +107,39 @@ module.exports = {
             } else if (element.type == "form") {
 
                 result += `<div class="col-md-4 offset-md-1"><form class="form" action=${element.action} method=${element.method}>`;
+                element.inputs.forEach(_input => {
+                    result += h_formInput(_input);
+                });
+                result += `</form></div>`;
+            }
+            result += `</div>`
+        });
+
+        result += `</div>`;
+
+        return result;
+    },
+    genericFormTemplate: function (data) {
+        let result = `
+        <div  class="container-fluid body">`;
+
+        data.blocks.forEach(element => {
+            result += `<div class="row">`;
+            if (element.type == "title") {
+
+                result += `
+                        <div class="col-md-4 offset-md-4 title">
+                            ${element.text}
+                        </div>
+                    `;
+            }
+            else if (element.type == "header") {
+
+                result += h_header(element);
+
+            } else if (element.type == "form") {
+
+                result += `<div style="margin-bottom:300px;" class="col-md-4 offset-md-4"><form class="form" action=${element.action} method=${element.method}>`;
                 element.inputs.forEach(_input => {
                     result += h_formInput(_input);
                 });
@@ -176,10 +220,12 @@ function h_cardBlock(card_block) {
                     <h3>${element.nome}</h3>
                     <h4>${element.classe}: lv.${element.livello}</h4>
                     <h5>${element.razza}</h5>
-                </div><a>
+                </div></a>
             </div>
         `;
     });
+
+    result += fs.readFileSync("./assets/partial_pages/addCharacter.html")
     return result + `</div></div>`;
 }
 
@@ -197,13 +243,33 @@ function h_header(element) {
  */
 function h_formInput(input) {
     if (input.type == "submit") {
-        return `<button type="submit" class="btn btn-info">Submit</button>`;
+        return `<button type="submit" class="btn btn-info">${input.text||"Submit"}</button>`;
     } else if (input.type == "username") {
         return `
         <div class="form-group">
             <label for="${input.name}">Username</label>
             <input type="text" class="form-control" id=${input.name} aria-describedby="emailHelp" name=${input.name} placeholder="Enter Username">
             <small id="emailHelp" class="form-text text-muted">We'll never share your data with anyone else.</small>
+        </div>`;
+    } else if (input.type == "text") {
+        return `
+        <div class="form-group">
+            <label for="${input.name}">${input.name.capitalize()}</label>
+            <input type="text" class="form-control" id=${input.name} aria-describedby="emailHelp" name=${input.name} placeholder="${input.placeholder}">
+        </div>`;
+    } else if (input.type == "number") {
+        return `
+        <div class="form-group">
+            <label for="${input.name}">${input.name.capitalize()}</label>
+            <input type="number" value="1" class="form-control" id=${input.name} aria-describedby="emailHelp" name=${input.name}>
+        </div>`;
+    } else if (input.type == "select") {
+        return `
+        <div class="form-group">
+            <label for="${input.name}">${input.name.capitalize()}</label>
+            <select value="1" class="form-control" id=${input.name} aria-describedby="emailHelp" name=${input.name}>
+                ${h_formSelect_options(input.options)}
+            </select>
         </div>`;
     } else if (input.type == "password") {
         return `
@@ -214,4 +280,14 @@ function h_formInput(input) {
     } else {
         return `<p> NOT MANAGED INPUT TYPE: ${input.type}</p>`;
     }
+}
+
+function h_formSelect_options(options) {
+    let html = ``;
+
+    options.forEach(element => {
+        html+=`<option value="${element.value}">${element.display}</option>`
+    });
+
+    return html;
 }

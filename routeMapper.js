@@ -2,6 +2,7 @@ const templateManager = require("./templateManager.jsx");
 const fs = require("fs");
 const dbClient = require("./dbManager").dbClient(global.db_type);
 const OSInterface = require("./OnionServices").OSInterface;
+const util = require("./util");
 
 
 //BEWARE!! if using subpaths (ex: /home/mainpage)
@@ -24,7 +25,9 @@ const routingMap = {
                             "global.css",
                             "characters.css"
                         ],
-                    scripts: []
+                    scripts: [
+                        "jquery.js"
+                    ]
                 }
             },
             body: async function () {
@@ -135,6 +138,94 @@ const routingMap = {
         template: {
             head: templateManager.t_personaggio_head,
             body: templateManager.t_personaggio,
+        }
+    },
+    "/createChar":{
+        data: {
+            head: function () {
+                return {
+                    title: "Login",
+                    styles:
+                        [
+                            "bootstrap.min.css",
+                            "https://fonts.googleapis.com/css?family=Lobster&display=swap",
+                            "global.css",
+                            "form.css",
+                        ],
+                    scripts: [
+                        "jquery.js",
+                        "createCharacter.js"
+                    ]
+                }
+            },
+            body: async function (_data) {
+                let class_options = [];
+                let race_options = [];
+
+                let classes = await dbClient.query_promise("classi",{});
+                let races = await dbClient.query_promise("razze",{})
+
+                classes.forEach(element => {
+                    class_options.push({
+                        value:element.nome,
+                        display:element.nome.capitalize()
+                    })
+                });
+
+                races.forEach(element => {
+                    race_options.push({
+                        value:element.nome,
+                        display:element.nome.capitalize()
+                    })
+                });
+
+                return {
+                    blocks: [
+                        {
+                            type: "header",
+                            text: "C3D's Pathfinder Tool",
+                        },
+                        {
+                            type: "title",
+                            text: "Personaggio",
+                        },
+                        {
+                            type: "form",
+                            action: "createChar.onioncall",
+                            method: "post",
+                            inputs: [
+                                {
+                                    type: "text",
+                                    name: "nome",
+                                    placeholder:"Nome Personaggio"
+                                },
+                                {
+                                    type: "select",
+                                    name:"classe",
+                                    options:class_options
+                                },
+                                {
+                                    type: "select",
+                                    name:"razza",
+                                    options:race_options
+                                },
+                                {
+                                    type: "number",
+                                    name:"livello"
+                                },
+                                {
+                                    type: "submit",
+                                    text:"Crea Personaggio"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        template: {
+            head: templateManager.defaultHeadTemplate,
+            body: templateManager.genericFormTemplate
         }
     }
 }

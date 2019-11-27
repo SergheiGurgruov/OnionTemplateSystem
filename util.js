@@ -1,5 +1,9 @@
 const http = require("http");
 
+String.prototype.capitalize = function () {
+    return this.charAt(0).toUpperCase() + this.slice(1)
+}
+
 Object.defineProperty(global, '__stack', {
     get: function () {
         var orig = Error.prepareStackTrace;
