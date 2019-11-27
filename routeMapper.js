@@ -144,7 +144,7 @@ const routingMap = {
         data: {
             head: function () {
                 return {
-                    title: "Login",
+                    title: "Nuovo Personaggio",
                     styles:
                         [
                             "bootstrap.min.css",
@@ -187,7 +187,7 @@ const routingMap = {
                         },
                         {
                             type: "title",
-                            text: "Personaggio",
+                            text: "Nuovo Personaggio",
                         },
                         {
                             type: "form",
