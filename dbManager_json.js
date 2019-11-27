@@ -134,5 +134,37 @@ exports.dbClient = {
             }
             col_index++;
         });
+    },
+    /**
+     * 
+     * @param {stirng} collection collection name
+     * @param {Object} data data to insert
+     */
+    insertOne: async function(collection,data){
+        let col_index = 0;
+        DataBase.conn.forEach(_collection => {
+            if (_collection.collection_name == collection) {
+                _collection.collection_data.push(data);
+                this.saveCollection(col_index);
+            }
+            col_index++;
+        });
+    },
+    /**
+     * 
+     * @param {string} collection colection name
+     * @param {Array<Object>} data data to insert
+     */
+    insertMany:async function(collection,data){
+        let col_index = 0;
+        DataBase.conn.forEach(_collection => {
+            if (_collection.collection_name == collection) {
+                data.forEach(document => {
+                    _collection.collection_data.push(document);
+                });
+                this.saveCollection(col_index);
+            }
+            col_index++;
+        });
     }
 }

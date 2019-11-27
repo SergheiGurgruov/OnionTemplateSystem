@@ -1,4 +1,4 @@
-global.db_type = "json"
+global.db_type = "mongo"
 
 const http = require('http');
 const pageLoader = require("./pageLoader");
