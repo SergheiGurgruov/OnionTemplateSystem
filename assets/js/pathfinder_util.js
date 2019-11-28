@@ -93,20 +93,19 @@ function SaveChanges(args) {
 
     $.ajax({
         url: 'updateCharacter.onioncall',
-        type: 'post',
+        type: 'POST',
         processData: false,
-        //dataType : "json",
-        //contentType: "application/json; charset=utf-8",
+        contentType: "application/json",
         data: JSON.stringify(character_data),
         success: function (response) {
-
+            console.log(response);
+            if (args == undefined || args == null) {
+                alert("Salvato");
+            }
         },
-        error: function (jqXhr, textStatus, errorThrown) {
-
+        error: function () {
+            alert("Ops.. qualcosa e' andato storto");
         }
     });
-    if(arguments.length == 0)
-    {
-        alert("Salvato");
-    }
+
 }

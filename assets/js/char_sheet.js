@@ -20,13 +20,6 @@ function onCharForm() {
         let classe = formdata[2].value;
         let livello = formdata[3].value;
 
-        console.log({
-            "nome": nome,
-            "razza": razza,
-            "classe": classe,
-            "livello": livello
-        });
-
         character_data.oldname = character_data.nome;
 
         character_data.nome = nome;
@@ -36,17 +29,15 @@ function onCharForm() {
 
         $.ajax({
             url: 'updateCharacter.onioncall',
-            dataType: 'json',
-            type: 'post',
+            type: 'POST',
             processData: false,
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
+            contentType: "application/json",
             data: JSON.stringify(character_data),
-            success: function (data, textStatus, jQxhr) {
-                //alert(data);
+            success: function (response) {
+                console.log(response);
             },
-            error: function (jqXhr, textStatus, errorThrown) {
-                //alert("Ops.. qualcosa e' andato storto");
+            error: function () {
+                alert("Ops.. qualcosa e' andato storto");
             }
         });
 
