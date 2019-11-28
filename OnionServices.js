@@ -41,11 +41,6 @@ const routeMap = {
      */
     "/updateCharacter.onioncall": async function (data, res) {
 
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.write("Success!");
-        res.end();
-        data = JSON.parse((Object.keys(data))[0]);
-
         if (data.nome == null || data.razza == null || data.classe == null || data.livello == null) {
             return;
         }
@@ -56,7 +51,17 @@ const routeMap = {
         delete data._id;
         delete data.oldname;
         o_id = new mongodb.ObjectID(data._id);
-        await dbClient.updateOne("personaggi", { giocatore: data.giocatore, nome: oldname }, data);
+        try {
+            await dbClient.updateOne("personaggi", { giocatore: data.giocatore, nome: oldname }, data);
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.write(JSON.stringify({ "Message": "DB Updated!" }));
+            res.end();
+        } catch (error) {
+            res.writeHead(500, { 'Content-Type': 'application/json' });
+            res.write(JSON.stringify({ "Message": "Failed to update the DB" }));
+            res.end();
+        }
+
 
     },
     /**
@@ -98,7 +103,48 @@ const routeMap = {
         //data = { "_id": "5dcbcde8e9e72277f9131a1a", "giocatore": "Dares", "nome": "Areside", "razza": "umano", "classe": "iracondo di stirpe", "livello": 3, "stats": { "for": 10, "des": 12, "cos": 8, "int": 18, "sag": 14, "car": 12 }, "ability_ranks": { "acrobazia": 2, "addestrare_animali": 3, "artista_della_fuga": 0, "camuffare": 1, "cavalcare": 2, "conoscenze_arcane": 0, "conoscenze_dungeon": 0, "conoscenze_geografia": 0, "conoscenze_ingegneria": 0, "conoscenze_locali": 0, "conoscenze_natura": 0, "conoscenze_nobilta": 0, "conoscenze_piani": 0, "conoscenze_religioni": 0, "conoscenze_storia": 0, "diplomazia": 0, "disattivare_congegni": 0, "furtivita": 0, "guarire": 0, "intimidire": 0, "intuizione": 0, "intrattenere": 0, "linguistica": 0, "nuotare": 0, "percezione": 0, "raggirare": 0, "rapidita_di_mano": 0, "sapienza_magica": 0, "scalare": 0, "sopravvivenza": 0, "utilizzare_congegni_magici": 0, "valutare": 0, "volare": 0 }, "armi": [{ "nome": "Pugnale", "tiro": { "dado": "1d20", "stat": "for" }, "danno": { "dado": "1d4", "stat": "for" }, "critico": "19/20 x2" }, { "nome": "Balestra", "tiro": { "dado": "1d20", "stat": "des" }, "danno": { "dado": "1d8", "stat": "" }, "critico": "20 x3" }], "armature": [{ "nome": "Armatura di Pelle", "classe_armatura": 4 }, { "nome": "Scudo piccolo", "classe_armatura": 1 }], "talenti": ["Talento di Prova 1", "Talento di prova 2"], "magie": [{ "nome": "mani brucianti", "componenti": "verbale,somatica", "raggio": "4,5m", "area": "a forma di cono", "durata": "istantaneo", "danno": "1d4 * Livello (max 5d4)", "tiro": "TS Riflessi Dimezza: CD 10 + 1(lv Incantesimo) + Caratteristica Rilevante", "dettagli": "I materiali infiammabili prendono fuoco" }], "inventario": ["50 frecce", "spada corta"], "monete": { "oro": 50, "argento": 30, "rame": 25 } } 
         //await dbClient.updateOne("personaggi", { giocatore: data.giocatore, nome: oldname }, data);
 
+    },
+    /**
+     * 
+     * @param {Object} data 
+     * @param {string} data.classe
+     * @param {Number} data.livello
+     * @param {http.ServerResponse} res 
+     */
+    "/getSpells.onioncall": async function (data, res) {
+        let response = {
+            spells: []
+        }
+
+        let allSpells = await dbClient.query_promise("magie", {});
+
+        allSpells.forEach(element => {
+            if (element.classi[data.classe] && element.classi[data.classe] < data.livello) {
+                response.spells.push(element);
+            }
+        });
+
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.write(JSON.stringify(response));
+        res.end();
+    },
+    "/test.onioncall": async function (data, res, req) {
+        console.log(data);
+        res.end();
     }
+
+    /**
+     * /getSpells.onioncall: async function (data, req, res) 
+     * 
+     *  data:{
+     *      classe:"mago",
+     *      livello:3,
+     *  }
+     * 
+     *  res:{
+     *      spells:[]    ---> Array<Spell>
+     *  }
+     */
 }
 
 exports.OSInterface = {
@@ -125,7 +171,13 @@ exports.OSInterface = {
         });
 
         req.on('end', function () {
-            var data = querystring.parse(dataString);
+
+            if (req.headers["content-type"] == "application/json") {
+                var data = JSON.parse(dataString);
+            } else {
+                var data = querystring.parse(dataString);
+            }
+
             routeMap[pathName](data, res, req);
         });
 
