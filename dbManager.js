@@ -28,7 +28,7 @@ const db_Client = {
     },
     init: function (callback) {
 
-        console.log(DataBase);
+        //console.log(DataBase);
         
 
         if (DataBase.started) {
