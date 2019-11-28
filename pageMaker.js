@@ -30,7 +30,7 @@ async function makePage(pathName, req, callback) {
     let _data = OSInterface.getData(req);
     _data.user = OSInterface.getUser(req);
 
-    console.log(_data);
+    //console.log(_data);
 
     let data_body = await routingMap[pathName].data.body(_data);
     let data_head = await routingMap[pathName].data.head(_data);
