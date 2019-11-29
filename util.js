@@ -1,4 +1,5 @@
 const http = require("http");
+const fs = require("fs");
 
 String.prototype.capitalize = function () {
     return this.charAt(0).toUpperCase() + this.slice(1)
@@ -128,3 +129,51 @@ exports.roughSizeOfObject = roughSizeOfObject;
 exports.parseCookies = parseCookies;
 exports.log = log;
 exports.colors = colors;
+
+exports.TestService = function (ServiceUrl, req_data, callback) {
+
+    const data = JSON.stringify(req_data);
+
+    const options = {
+        hostname: process.env.HOST,
+        port: process.env.PORT||80,
+        path: ServiceUrl,
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+
+    const req = http.request(options, res => {
+        //console.log(`statusCode: ${res.statusCode}`)
+
+        let dataString = '';
+
+        res.on('data', d => {
+            dataString += d;
+
+            if (dataString.length > 1e6)
+                req.connection.destroy();
+        })
+
+        res.on('end', function () {
+            try {
+                var data = JSON.parse(dataString);
+                callback(data);
+            } catch (error) {
+                log("WARNING","FAILED TO PARSE RESPONSE DATA__ logging into log.json",colors.FgRed);
+                fs.writeFileSync("./log.json",dataString,"utf8");
+                
+            }
+
+        });
+    })
+
+    req.on('error', error => {
+        console.error(error)
+    })
+
+    req.write(data)
+    req.end()
+
+}

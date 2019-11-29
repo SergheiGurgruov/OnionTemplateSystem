@@ -109,3 +109,20 @@ function SaveChanges(args) {
     });
 
 }
+
+function TestService(url,data){
+    $.ajax({
+        url: url,
+        type: 'POST',
+        processData: false,
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        success: function (response) {
+            console.log(response);
+            return response;
+        },
+        error: function () {
+            alert("Ops.. qualcosa e' andato storto");
+        }
+    });
+}
