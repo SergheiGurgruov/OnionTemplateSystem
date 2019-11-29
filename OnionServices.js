@@ -116,20 +116,35 @@ const routeMap = {
             spells: []
         }
 
-        let allSpells = await dbClient.query_promise("magie", {});
+        let dailySpells = await exports.OSInterface.pathfinder_util.getDailySpells(data.classe,data.livello);
 
-        allSpells.forEach(element => {
-            if (element.classi[data.classe] && element.classi[data.classe] < data.livello) {
-                response.spells.push(element);
-            }
-        });
+        for (let i = 0; i < Object.keys(dailySpells).length; i++) {
+            const element = Object.keys(dailySpells)[i];
+            
+            let query = {};
+            query[data.classe] = parseInt(element);
+            
+            let spells = await dbClient.query_promise("spells",query);
+
+            response.spells.push(spells);
+        }
+
+        response.spells =  response.spells.sort((a, b) => (a.nome > b.nome) ? 1 : -1);
 
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.write(JSON.stringify(response));
         res.end();
     },
-    "/test.onioncall": async function (data, res, req) {
+    "/test.onioncall": async function (data, res) {
         console.log(data);
+        res.end();
+    },
+    "/getDailySpells.onioncall":async function(data,res){
+
+        let response = await exports.OSInterface.pathfinder_util.getDailySpells(data.classe,data.livello);
+
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.write(JSON.stringify(response));
         res.end();
     }
 
@@ -239,6 +254,13 @@ exports.OSInterface = {
         let url_parts = url.parse(req.url, true);
         var query = url_parts.query;
         return query;
+    },
+    pathfinder_util:{
+        getDailySpells: async function (classe,level){
+            let spelltable = (await dbClient.query_promise("spelltable",{"classe":classe}))[0];
+        
+            return spelltable.data[level-1];
+        }
     }
 
 }
