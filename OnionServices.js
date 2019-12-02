@@ -126,7 +126,7 @@ const routeMap = {
             
             let spells = await dbClient.query_promise("spells",query);
 
-            response.spells.push(spells);
+            response.spells.push(...spells);
         }
 
         response.spells =  response.spells.sort((a, b) => (a.nome > b.nome) ? 1 : -1);
