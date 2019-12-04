@@ -369,6 +369,17 @@ function statListenerSetup() {
     });
 }
 
+function beResponsive (){
+    if(window.innerWidth < 1300){
+        $("#skill-col-1").addClass("col-md-12").removeClass("col-md-7");
+        $("#skill-col-2").addClass("col-md-12").removeClass("col-md-5");
+    }else{
+        $("#skill-col-1").addClass("col-md-7").removeClass("col-md-12");
+        $("#skill-col-2").addClass("col-md-5").removeClass("col-md-12");
+
+    }
+}
+
 
 function init() {
 
@@ -379,6 +390,10 @@ function init() {
     }
 
     //Insert Elementi Html
+    beResponsive();
+
+    window.onresize = beResponsive;
+    
 
     class_data.class_abilities.forEach(element => {
         $(`#checkbox_${element}`).prop("checked",true);
