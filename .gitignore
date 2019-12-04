@@ -1,3 +1,5 @@
 node_modules/
 journal/
 startdb.bat
+log.json
+serviceResult.json
