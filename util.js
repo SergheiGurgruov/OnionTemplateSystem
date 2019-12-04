@@ -159,10 +159,11 @@ exports.TestService = function (ServiceUrl, req_data, callback) {
         res.on('end', function () {
             try {
                 var data = JSON.parse(dataString);
+                fs.writeFileSync("./serviceResult.json",dataString,"utf8");
                 callback(data);
             } catch (error) {
                 log("WARNING","FAILED TO PARSE RESPONSE DATA__ logging into log.json",colors.FgRed);
-                fs.writeFileSync("./log.json",dataString,"utf8");
+                fs.writeFileSync("./log.json",error,"utf8");
                 
             }
 
