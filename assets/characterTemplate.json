@@ -46,16 +46,6 @@
     "armature": [],
     "talenti": [],
     "magie": [
-        {
-            "nome": "mani brucianti",
-            "componenti": "verbale,somatica",
-            "raggio": "4,5m",
-            "area": "a forma di cono",
-            "durata": "istantaneo",
-            "danno": "1d4 * Livello (max 5d4)",
-            "tiro": "TS Riflessi Dimezza: CD 10   1(lv Incantesimo)   Caratteristica Rilevante",
-            "dettagli": "I materiali infiammabili prendono fuoco"
-        }
     ],
     "inventario": [],
     "monete": {
