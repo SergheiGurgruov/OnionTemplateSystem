@@ -153,8 +153,7 @@ const routingMap = {
                             "form.css",
                         ],
                     scripts: [
-                        "jquery.js",
-                        "createCharacter.js"
+                        "jquery.js"
                     ]
                 }
             },
@@ -227,7 +226,121 @@ const routingMap = {
             head: templateManager.defaultHeadTemplate,
             body: templateManager.genericFormTemplate
         }
-    }
+    },
+    "/editSpell":{
+        data: {
+            head: function () {
+                return {
+                    title: "Edit Spell",
+                    styles:
+                        [
+                            "bootstrap.min.css",
+                            "https://fonts.googleapis.com/css?family=Lobster&display=swap",
+                            "global.css",
+                            "form.css",
+                        ],
+                    scripts: [
+                        "formUtil.js",
+                        "jquery.js"
+                    ]
+                }
+            },
+            body: async function (_data) {
+
+                let spell = await dbClient.queryOne("spells",{id:_data.id});
+
+                return {
+                    blocks: [
+                        {
+                            type: "header",
+                            text: "C3D's Pathfinder Tool",
+                        },
+                        {
+                            type: "title",
+                            text: "Modifica Spell",
+                        },
+                        {
+                            type: "form",
+                            action: "editSpell.onioncall",
+                            method: "post",
+                            inputs: [
+                                
+                                {
+                                    type: "number",
+                                    name: "id",
+                                    value:spell["id"],
+                                    disabled:true
+                                },
+                                {
+                                    type: "text",
+                                    name: "nome",
+                                    value:spell["nome"]
+                                },
+                                {
+                                    type: "text",
+                                    name: "tiro_salvezza",
+                                    value:spell["tiro salvezza"]
+                                },
+                                {
+                                    type: "text",
+                                    name: "componenti",
+                                    value:spell["componenti"]
+                                },
+                                {
+                                    type: "text",
+                                    name: "tempo_di_lancio",
+                                    value:spell["tempo di lancio"]
+                                },
+                                {
+                                    type: "text",
+                                    name: "bersaglio",
+                                    value:spell["bersaglio"]
+                                },
+                                {
+                                    type: "text",
+                                    name: "raggio_di_azione",
+                                    value:spell["raggio di azione"]
+                                },
+                                {
+                                    type: "text",
+                                    name: "area",
+                                    value:spell["area"]
+                                },
+                                {
+                                    type: "text",
+                                    name: "durata",
+                                    value:spell["durata"]
+                                },
+                                {
+                                    type: "text",
+                                    name: "effetto",
+                                    value:spell["effetto"]
+                                },
+                                {
+                                    type: "text",
+                                    name: "descrizione_breve",
+                                    value:spell["descrizione breve"]
+                                },
+                                {
+                                    type: "textarea",
+                                    name: "descrizione",
+                                    value:spell["descrizione"]
+                                },
+                                {
+                                    type: "submit",
+                                    text:"Modifica Spell"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        template: {
+            head: templateManager.defaultHeadTemplate,
+            body: templateManager.genericFormTemplate
+        }
+    },
 }
 
 exports.routingMap = routingMap;

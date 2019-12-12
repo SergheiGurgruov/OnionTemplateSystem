@@ -146,6 +146,28 @@ const routeMap = {
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.write(JSON.stringify(response));
         res.end();
+    },
+    "/editSpell.onioncall": async function (data, res){
+        let spell = {
+            "nome":data.nome,
+            "tiro salvezza":data.tiro_salvezza,
+            "componenti":data.componenti,
+            "tempo di lancio":data.tempo_di_lancio,
+            "bersaglio":data.bersaglio,
+            "raggio di azione":data.raggio_di_azione,
+            "area":data.area,
+            "durata":data.durata,
+            "effetto":data.effetto,
+            "descrizione breve":data.descrizione_breve,
+            "descrizione":data.descrizione
+        }
+
+        await dbClient.updateOne("spells",{"id":data.id},spell);
+
+        res.writeHead(302, {
+            Location: data.referrer_url
+        });
+        res.end();
     }
 
     /**
