@@ -130,9 +130,10 @@ exports.parseCookies = parseCookies;
 exports.log = log;
 exports.colors = colors;
 
-exports.TestService = function (ServiceUrl, req_data, callback) {
+exports.SelfService = async function (ServiceUrl, req_data) {
 
-    const data = JSON.stringify(req_data);
+    return new Promise((resolve,reject)=>{
+        const data = JSON.stringify(req_data);
 
     const options = {
         hostname: process.env.HOST,
@@ -160,7 +161,7 @@ exports.TestService = function (ServiceUrl, req_data, callback) {
             try {
                 var data = JSON.parse(dataString);
                 fs.writeFileSync("./serviceResult.json",dataString,"utf8");
-                callback(data);
+                resolve(data);
             } catch (error) {
                 log("WARNING","FAILED TO PARSE RESPONSE DATA__ logging into log.json",colors.FgRed);
                 fs.writeFileSync("./log.json",error,"utf8");
@@ -176,5 +177,6 @@ exports.TestService = function (ServiceUrl, req_data, callback) {
 
     req.write(data)
     req.end()
+    })
 
 }
