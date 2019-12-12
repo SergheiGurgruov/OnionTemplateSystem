@@ -256,21 +256,31 @@ function h_formInput(input) {
         return `
         <div class="form-group">
             <label for="${input.name}">${input.name.capitalize()}</label>
-            <input type="text" class="form-control" id=${input.name} aria-describedby="emailHelp" name=${input.name} placeholder="${input.placeholder}">
+            <input type="text" value="${input.value||""}" class="form-control" id=${input.name}  name=${input.name} placeholder="${input.placeholder||""}">
         </div>`;
     } else if (input.type == "number") {
         return `
         <div class="form-group">
             <label for="${input.name}">${input.name.capitalize()}</label>
-            <input type="number" value="1" class="form-control" id=${input.name} aria-describedby="emailHelp" name=${input.name}>
+            <input type="number" value="${input.value||1}" class="form-control" id=${input.name}  name=${input.name} ${(input.disabled||input.readonly)?"readonly=\"readonly\"":""}>
         </div>`;
+    } else if (input.type == "hidden") {
+        return `
+            <input type="hidden" value=${input.value||""} id=${input.name}  name=${input.name}>
+            `;
     } else if (input.type == "select") {
         return `
         <div class="form-group">
             <label for="${input.name}">${input.name.capitalize()}</label>
-            <select value="1" class="form-control" id=${input.name} aria-describedby="emailHelp" name=${input.name}>
+            <select value="1" class="form-control" id=${input.name} name=${input.name}>
                 ${h_formSelect_options(input.options)}
             </select>
+        </div>`;
+    } else if (input.type == "textarea") {
+        return `
+        <div class="form-group">
+            <label for="${input.name}">${input.name.capitalize()}</label>
+            <textarea rows="8" value="${input.value||""}" placeholder="${input.placeholder||""}" class="form-control" id="${input.name}"  name="${input.name}">${input.value||""}</textarea>
         </div>`;
     } else if (input.type == "password") {
         return `
