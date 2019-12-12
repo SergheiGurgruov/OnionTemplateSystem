@@ -247,7 +247,7 @@ const routingMap = {
             },
             body: async function (_data) {
 
-                let spell = await dbClient.queryOne("spells",{id:_data.id});
+                let spell = await dbClient.queryOne("spells",{"id":parseInt(_data.id)});
 
                 return {
                     blocks: [
