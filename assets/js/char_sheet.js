@@ -4,6 +4,58 @@
 
 //TOREMOVE
 
+var spell_filter = ["null", "NULL", "none", "NONE", "", "none; see text"];
+
+var availableSpells = [];
+var character_spells = [];
+
+function getCharacterSpells() {
+
+    let response = []
+
+    availableSpells.forEach(element => {
+        if (character_data.magie.includes(element.id)) {
+            response.push(element);
+        }
+    });
+
+    return response;
+}
+
+function getSpell(index) {
+
+    let response;
+
+    availableSpells.forEach(element => {
+
+        if (element.id == index) {
+            response = element;
+        }
+    });
+
+    return response;
+}
+
+async function getAvailableSpells() {
+    return new Promise((resolve, reject) => {
+        var reqData = { classe: class_data.nome, livello: character_data.livello };
+
+        $.ajax({
+            url: 'getSpells.onioncall',
+            type: 'POST',
+            processData: false,
+            contentType: "application/json",
+            data: JSON.stringify(reqData),
+            success: function (response) {
+                resolve(response.spells);
+            },
+            error: function () {
+                alert("Ops.. qualcosa e' andato storto");
+            }
+        });
+    })
+}
+
 function onCharForm() {
 
     let formdata = $(".input_charForm").toArray();
@@ -15,6 +67,9 @@ function onCharForm() {
     });
 
     if (emptyFields == 0) {
+
+        character_data.magie = [];
+
         let nome = formdata[0].value;
         let razza = formdata[1].value;
         let classe = formdata[2].value;
@@ -91,6 +146,30 @@ function onWeaponForm() {
 
     }
 }
+function onSpellForm() {
+
+    let formdata = $(".input_spellForm").toArray();
+    let emptyFields = 0;
+    [formdata[0]].forEach(element => {
+        if (element.value == "") {
+            emptyFields++;
+        }
+    });
+
+    if (emptyFields == 0) {
+        let spell = parseInt(formdata[0].value);
+
+        character_data.magie.push(spell);
+
+        loadSpells();
+        statListenerSetup();
+
+        $("#spellModal").css("display", "none");
+
+        SaveChanges("noalert");
+
+    }
+}
 
 function onArmorForm() {
     let formdata = $(".input_armorForm").toArray();
@@ -101,7 +180,7 @@ function onArmorForm() {
         }
     });
 
-    if (emptyFields == 0) { 
+    if (emptyFields == 0) {
         let nome = formdata[0].value;
         let ca = formdata[1].value;
         character_data.armature.push({
@@ -341,6 +420,115 @@ function loadWeapons() {
 
 
 }
+function loadSpells() {
+    $('#c_magie').html("");
+    let i = 0;
+    character_data.magie.forEach(element => {
+        let spell = getSpell(element);
+        console.log(spell);
+
+        $('#c_magie').append(`<div class="col-md-6">
+        <div class="block">
+
+            <div class="row">
+                <div class="col-md-12">
+                <div style="padding:10px; position: absolute;right: 10px;top: 10px; cursor: pointer;"><img id="spell_del_${i}" src="https://img.icons8.com/material-outlined/24/000000/delete-forever.png"></div>
+                <div style="padding:10px; position: absolute;right: 40px;top: 10px; cursor: pointer;"><img id="spell_edit_${i}" src="https://img.icons8.com/metro/22/000000/edit.png"></div>
+
+                    <h3 style="cursor: pointer;width:80%"
+                        onclick="toggleBlock('#spell_${i}')">${spell.nome} Lv.${spell[class_data.nome]}</h3>
+                </div>
+            </div>
+            <div id="spell_${i}" class="spell row start_hidden">
+                <div class="col-md-12">
+                    <table class="ab_table" style="margin: 30px 0px;">
+                        ${(!(spell_filter.includes(spell["tiro salvezza"])) ? `
+                        <tr>
+                            <th>Tiro Salvezza:</th>
+                            <th>${spell["tiro salvezza"]}</th>
+                        </tr>`: "")}
+                        <tr>
+                            <th>Componenti:</th>
+                            <th>${spell.componenti}</th>
+                        </tr>
+                        ${((spell["costo materiali"] != "NULL" && spell["costo materiali"] != "") ? `
+                        <tr>
+                            <th>Costo Materiali:</th>
+                            <th>${spell["costo materiali"]}</th>
+                        </tr>`: "")}
+                        <tr>
+                            <th>Tempo di lancio:</th>
+                            <th>${spell.casting_time}</th>
+                        </tr>
+                        ${(spell.bersaglio != "" ? `
+                        <tr>
+                            <th>Bersaglio:</th>
+                            <th>${spell.bersaglio}</th>
+                        </tr>`: "")}
+                        ${(!(spell_filter.includes(spell["raggio di azione"])) ? `
+                        <tr>
+                            <th>Raggio di Azione:</th>
+                            <th>${spell["raggio di azione"]}</th>
+                        </tr>`: "")}
+                        ${(spell.area != "" ? `
+                        <tr>
+                            <th>Area:</th>
+                            <th>${spell.area}</th>
+                        </tr>`: "")}
+                        <tr>
+                            <th>Durata:</th>
+                            <th>${spell.durata}</th>
+                        </tr>
+                        ${(!(spell_filter.includes(spell["effetto"])) ? `
+                        <tr>
+                        <th>Effetto:</th>
+                        <th>${spell["effetto"]}</th>
+                        </tr>`: "")}
+                        ${(!(spell_filter.includes(spell["descrizione breve"])) ? `
+                        <tr>
+                            <th>Descrizione Breve:</th>
+                            <th>${spell["descrizione breve"]}</th>
+                        </tr>`: "")}
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+        `)
+
+        $(`#spell_del_${i}`).click(function () {
+            let index = parseInt(this.id.substr(this.id.lastIndexOf('_') + 1));
+            character_data.magie.splice(index, 1);
+            character_spells = getCharacterSpells();
+            loadSpells();
+        });
+
+        $(`#spell_edit_${i}`).click(function () {
+            window.location.href = `/editSpell?id=${spell["id"]}`;
+        });
+
+        i++;
+    });
+
+    $('#c_magie').append(`
+        <div id="add_spell" class="col-md-6">
+            <div class="block" style="height: 127px;cursor:pointer;">
+                <div style="position: absolute;top: 80px;left: 50%;transform: translate(-50%, -50%);"><h1 style="color: rgb(180, 180, 180);">+ Add Spell</h1></div>
+            </div>
+        </div>
+    `)
+
+    //Aggiunta Spell
+
+    $('#add_spell').click(function () {
+        $("#spellModal").css("display", "block");
+    });
+
+    toggleBlock(".spell");
+
+
+}
 
 function statListenerSetup() {
     stat_list.forEach(element => {
@@ -369,19 +557,100 @@ function statListenerSetup() {
     });
 }
 
-function beResponsive (){
-    if(window.innerWidth < 1300){
+function beResponsive() {
+    if (window.innerWidth < 1300) {
         $("#skill-col-1").addClass("col-md-12").removeClass("col-md-7");
         $("#skill-col-2").addClass("col-md-12").removeClass("col-md-5");
-    }else{
+    } else {
         $("#skill-col-1").addClass("col-md-7").removeClass("col-md-12");
         $("#skill-col-2").addClass("col-md-5").removeClass("col-md-12");
 
     }
 }
+function initSpellModal() {
+    $("#spell_select").html("");
+    availableSpells.forEach(element => {
+        $("#spell_select").append(`<option value="${element.id}">${element.nome}</option>`);
+    });
+    spellModalInfo($("#spell_select").val());
 
+    $("#spell_select").change(function () {
+        spellModalInfo(this.value);
+    })
+}
 
-function init() {
+function spellModalInfo(id) {
+
+    let spell = getSpell(id)
+
+    $("#spell_info").html(`
+    <table class="ab_table" style="margin: 30px 30px;width: 90%;">
+
+    ${(!(spell_filter.includes(spell["tiro salvezza"])) ? `
+    <tr>
+        <th>Tiro Salvezza:</th>
+        <th>${spell["tiro salvezza"]}</th>
+    </tr>`: "")}
+    <tr>
+        <th>Componenti:</th>
+        <th>${spell.componenti}</th>
+    </tr>
+    ${((spell["costo materiali"] != "NULL" && spell["costo materiali"] != "") ? `
+    <tr>
+        <th>Costo Materiali:</th>
+        <th>${spell["costo materiali"]}</th>
+    </tr>`: "")}
+    <tr>
+        <th>Tempo di lancio:</th>
+        <th>${spell.casting_time}</th>
+    </tr>
+    ${(spell.bersaglio != "" ? `
+    <tr>
+        <th>Bersaglio:</th>
+        <th>${spell.bersaglio}</th>
+    </tr>`: "")}
+    ${(!(spell_filter.includes(spell["raggio di azione"])) ? `
+    <tr>
+        <th>Raggio di Azione:</th>
+        <th>${spell["raggio di azione"]}</th>
+    </tr>`: "")}
+    ${(spell.area != "" ? `
+    <tr>
+        <th>Area:</th>
+        <th>${spell.area}</th>
+    </tr>`: "")}
+    <tr>
+        <th>Durata:</th>
+        <th>${spell.durata}</th>
+    </tr>
+    ${(!(spell_filter.includes(spell["effetto"])) ? `
+    <tr>
+    <th>Effetto:</th>
+    <th>${spell["effetto"]}</th>
+    </tr>`: "")}
+    ${(!(spell_filter.includes(spell["descrizione breve"])) ? `
+    <tr>
+        <th>Descrizione Breve:</th>
+        <th>${spell["descrizione breve"]}</th>
+    </tr>`: "")}
+    ${(!(spell_filter.includes(spell["descrizione"])) ? `
+    <tr>
+        <th>Descrizione Completa:</th>
+        <th>${spell["descrizione"]}</th>
+    </tr>`: "")}
+    </table>
+    `);
+}
+
+async function init() {
+
+    
+
+    availableSpells = await getAvailableSpells();
+
+    initSpellModal();
+
+    character_spells = getCharacterSpells();
 
     //setup iniziale Condizionale
 
@@ -393,10 +662,10 @@ function init() {
     beResponsive();
 
     window.onresize = beResponsive;
-    
+
 
     class_data.class_abilities.forEach(element => {
-        $(`#checkbox_${element}`).prop("checked",true);
+        $(`#checkbox_${element}`).prop("checked", true);
     });
 
     $(".input_charForm").toArray().forEach(element => {
@@ -434,6 +703,8 @@ function init() {
 
     loadWeapons();
     //------
+    //load delle magie
+    loadSpells();
 
     /* let nome = prompt("Nome Arma", "ex: Arco lungo");
             let danno = prompt("Danno", "ex: 1d8");
@@ -460,7 +731,7 @@ function init() {
     $('#character_settings').click(function () {
         $("#charModal").css("display", "block");
     });
-    ["charModal", "armorModal", "weaponModal"].forEach(element => {
+    ["charModal", "armorModal", "weaponModal", "spellModal"].forEach(element => {
         $(`#close_${element}`).click(function () {
             $(`#${element}`).css("display", "none");
         });
@@ -597,6 +868,7 @@ function init() {
 
     toggleBlock('.start_hidden');
 
+    window.scrollTo(0,120);
 }
 
 function toggleBlock(blockId) {
