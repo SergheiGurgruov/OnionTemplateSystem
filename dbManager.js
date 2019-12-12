@@ -78,6 +78,15 @@ const db_Client = {
     },
     /**
      * 
+     * @param {string} collection collection name
+     * @param {JSON} query query filter
+     */
+    queryOne: async function (collection, query) {
+        let result = await DataBase.conn.collection(collection).find(query).toArray();
+        return result[0];
+    },
+    /**
+     * 
      * @param {string} collection colleciton name
      * @param {JSON} query query filter
      * @param {Object} data data

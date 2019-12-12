@@ -7,7 +7,6 @@
  * @typedef {Array<Collection>} JSON_DB
  * 
  */
-
 const util = require("./util");
 const fs = require("fs");
 const DataBase = {
@@ -108,6 +107,32 @@ exports.dbClient = {
 
         return items;
     },
+    queryOne: async function (collection, query) {
+        let items = [];
+
+        DataBase.conn.forEach(_collection => {
+            if (_collection.collection_name == collection) {
+
+                if (query == {}) {
+                    items = _collection.collection_data;
+                    return items;
+                }
+
+                _collection.collection_data.forEach(document => {
+                    let errors = 0;
+                    Object.keys(query).forEach(query_key => {
+                        if (document[query_key] != query[query_key]) {
+                            errors++;
+                        }
+                    });
+                    if (errors == 0)
+                        items.push(document);
+                });
+            }
+        });
+
+        return items[0];
+    },
     updateOne: async function (collection, query, data) {
         let col_index = 0;
         DataBase.conn.forEach(_collection => {
@@ -125,7 +150,7 @@ exports.dbClient = {
                         }
                     });
                     if (errors == 0) {
-                        DataBase.conn[col_index].collection_data[doc_index] = data;
+                        DataBase.conn[col_index].collection_data[doc_index] = {...DataBase.conn[col_index].collection_data[doc_index],...data};
                         this.saveCollection(col_index);
                         return true;
                     }
