@@ -1,7 +1,157 @@
-{"collection_name":"razze","collection_data":
-[{"nome":"umano","taglia":"media","velocità":"normale","stat_bonus":{"choose":2},"ability_bonus":{},"linguaggi":["comune"],"talenti":["Talento Bonus al Primo Livello","Esperto: +1 grado abilità ogni livello"]},
-{"nome":"elfo","taglia":"media","velocità":"normale","stat_bonus":{"des":2,"int":2,"cos":-2},"ability_bonus":{"percezione":2,"sapienza_magica":2},"linguaggi":["comune","elfico"],"talenti":["Visione crepuscolare","Immunità degli elfi: immuni a Sonno Magico, +2 TS Ammaliamento"]},
-{"nome":"mezzelfo","taglia":"media","velocità":"normale","stat_bonus":{"choose":2},"ability_bonus":{"percezione":2},"linguaggi":["comune","elfico"],"talenti":["abilita focalizzata: +3 ad un abilita a scelta (+6 dopo 10 rank)","TS +2 Ammaliamento","visione crepuscolare"]},
-{"nome":"nano","taglia":"media","velocità":"normale","stat_bonus":{"cos":2,"sag":2,"car":-2},"ability_bonus":{},"linguaggi":["comune","nanico"],"talenti":["Lenti e saldi: 6m speed ma ignorano armor","Scurovisione: 18m al Buio","Odio: +1 Tiro per colpire Goblin/Orchi","Addestramento difensivo: +4 CA contro Giganti","Resistenza: +2 TS Veleno,incantesimi e capacità magiche","Stabilità: +4 Difesa MC da Spingere/Sbilanciare (a terra)","Cupidigia: +2 valutare oggetti con pietre e gioielli","Esperto minatore: +2 Percezione opere in muratura"]},
-{"nome":"orco","taglia":"media","velocità":"normale","stat_bonus":{"for":4,"int":-2,"sag":-2,"car":-2},"ability_bonus":{},"linguaggi":["comune","orchesco"],"talenti":["Scurovisione: Buio 18m","Ferocia: sotto 0pf restano coscienti ma barcollanti","Sensibilità alla luce: Restano abbagliati in aree di luce solare intensa"]}]
+{
+    "collection_name": "razze",
+    "collection_data": [
+        {
+            "nome": "umano",
+            "taglia": "media",
+            "velocità": "normale",
+            "stat_bonus": {
+                "choose": 2
+            },
+            "ability_bonus": {},
+            "linguaggi": [
+                "comune"
+            ],
+            "talenti": [
+                "Talento Bonus al Primo Livello",
+                "Esperto: +1 grado abilità ogni livello"
+            ]
+        },
+        {
+            "nome": "elfo",
+            "taglia": "media",
+            "velocità": "normale",
+            "stat_bonus": {
+                "des": 2,
+                "int": 2,
+                "cos": -2
+            },
+            "ability_bonus": {
+                "percezione": 2,
+                "sapienza_magica": 2
+            },
+            "linguaggi": [
+                "comune",
+                "elfico"
+            ],
+            "talenti": [
+                "Visione crepuscolare",
+                "Immunità degli elfi: immuni a Sonno Magico, +2 TS Ammaliamento"
+            ]
+        },
+        {
+            "nome": "mezzelfo",
+            "taglia": "media",
+            "velocità": "normale",
+            "stat_bonus": {
+                "choose": 2
+            },
+            "ability_bonus": {
+                "percezione": 2
+            },
+            "linguaggi": [
+                "comune",
+                "elfico"
+            ],
+            "talenti": [
+                "abilita focalizzata: +3 ad un abilita a scelta (+6 dopo 10 rank)",
+                "TS +2 Ammaliamento",
+                "visione crepuscolare"
+            ]
+        },
+        {
+            "nome": "nano",
+            "taglia": "media",
+            "velocità": "lenta",
+            "stat_bonus": {
+                "cos": 2,
+                "sag": 2,
+                "car": -2
+            },
+            "ability_bonus": {},
+            "linguaggi": [
+                "comune",
+                "nanico"
+            ],
+            "talenti": [
+                "Lenti e saldi: 6m speed ma ignorano armor",
+                "Scurovisione: 18m al Buio",
+                "Odio: +1 Tiro per colpire Goblin/Orchi",
+                "Addestramento difensivo: +4 CA contro Giganti",
+                "Resistenza: +2 TS Veleno,incantesimi e capacità magiche",
+                "Stabilità: +4 Difesa MC da Spingere/Sbilanciare (a terra)",
+                "Cupidigia: +2 valutare oggetti con pietre e gioielli",
+                "Esperto minatore: +2 Percezione opere in muratura"
+            ]
+        },
+        {
+            "nome": "orco",
+            "taglia": "media",
+            "velocità": "normale",
+            "stat_bonus": {
+                "for": 4,
+                "int": -2,
+                "sag": -2,
+                "car": -2
+            },
+            "ability_bonus": {},
+            "linguaggi": [
+                "comune",
+                "orchesco"
+            ],
+            "talenti": [
+                "Scurovisione: Buio 18m",
+                "Ferocia: sotto 0pf restano coscienti ma barcollanti",
+                "Sensibilità alla luce: Restano abbagliati in aree di luce solare intensa"
+            ]
+        },
+        {
+            "nome": "mezzorco",
+            "taglia": "media",
+            "velocità": "normale",
+            "stat_bonus": {
+                "choose":2
+            },
+            "ability_bonus": {
+                "intimidire":2
+            },
+            "linguaggi": [
+                "comune",
+                "orchesco"
+            ],
+            "talenti": [
+                "Scurovisione: Buio 18m",
+                "Competenza con \"Ascia Bipenne\",\"Falchion\" e armi Orchesche",
+                "Ferocia degli Orchi: sotto 0pf può combattere per 1 round come inabile",
+                "Sensibilità alla luce: Restano abbagliati in aree di luce solare intensa"
+            ]
+        },
+        {
+            "nome": "halfling",
+            "taglia": "piccola",
+            "velocità": "lenta",
+            "stat_bonus": {
+                "destrezza":2,
+                "carisma":2,
+                "forza":-2
+            },
+            "ability_bonus": {
+                "acrobazia":2,
+                "scalare":2,
+                "percezione":2,
+                "furtivita":4
+            },
+            "linguaggi": [
+                "comune",
+                "halfling"
+            ],
+            "talenti": [
+                "Competenza con Fionde e armi Halfling",
+                "Fortuna Halfling: Bonus +1 a tutti i Tiri Salvezza",
+                "Temerarietà: Bonus +2 ai TS contro \"Paura\"",
+                "Taglia Piccola: +1 CA,+1 Tiri per Colpire, -1 BMC/DMC",
+                "Velocità Lenta: 6m"
+            ]
+        }
+    ]
 }
