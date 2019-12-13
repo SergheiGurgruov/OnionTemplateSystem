@@ -583,6 +583,9 @@ function spellModalInfo(id) {
 
     let spell = getSpell(id)
 
+    if(availableSpells.length == 0)
+        return;
+        
     $("#spell_info").html(`
     <table class="ab_table" style="margin: 30px 30px;width: 90%;">
 
