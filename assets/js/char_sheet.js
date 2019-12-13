@@ -68,12 +68,13 @@ function onCharForm() {
 
     if (emptyFields == 0) {
 
-        character_data.magie = [];
-
         let nome = formdata[0].value;
         let razza = formdata[1].value;
         let classe = formdata[2].value;
         let livello = formdata[3].value;
+
+        if (classe != character_data.classe)
+            character_data.magie = [];
 
         character_data.oldname = character_data.nome;
 
@@ -644,7 +645,7 @@ function spellModalInfo(id) {
 
 async function init() {
 
-    
+
 
     availableSpells = await getAvailableSpells();
 
@@ -868,7 +869,7 @@ async function init() {
 
     toggleBlock('.start_hidden');
 
-    window.scrollTo(0,120);
+    window.scrollTo(0, 120);
 }
 
 function toggleBlock(blockId) {
