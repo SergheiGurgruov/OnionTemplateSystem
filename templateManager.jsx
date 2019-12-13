@@ -142,7 +142,7 @@ module.exports = {
 
             } else if (element.type == "form") {
 
-                result += `<div style="margin-bottom:300px;" class="col-md-4 offset-md-4"><form class="form" action=${element.action} method=${element.method}>`;
+                result += `<div style="margin-bottom:300px;" class="col-md-6 offset-md-3"><form class="form" action=${element.action} method=${element.method}>`;
                 element.inputs.forEach(_input => {
                     result += h_formInput(_input);
                 });
