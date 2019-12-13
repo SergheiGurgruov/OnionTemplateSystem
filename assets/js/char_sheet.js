@@ -426,7 +426,6 @@ function loadSpells() {
     let i = 0;
     character_data.magie.forEach(element => {
         let spell = getSpell(element);
-        console.log(spell);
 
         $('#c_magie').append(`<div class="col-md-6">
         <div class="block">
