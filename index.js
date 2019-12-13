@@ -12,7 +12,6 @@ dbClient.init(function () {
         //util.log(`ServerRequest`, `${req.url}  index.js:${__line}`, util.colors.FgGreen);
         pageLoader.showPage(res, req);
     }).listen(port);
+    
+    util.log('Server Log', `server started o port: ${port}  index.js:${__line} `, util.colors.FgCyan);
 });
-
-util.log('Server Log', `server started o port: ${port}  index.js:${__line} `, util.colors.FgCyan);
-
