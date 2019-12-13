@@ -162,7 +162,7 @@ const routeMap = {
             "descrizione":data.descrizione
         }
 
-        await dbClient.updateOne("spells",{"id":data.id},spell);
+        await dbClient.updateOne("spells",{"id":parseInt(data.id)},spell);
 
         res.writeHead(302, {
             Location: data.referrer_url
