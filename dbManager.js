@@ -92,7 +92,7 @@ const db_Client = {
      * @param {Object} data data
      */
     updateOne: async function(collection,query,data){
-        await DataBase.conn.collection(collection).update(query,data);
+        await DataBase.conn.collection(collection).updateOne(query,{$set:data});
     },
     /**
      * 
