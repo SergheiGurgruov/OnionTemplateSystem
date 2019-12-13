@@ -152,7 +152,7 @@ const routeMap = {
             "nome":data.nome,
             "tiro salvezza":data.tiro_salvezza,
             "componenti":data.componenti,
-            "tempo di lancio":data.tempo_di_lancio,
+            "casting_time":data.tempo_di_lancio,
             "bersaglio":data.bersaglio,
             "raggio di azione":data.raggio_di_azione,
             "area":data.area,

@@ -289,7 +289,7 @@ const routingMap = {
                                 {
                                     type: "text",
                                     name: "tempo_di_lancio",
-                                    value:spell["tempo di lancio"]
+                                    value:spell["casting_time"]
                                 },
                                 {
                                     type: "text",
