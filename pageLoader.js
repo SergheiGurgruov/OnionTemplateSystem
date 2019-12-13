@@ -100,6 +100,21 @@ function showPage(res, req) {
             }
             break;
         }
+        case 'image/x-icon': {
+            let file;
+            try {
+                file = fs.readFileSync(`./assets/images${pathName}`);
+                res.writeHead(200, { 'Content-Type': contentType });
+                res.write(file);
+                res.end();
+            } catch (error) {
+                util.log(`Server Error`, `could not read the requested file  ./assets/images${pathName}`, util.colors.FgRed);
+                res.writeHead(404, { 'Content-Type': 'text/plain' });
+                res.write("Server Error: Could not retrieve the requested file;")
+                res.end();
+            }
+            break;
+        }
         case 'text/html':
 
             if (!routingMap[pathName]) {
@@ -167,7 +182,7 @@ function getContentType(url) {
     const res = {
         '.txt': 'text/plain',
         '.html': 'text/html',
-        '.ico': 'image/x-icon',
+        '.ico':'image/x-icon',
         '.jpg': 'image/jpeg',
         '.png': 'image/png',
         '.gif': 'image/gif',
