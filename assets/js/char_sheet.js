@@ -583,9 +583,9 @@ function spellModalInfo(id) {
 
     let spell = getSpell(id)
 
-    if(availableSpells.length == 0)
+    if (availableSpells.length == 0)
         return;
-        
+
     $("#spell_info").html(`
     <table class="ab_table" style="margin: 30px 30px;width: 90%;">
 
@@ -661,11 +661,19 @@ async function init() {
         $('#stat_choose_msg').html(`*Puoi Aggiungere ${race_data.stat_bonus.choose} punti a scelta nei tuoi roll`);
     }
 
+    if (character_data.hp) {
+        $('#hp').val(character_data.hp);
+    } else {
+        character_data.hp = 0;
+        $('#hp').val(0);
+    }
+
     //Insert Elementi Html
     beResponsive();
 
     window.onresize = beResponsive;
 
+    $('#hp_info').attr("title", `${character_data.livello} * [${class_data.dado_vita} + ${getModifier(character_data.stats.cos)}]\nLevel * [Hit Die + Cos Modifier]`);
 
     class_data.class_abilities.forEach(element => {
         $(`#checkbox_${element}`).prop("checked", true);
@@ -730,6 +738,10 @@ async function init() {
             statListenerSetup(); */
 
     //configurazione Listener
+
+    $('#hp').change(function(){
+        character_data.hp = this.value
+    });
 
     $('#character_settings').click(function () {
         $("#charModal").css("display", "block");

@@ -33,3 +33,6 @@ Specifici:
 
     #ca_tot :
     #ca_armor_bonus :
+
+    #hp_info: Title info for hp bar
+    #hp: Hp input number

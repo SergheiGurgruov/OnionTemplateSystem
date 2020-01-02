@@ -104,7 +104,7 @@ const db_Client = {
     },
     /**
      * 
-     * @param {string} collection colection name
+     * @param {string} collection collection name
      * @param {Array<Object>} data data to insert
      */
     insertMany:async function(collection,data){

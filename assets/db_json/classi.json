@@ -3,7 +3,7 @@
     "collection_data": [
         {
             "nome": "druido",
-            "dato_vita": "d8",
+            "dado_vita": "d8",
             "ricchezza": "2d6 x 10 mo (media 70)",
             "ranks_livello": 4,
             "class_abilities": [
@@ -200,7 +200,7 @@
         },
         {
             "nome": "stregone",
-            "dato_vita": "1d6",
+            "dado_vita": "1d6",
             "ricchezza": "2d6 x 10 mo (media 70)",
             "ranks_livello": 2,
             "class_abilities": [
@@ -419,7 +419,7 @@
         },
         {
             "nome": "spiritista",
-            "dato_vita": "d8",
+            "dado_vita": "d8",
             "ricchezza": "2d6 x 10 mo (media 70)",
             "ranks_livello": 4,
             "class_abilities": [
@@ -654,7 +654,7 @@
         },
         {
             "nome": "iracondo di stirpe",
-            "dato_vita": "d10",
+            "dado_vita": "d10",
             "ricchezza": "3d6 x 10 mo (media 105)",
             "ranks_livello": 4,
             "class_abilities": [
@@ -923,7 +923,7 @@
         },
         {
             "nome": "ranger",
-            "dato_vita": "d10",
+            "dado_vita": "d10",
             "ricchezza": "5d6 x 10 mo (media 175)",
             "ranks_livello": 6,
             "class_abilities": [
