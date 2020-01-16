@@ -645,6 +645,10 @@ function spellModalInfo(id) {
     `);
 }
 
+function hpHelp() {
+    $('#hp_info').attr("title", `${character_data.livello} * [${class_data.dado_vita} + ${getModifier(character_data.stats.cos + race_data.stat_bonus.cos || 0)}]\nLevel * [Hit Die + Cos Modifier]`);
+}
+
 async function init() {
 
 
@@ -672,8 +676,8 @@ async function init() {
     beResponsive();
 
     window.onresize = beResponsive;
-
-    $('#hp_info').attr("title", `${character_data.livello} * [${class_data.dado_vita} + ${getModifier(character_data.stats.cos)}]\nLevel * [Hit Die + Cos Modifier]`);
+    //TODO HP INFO
+    hpHelp();
 
     class_data.class_abilities.forEach(element => {
         $(`#checkbox_${element}`).prop("checked", true);
@@ -739,7 +743,7 @@ async function init() {
 
     //configurazione Listener
 
-    $('#hp').change(function(){
+    $('#hp').change(function () {
         character_data.hp = this.value
     });
 
@@ -776,6 +780,9 @@ async function init() {
 
         $(`#s_${element}_mod`).change(function () {
             $(`.l_${element}`).trigger("change");
+            if (element == "cos") {
+                hpHelp();
+            }
         });
 
         $(`.l_${element}`).change(function () {
