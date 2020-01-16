@@ -649,7 +649,7 @@ function spellModalInfo(id) {
 }
 
 function hpHelp() {
-    $('#hp_info').attr("title", `${character_data.livello} * [${class_data.dado_vita} + ${getModifier(character_data.stats.cos + race_data.stat_bonus.cos || 0)}]\nLevel * [Hit Die + Cos Modifier]`);
+    $('#hp_info').attr("title", `${character_data.livello} * [${class_data.dado_vita} + ${$("#s_cos_mod").val()}]\nLevel * [Hit Die + Cos Modifier]`);
 }
 
 async function init() {
