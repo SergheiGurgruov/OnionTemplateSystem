@@ -550,6 +550,9 @@ function statListenerSetup() {
         $(`#s_${element}_mod`).change(function () {
             refreshClasseArmatura();
             $(`.l_${element}_mod`).val(parseInt(this.value)).trigger("change");
+            if (element == "cos") {
+                hpHelp();
+            }
         });
 
         $(`#s_${element}_roll`).val(character_data.stats[element]).trigger("change");
@@ -780,9 +783,6 @@ async function init() {
 
         $(`#s_${element}_mod`).change(function () {
             $(`.l_${element}`).trigger("change");
-            if (element == "cos") {
-                hpHelp();
-            }
         });
 
         $(`.l_${element}`).change(function () {
