@@ -79,7 +79,7 @@ exports.dbClient = {
             }
         });
 
-        callback(items);
+        callback(JSON.parse(JSON.stringify(items)));
     },
     query_promise: async function (collection, query) {
         let items = [];
@@ -105,7 +105,7 @@ exports.dbClient = {
             }
         });
 
-        return items;
+        return JSON.parse(JSON.stringify(items));;
     },
     queryOne: async function (collection, query) {
         let items = [];
@@ -131,7 +131,7 @@ exports.dbClient = {
             }
         });
 
-        return items[0];
+        return JSON.parse(JSON.stringify(items[0]));
     },
     updateOne: async function (collection, query, data) {
         let col_index = 0;
