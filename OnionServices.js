@@ -139,6 +139,36 @@ const routeMap = {
         console.log(data);
         res.end();
     },
+    "/app_login.onioncall": async function (data, res) {
+        console.log(data)
+        let user = await dbClient.queryOne("users",{username:data.username,password:data.password});
+        if(user){
+            res.writeHead(200);
+            res.write("true");
+        }
+        else{
+            res.writeHead(404);
+        }
+        res.end();
+    },
+    "/app_getClassData.onioncall": async function (data, res) {
+        let resp = await dbClient.queryOne("classi",{nome:data.classe});
+
+        delete resp._id;
+
+        let ability_bonus_new = [];
+        for (const key in resp.ability_bonus) {
+            ability_bonus_new.push({
+                nome: key,
+                punteggio: resp.ability_bonus[key]
+            });
+        }
+
+        resp.ability_bonus = ability_bonus_new;
+        resp = JSON.stringify(resp,null,4);
+        res.write(resp);
+        res.end();
+    },
     "/getDailySpells.onioncall":async function(data,res){
 
         let response = await exports.OSInterface.pathfinder_util.getDailySpells(data.classe,data.livello);
