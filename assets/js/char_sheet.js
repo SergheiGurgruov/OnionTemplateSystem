@@ -81,7 +81,7 @@ function onCharForm() {
         character_data.nome = nome;
         character_data.classe = classe;
         character_data.razza = razza;
-        character_data.livello = livello;
+        character_data.livello = parseInt(livello);
 
         $.ajax({
             url: 'updateCharacter.onioncall',
