@@ -747,7 +747,7 @@ async function init() {
     //configurazione Listener
 
     $('#hp').change(function () {
-        character_data.hp = this.value
+        character_data.hp = parseInt(this.value);
     });
 
     $('#character_settings').click(function () {
