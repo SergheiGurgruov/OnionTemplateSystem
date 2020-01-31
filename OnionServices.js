@@ -169,6 +169,17 @@ const routeMap = {
         res.write(resp);
         res.end();
     },
+    "/app_getCharacterData.onioncall": async function (data, res) {
+        console.log(data);
+
+        let resp = await dbClient.queryOne("personaggi",{nome:data.nome});
+
+        delete resp._id;
+        resp = JSON.stringify(resp,null,4);
+
+        res.write(resp);
+        res.end();
+    },
     "/getDailySpells.onioncall":async function(data,res){
 
         let response = await exports.OSInterface.pathfinder_util.getDailySpells(data.classe,data.livello);
